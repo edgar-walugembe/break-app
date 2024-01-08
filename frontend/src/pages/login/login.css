@@ -1,12 +1,13 @@
 .login {
-  color: #242424;
-  background-color: #32cd32;
+  /* color: #242424; */
+  background-color: #feff17;
   width: 70%;
-  height: 50%;
+  height: 60%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 20px;
 }
 
 .form {

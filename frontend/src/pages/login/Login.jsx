@@ -25,18 +25,20 @@ const Login = () => {
     // fetchDev();
   };
   return (
-    <div className="login p-5">
-      <h1 className="text-center font-extrabold text-[43px]">
-        MAY I TAKE YOUR ORDER !
+    <div className="login p-5 flex flex-col justify-evenly">
+      <h1 className="text-center font-extrabold text-[50px] text-blue-500">
+        Make your Order Now!
       </h1>
 
-      <div className="flex ">
+      <div className="flex justify-around">
         <div>
-          <img src={breakfast00} alt="breakfast" />
+          <img src={breakfast04} alt="breakfast" />
         </div>
 
         <div>
-          <h2 className="text-center font-bold">LOGIN</h2>
+          <h2 className="text-center font-bold text-[30px] text-white">
+            LOGIN
+          </h2>
           <div className="form p-5">
             <Formik
               validationSchema={schema}
