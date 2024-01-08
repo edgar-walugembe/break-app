@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Container, Form, Col, Row, Button } from "react-bootstrap";
+import { Form, Col, Row, Button } from "react-bootstrap";
 import * as formik from "formik";
 import * as yup from "yup";
 import "./login.css";
@@ -31,15 +31,15 @@ const Login = () => {
       </h1>
 
       <div className="flex justify-around">
-        <div>
+        <div className="rounded-md">
           <img src={breakfast04} alt="breakfast" />
         </div>
 
         <div>
-          <h2 className="text-center font-bold text-[30px] text-white">
+          {/* <h2 className="text-center font-bold text-[30px] text-white">
             LOGIN
-          </h2>
-          <div className="form p-5">
+          </h2> */}
+          <div className="form p-2">
             <Formik
               validationSchema={schema}
               // onSubmit={saveDev}
@@ -58,7 +58,7 @@ const Login = () => {
                   // ref={}
                   // onSubmit={}
                   autoComplete="true"
-                  className="gap-40"
+                  // className="gap-40"
                 >
                   <Row>
                     <Col xs={12} md={12}>
@@ -125,13 +125,24 @@ const Login = () => {
                 </Form>
               )}
             </Formik>
-            <Button
-              onClick={(event) => submitForm(event)}
-              variant="success"
-              type="Button"
-            >
-              Submit
-            </Button>
+
+            <div className="flex gap-2 justify-center">
+              <Button
+                // onClick={(event) => submitForm(event)}
+                variant="success"
+                type="button"
+              >
+                Login
+              </Button>
+
+              <Button
+                // onClick={(event) => submitForm(event)}
+                variant="info"
+                type="button"
+              >
+                Signup
+              </Button>
+            </div>
           </div>
         </div>
       </div>
