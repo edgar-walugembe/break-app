@@ -1,6 +1,12 @@
 .login {
   color: #242424;
-  background-color: #fff;
+  background-color: #32cd32;
+  width: 70%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .form {
