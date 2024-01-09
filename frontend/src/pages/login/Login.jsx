@@ -9,6 +9,7 @@ import breakfast01 from "../../assets/break_logo.30.jpeg";
 import breakfast02 from "../../assets/break_logo.40.jpg";
 import breakfast03 from "../../assets/break_logo.50.png";
 import breakfast04 from "../../assets/break_logo.png";
+import breakfast05 from "../../assets/break_logo.20-removebg-preview.png";
 
 const Login = () => {
   const { Formik } = formik;
@@ -45,8 +46,8 @@ const Login = () => {
       </div>
 
       <div className="content flex justify-evenly">
-        <div className="img rounded-md flex justify-items-center">
-          <img src={breakfast04} alt="breakfast" />
+        <div className="img rounded-md flex justify-items-center items-center">
+          <img src={breakfast05} alt="breakfast" className="h-[200px]" />
         </div>
 
         <div className="form text-blue-500">

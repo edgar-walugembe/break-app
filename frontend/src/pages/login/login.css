@@ -8,21 +8,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-}
 
-.content {
-}
+  .content {
+    .form {
+    }
 
-.form {
-  background-color: #242424;
-}
+    .img {
+      width: 40%;
+    }
 
-.img {
-  width: 40%;
-}
-
-.form {
-  border: 1px solid #fff;
-  border-radius: 10px;
-  width: 60%;
+    .form {
+      border: 1px solid #fff;
+      border-radius: 10px;
+      width: 60%;
+    }
+  }
 }
