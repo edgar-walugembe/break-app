@@ -2,7 +2,7 @@
   /* color: #242424; */
   background-color: #feff17;
   width: 70%;
-  height: 60%;
+  /* height: 60%; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10,7 +10,19 @@
   border-radius: 20px;
 }
 
+.content {
+}
+
 .form {
-  border: 1px solid #242424;
+  background-color: #242424;
+}
+
+.img {
+  width: 40%;
+}
+
+.form {
+  border: 1px solid #fff;
   border-radius: 10px;
+  width: 60%;
 }

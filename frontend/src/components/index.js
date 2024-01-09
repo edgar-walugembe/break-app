@@ -1,7 +1,29 @@
-import Menu from "./Menu";
+import AddProduct from "./AddProduct";
+import AddUser from "./AddUser";
 import Card from "./Card";
-import Navbar from "./Navbar";
-import Orders from "./OrderHistory";
+import EditProduct from "./EditProduct";
+import EditUser from "./EditUser";
 import Footer from "./Footer";
+import ForgotPassword from "./ForgotPassword";
+import Menu from "./Menu";
+import Navbar from "./Navbar";
+import Order from "./Order";
+import OrderHistory from "./OrderHistory";
+import SetPassword from "./SetPassword";
+import UserList from "./UserList";
 
-export { Menu, Card, Navbar, Orders, Footer };
+export {
+  AddProduct,
+  AddUser,
+  Card,
+  EditProduct,
+  EditUser,
+  Footer,
+  ForgotPassword,
+  Menu,
+  Navbar,
+  Order,
+  OrderHistory,
+  SetPassword,
+  UserList,
+};

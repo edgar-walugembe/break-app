@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import React from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import * as formik from "formik";
 import * as yup from "yup";
@@ -26,20 +27,33 @@ const Login = () => {
   };
   return (
     <div className="login p-5 flex flex-col justify-evenly">
-      <h1 className="text-center font-extrabold text-[50px] text-blue-500">
-        Make your Order Now!
-      </h1>
+      <div>
+        <h1 className="text-center font-extrabold text-[50px] text-blue-500">
+          Make your Order Now!
+        </h1>
+      </div>
 
-      <div className="flex justify-around">
-        <div className="rounded-md">
+      <div className="flex justify-end items-end p-2">
+        <Button
+          // onClick={(event) => submitForm(event)}
+          variant="secondary"
+          type="button"
+          size="md"
+        >
+          SetPassword
+        </Button>
+      </div>
+
+      <div className="content flex justify-evenly">
+        <div className="img rounded-md flex justify-items-center">
           <img src={breakfast04} alt="breakfast" />
         </div>
 
-        <div>
+        <div className="form text-blue-500">
           {/* <h2 className="text-center font-bold text-[30px] text-white">
             LOGIN
           </h2> */}
-          <div className="form p-2">
+          <div className="p-2">
             <Formik
               validationSchema={schema}
               // onSubmit={saveDev}
@@ -58,7 +72,6 @@ const Login = () => {
                   // ref={}
                   // onSubmit={}
                   autoComplete="true"
-                  // className="gap-40"
                 >
                   <Row>
                     <Col xs={12} md={12}>
@@ -129,18 +142,11 @@ const Login = () => {
             <div className="flex gap-2 justify-center">
               <Button
                 // onClick={(event) => submitForm(event)}
-                variant="success"
+                variant="primary"
                 type="button"
+                size="md"
               >
                 Login
-              </Button>
-
-              <Button
-                // onClick={(event) => submitForm(event)}
-                variant="info"
-                type="button"
-              >
-                Signup
               </Button>
             </div>
           </div>

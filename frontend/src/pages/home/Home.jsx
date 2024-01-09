@@ -1,5 +1,19 @@
 /* eslint-disable no-unused-vars */
-import { Menu, Card, Navbar, Orders, Footer } from "../../components";
+import {
+  AddProduct,
+  AddUser,
+  Card,
+  EditProduct,
+  EditUser,
+  Footer,
+  ForgotPassword,
+  Menu,
+  Navbar,
+  Order,
+  OrderHistory,
+  SetPassword,
+  UserList,
+} from "../../components";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./home.css";
 
