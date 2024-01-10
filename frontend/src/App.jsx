@@ -14,62 +14,11 @@ import Order from "./pages/order/Order";
 import Password from "./pages/password/Password";
 
 const App = () => {
-  const Layout = () => {
-    return (
-      <div className="main">
-        <Navbar />
-        <div className="container">
-          <div className="menuContainer">
-            <Menu />
-          </div>
-          <div className="contentContainer">
-            <Outlet />
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  };
-
-  const navigate = useNavigate(); // Hook for navigation
-
-  const handleLogin = () => {
-    // Perform your login logic here
-    // After successful login, navigate to the home page
-    navigate("/home");
-  };
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Login onLogin={handleLogin} />,
-      children: [
-        {
-          path: "/password",
-          element: <Password />,
-        },
-      ],
-    },
-    {
-      path: "/home",
-      element: <Home />,
-      children: [
-        {
-          path: "/users",
-          element: <User />,
-        },
-        {
-          path: "/products",
-          element: <Product />,
-        },
-        {
-          path: "/orders",
-          element: <Order />,
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
+  return (
+    <div className="w-full overflow-hidden">
+      <Login />
+    </div>
+  );
 };
 
 export default App;
