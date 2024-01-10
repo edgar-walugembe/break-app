@@ -69,11 +69,11 @@ const Login = () => {
           >
             {({ handleChange, values, touched, errors }) => (
               <Form
-                // noValidate
-                // validated={validated}
-                // ref={}
-                // onSubmit={}
-                autoComplete="true"
+              // noValidate
+              // validated={validated}
+              // ref={}
+              // onSubmit={}
+              // autoComplete="true"
               >
                 <Row>
                   <Col xs={12} md={12}>
@@ -144,7 +144,7 @@ const Login = () => {
           <div className="flex gap-2 justify-center">
             <Link to="/home">
               <Button
-                onClick={(event) => submitForm(event)}
+                // onClick={(event) => submitForm(event)}
                 variant="primary"
                 type="button"
                 size="md"
