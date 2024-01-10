@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import * as formik from "formik";
 import * as yup from "yup";
 import "./login.css";
@@ -9,10 +10,7 @@ import breakfast01 from "../../assets/break_logo.30.jpeg";
 import breakfast02 from "../../assets/break_logo.40.jpg";
 import breakfast03 from "../../assets/break_logo.50.png";
 import breakfast04 from "../../assets/break_logo.png";
-import breakfast05 from "../../assets/break_logo.20-removebg-preview.png";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import Home from "../home/Home";
-import Password from "../password/Password";
+import breakfast05 from "../../assets/break_logo.20_no.png";
 
 const Login = () => {
   const { Formik } = formik;

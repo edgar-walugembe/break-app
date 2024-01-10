@@ -14,21 +14,28 @@ import {
   SetPassword,
   UserList,
 } from "../../components";
-import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./home.css";
+import styles from "../../style";
 
 const Home = () => {
   return (
-    <div className="main">
-      <div className="container">
-        <div className="menuContainer">
+    <div className="w-full">
+      <div className={`flex ${styles.boxWidth}`}>
+        <div
+          className={`menuContainer ${styles.paddingX} ${styles.flexCenter} lg:max-w-full`}
+        >
           <Menu />
         </div>
-        <div className="contentContainer">
+        <div
+          className={`contentContainer ${styles.paddingX} ${styles.flexCenter}`}
+        >
           <Outlet />
         </div>
       </div>
-      <Footer />
+      <div className={`${styles.boxWidth}`}>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -22,11 +22,12 @@ import {
   SetPassword,
   UserList,
 } from "./components";
+import styles from "./style";
 
 const App = () => {
   const Layout = () => {
     return (
-      <div className="main w-full overflow-hidden">
+      <div className="w-full overflow-hidden">
         <Outlet />
       </div>
     );
