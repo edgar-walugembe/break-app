@@ -14,11 +14,53 @@ import Order from "./pages/order/Order";
 import Password from "./pages/password/Password";
 
 const App = () => {
-  return (
-    <div className="w-full overflow-hidden">
-      <Login />
-    </div>
-  );
+  const Layout = () => {
+    return (
+      <div className="main">
+        <Outlet />
+      </div>
+    );
+  };
+  // return (
+  //   <div className="w-full overflow-hidden">
+  //     <Login />
+  //   </div>
+  // );
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Login />,
+        },
+        {
+          path: "/home",
+          element: <Home />,
+        },
+        {
+          path: "/password",
+          element: <Password />,
+        },
+        // {
+        //   path: "/users/:id",
+        //   element: <User />,
+        // },
+        // {
+        //   path: "/products/:id",
+        //   element: <Product />,
+        // },
+      ],
+    },
+    {
+      path: "/home",
+      element: <Home />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;
