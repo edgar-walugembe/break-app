@@ -26,10 +26,10 @@ const App = () => {
           path: "/",
           element: <Login />,
         },
-        // {
-        //   path: "/home",
-        //   element: <Home />,
-        // },
+        {
+          path: "/home",
+          element: <Home />,
+        },
         {
           path: "/password",
           element: <Password />,
@@ -39,6 +39,20 @@ const App = () => {
     {
       path: "/home",
       element: <Home />,
+      children: [
+        {
+          path: "/home/order",
+          element: <Order />,
+        },
+        {
+          path: "/home/user",
+          element: <User />,
+        },
+        {
+          path: "/home/product",
+          element: <Product />,
+        },
+      ],
     },
   ]);
 
