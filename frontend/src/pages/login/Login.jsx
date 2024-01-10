@@ -10,6 +10,7 @@ import breakfast02 from "../../assets/break_logo.40.jpg";
 import breakfast03 from "../../assets/break_logo.50.png";
 import breakfast04 from "../../assets/break_logo.png";
 import breakfast05 from "../../assets/break_logo.20-removebg-preview.png";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { Formik } = formik;
@@ -35,14 +36,16 @@ const Login = () => {
       </div>
 
       <div className="flex justify-end items-end p-2">
-        <Button
-          // onClick={(event) => submitForm(event)}
-          variant="secondary"
-          type="button"
-          size="md"
-        >
-          SetPassword
-        </Button>
+        <Link to="" path="">
+          <Button
+            // onClick={(event) => submitForm(event)}
+            variant="secondary"
+            type="button"
+            size="md"
+          >
+            SetPassword
+          </Button>
+        </Link>
       </div>
 
       <div className="content flex justify-evenly">
@@ -50,106 +53,103 @@ const Login = () => {
           <img src={breakfast05} alt="breakfast" className="h-[200px]" />
         </div>
 
-        <div className="form text-blue-500">
-          {/* <h2 className="text-center font-bold text-[30px] text-white">
-            LOGIN
-          </h2> */}
-          <div className="p-2">
-            <Formik
-              validationSchema={schema}
-              // onSubmit={saveDev}
-              initialValues={{
-                firstName: "",
-                lastName: "",
-                email: "",
-                gender: "",
-                dob: "",
-              }}
-            >
-              {({ handleChange, values, touched, errors }) => (
-                <Form
-                  // noValidate
-                  // validated={validated}
-                  // ref={}
-                  // onSubmit={}
-                  autoComplete="true"
-                >
-                  <Row>
-                    <Col xs={12} md={12}>
-                      <Form.Group className="mb-2" controlId="username">
-                        <Form.Label>UserName</Form.Label>
-                        <Form.Control
-                          required={true}
-                          name="username"
-                          type="text"
-                          placeholder="Enter Username"
-                          value={values.username}
-                          onChange={handleChange}
-                          isInvalid={!!errors.username}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {/* UserName is required. */}
-                          {errors.username}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
+        <div className="form text-blue-500 p-2">
+          <Formik
+            validationSchema={schema}
+            // onSubmit={saveDev}
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              gender: "",
+              dob: "",
+            }}
+          >
+            {({ handleChange, values, touched, errors }) => (
+              <Form
+                // noValidate
+                // validated={validated}
+                // ref={}
+                // onSubmit={}
+                autoComplete="true"
+              >
+                <Row>
+                  <Col xs={12} md={12}>
+                    <Form.Group className="mb-2" controlId="username">
+                      <Form.Label>UserName</Form.Label>
+                      <Form.Control
+                        required={true}
+                        name="username"
+                        type="text"
+                        placeholder="Enter Username"
+                        value={values.username}
+                        onChange={handleChange}
+                        isInvalid={!!errors.username}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {/* UserName is required. */}
+                        {errors.username}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-                  <Row>
-                    <Col xs={12} md={12}>
-                      <Form.Group className="mb-2" controlId="email">
-                        <Form.Label>E-mail</Form.Label>
-                        <Form.Control
-                          required={true}
-                          name="email"
-                          type="text"
-                          placeholder="Enter E-mail."
-                          value={values.email}
-                          onChange={handleChange}
-                          isInvalid={!!errors.email}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {/* E-mail is required. */}
-                          {errors.email}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
+                <Row>
+                  <Col xs={12} md={12}>
+                    <Form.Group className="mb-2" controlId="email">
+                      <Form.Label>E-mail</Form.Label>
+                      <Form.Control
+                        required={true}
+                        name="email"
+                        type="text"
+                        placeholder="Enter E-mail."
+                        value={values.email}
+                        onChange={handleChange}
+                        isInvalid={!!errors.email}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {/* E-mail is required. */}
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-                  <Row>
-                    <Col xs={12} md={12}>
-                      <Form.Group className="mb-2" controlId="password">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                          required={true}
-                          name="password"
-                          type="password"
-                          placeholder="Enter Password."
-                          value={values.password}
-                          onChange={handleChange}
-                          isInvalid={!!errors.password}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {/* password is required. */}
-                          {errors.password}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                </Form>
-              )}
-            </Formik>
+                <Row>
+                  <Col xs={12} md={12}>
+                    <Form.Group className="mb-2" controlId="password">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        required={true}
+                        name="password"
+                        type="password"
+                        placeholder="Enter Password."
+                        value={values.password}
+                        onChange={handleChange}
+                        isInvalid={!!errors.password}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {/* password is required. */}
+                        {errors.password}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
+              </Form>
+            )}
+          </Formik>
 
-            <div className="flex gap-2 justify-center">
+          <div className="flex gap-2 justify-center">
+            <Link to="" path="">
               <Button
-                // onClick={(event) => submitForm(event)}
+                onClick={(event) => submitForm(event)}
                 variant="primary"
                 type="button"
                 size="md"
               >
                 Login
               </Button>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
