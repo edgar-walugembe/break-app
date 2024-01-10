@@ -7,6 +7,21 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import { Home, Login, User, Product, Order, Password } from "./pages";
+import {
+  AddProduct,
+  AddUser,
+  Card,
+  EditProduct,
+  EditUser,
+  Footer,
+  ForgotPassword,
+  Menu,
+  Navbar,
+  Orders,
+  OrderHistory,
+  SetPassword,
+  UserList,
+} from "./components";
 
 const App = () => {
   const Layout = () => {
@@ -40,6 +55,10 @@ const App = () => {
       path: "/home",
       element: <Home />,
       children: [
+        {
+          path: "/home/",
+          element: <OrderHistory />,
+        },
         {
           path: "/home/order",
           element: <Order />,

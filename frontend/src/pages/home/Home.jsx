@@ -9,7 +9,7 @@ import {
   ForgotPassword,
   Menu,
   Navbar,
-  Order,
+  Orders,
   OrderHistory,
   SetPassword,
   UserList,

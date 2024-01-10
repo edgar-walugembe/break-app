@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import ForgotPassword from "./ForgotPassword";
 import Menu from "./Menu";
 import Navbar from "./Navbar";
-import Order from "./Order";
+import Orders from "./Orders";
 import OrderHistory from "./OrderHistory";
 import SetPassword from "./SetPassword";
 import UserList from "./UserList";
@@ -22,7 +22,7 @@ export {
   ForgotPassword,
   Menu,
   Navbar,
-  Order,
+  Orders,
   OrderHistory,
   SetPassword,
   UserList,
