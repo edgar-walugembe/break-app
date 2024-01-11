@@ -22,7 +22,6 @@ import {
   SetPassword,
   UserList,
 } from "./components";
-import styles from "./style";
 
 const App = () => {
   const Layout = () => {

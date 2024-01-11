@@ -16,7 +16,6 @@ import {
 } from "../../components";
 import { Outlet } from "react-router-dom";
 import "./home.css";
-import styles from "../../style";
 
 const Home = () => {
   return (
