@@ -27,7 +27,7 @@ import styles from "./style";
 const App = () => {
   const Layout = () => {
     return (
-      <div className="w-full overflow-hidden">
+      <div className="w-full h-full">
         <Outlet />
       </div>
     );
@@ -45,32 +45,28 @@ const App = () => {
         {
           path: "/home",
           element: <Home />,
+          children: [
+            {
+              path: "/home/order",
+              element: <Order />,
+            },
+            {
+              path: "/home/user",
+              element: <User />,
+            },
+            {
+              path: "/home/product",
+              element: <Product />,
+            },
+            {
+              path: "/home",
+              element: <OrderHistory />,
+            },
+          ],
         },
         {
           path: "/password",
           element: <Password />,
-        },
-      ],
-    },
-    {
-      path: "/home",
-      element: <Home />,
-      children: [
-        {
-          path: "/home/",
-          element: <OrderHistory />,
-        },
-        {
-          path: "/home/order",
-          element: <Order />,
-        },
-        {
-          path: "/home/user",
-          element: <User />,
-        },
-        {
-          path: "/home/product",
-          element: <Product />,
         },
       ],
     },

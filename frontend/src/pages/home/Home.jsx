@@ -20,23 +20,19 @@ import styles from "../../style";
 
 const Home = () => {
   return (
-    <div className="w-full">
-      <div className={`flex ${styles.boxWidth}`}>
-        <div
-          className={`menuContainer ${styles.paddingX} ${styles.flexCenter} lg:max-w-full`}
-        >
+    <section className="main h-full">
+      <div className={`flex `}>
+        <div className={`menuContainer`}>
           <Menu />
         </div>
-        <div
-          className={`contentContainer ${styles.paddingX} ${styles.flexCenter}`}
-        >
+        <div className={`contentContainer`}>
           <Outlet />
         </div>
       </div>
-      <div className={`${styles.boxWidth}`}>
+      <div className={``}>
         <Footer />
       </div>
-    </div>
+    </section>
   );
 };
 

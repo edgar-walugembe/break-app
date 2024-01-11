@@ -3,9 +3,13 @@ import React from "react";
 import styles from "../style";
 
 const Menu = () => {
-  return <div className={`${styles.flexCenter}`}>
-    <div className=""></div>
-  </div>;
+  return (
+    <div className={`h-full flex flex-col justify-evenly gap-5`}>
+      <div className="h-20">menu logo</div>
+      <div className="h-80">menu content</div>
+      <div className="h-20">menu footer</div>
+    </div>
+  );
 };
 
 export default Menu;

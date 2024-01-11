@@ -4,6 +4,7 @@
 
 :root {
   font-family: Plus Jakarta Sans;
+  /* font-family: Poppins; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -22,6 +23,6 @@
   scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
