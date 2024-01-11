@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as formik from "formik";
 import * as yup from "yup";
 import "./login.css";
+import styles, { specials } from "../../style";
 import breakfast00 from "../../assets/break_logo.20.png";
 import breakfast01 from "../../assets/break_logo.30.jpeg";
 import breakfast02 from "../../assets/break_logo.40.jpg";
@@ -28,7 +29,7 @@ const Login = () => {
     // fetchDev();
   };
   return (
-    <div className="login p-5 flex flex-col justify-evenly">
+    <div className={`login p-5 flex flex-col justify-evenly`}>
       <div>
         <h1 className="text-center font-extrabold text-[50px] text-blue-500">
           Make your Order Now!
@@ -49,7 +50,7 @@ const Login = () => {
       </div>
 
       <div className="content flex justify-evenly">
-        <div className="img rounded-md flex justify-items-center items-center">
+        <div className={`img rounded-md ${styles.flexCenter}`}>
           <img src={breakfast05} alt="breakfast" className="h-[200px]" />
         </div>
 
