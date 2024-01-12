@@ -31,25 +31,28 @@ const Menu = () => {
       <div className="flex flex-col justify-between gap-5 ">
         <div className={`rounded menuSpan`}>
           <Link to="/" className="flex justify-evenly w-full p-2">
-            <TbClockQuestion className="w-[24px] h-[24px] text-white" />
+            <TbClockQuestion className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Orders</span>
           </Link>
         </div>
+
         <div className={`rounded menuSpan`}>
           <Link to="/" className="flex justify-evenly w-full p-2 ">
-            <FaUsers className="w-[24px] h-[24px] text-white" />
+            <FaUsers className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Users</span>
           </Link>
         </div>
+
         <div className={`rounded menuSpan`}>
           <Link to="/" className="flex justify-evenly w-full p-2">
-            <IoFastFood className="w-[24px] h-[24px] text-white" />
+            <IoFastFood className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Food Menu</span>
           </Link>
         </div>
+
         <div className={`rounded menuSpan`}>
           <Link to="/" className="flex justify-evenly w-full p-2">
-            <IoNotificationsCircleOutline className="w-[24px] h-[24px] text-white" />
+            <IoNotificationsCircleOutline className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Notifications</span>
           </Link>
         </div>
