@@ -19,16 +19,14 @@ import "./home.css";
 
 const Home = () => {
   return (
-    <section className="main h-full">
-      <div className={`flex `}>
-        <div className={`menuContainer`}>
-          <Menu />
-        </div>
-        <div className={`contentContainer`}>
+    <section className="home">
+      <div className="flex h-full">
+        <Menu />
+        <div className="outlet w-full">
           <Outlet />
         </div>
       </div>
-      <div className={``}>
+      <div>
         <Footer />
       </div>
     </section>

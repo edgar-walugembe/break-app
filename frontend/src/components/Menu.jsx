@@ -10,11 +10,12 @@ import odyssey_logo from "../assets/odyssey.png";
 
 const Menu = () => {
   return (
-    <div className={`h-full flex flex-col justify-between gap-16`}>
-      <div className="h-20 items-center flex justify-center">
+    <div className={`menu h-full w-[250px] flex flex-col justify-evenly`}>
+      <div className="items-center flex justify-center">
         <img src={breakfast01} alt="app_logo" className="h-[100px] w-[250px]" />
       </div>
-      <div className="h-80 flex flex-col justify-between">
+
+      <div className="flex flex-col justify-between gap-5">
         <div className="items-center flex justify-center ">
           <Button variant="info" size="md" className="font-semibold">
             ORDERS
@@ -36,7 +37,8 @@ const Menu = () => {
           </Button>
         </div>
       </div>
-      <div className="h-20">
+
+      <div className="">
         <img src={odyssey_logo} alt="odyssey_logo" />
       </div>
     </div>
