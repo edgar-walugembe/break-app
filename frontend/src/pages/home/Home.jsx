@@ -26,9 +26,9 @@ const Home = () => {
           <Outlet />
         </div>
       </div>
-      <div>
+      {/* <div>
         <Footer />
-      </div>
+      </div> */}
     </section>
   );
 };
