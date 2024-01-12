@@ -26,7 +26,7 @@ import {
 const App = () => {
   const Layout = () => {
     return (
-      <div className="w-full h-full">
+      <div className="w-full h-full font-poppins">
         <Outlet />
       </div>
     );
