@@ -5,6 +5,14 @@
     background-color: #272822;
     padding: 5px 20px;
     border-right: 4px solid yellow;
+
+    .menuSpan {
+      background-color: cyan;
+
+      a {
+        text-decoration: none;
+      }
+    }
   }
 
   .outlet {
