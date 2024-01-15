@@ -111,7 +111,7 @@ const OrderHistory = () => {
             },
           }}
           pageSizeOptions={[5]}
-          // checkboxSelection
+          checkboxSelection
           disableRowSelectionOnClick
           style={{
             fontSize: "20px",
