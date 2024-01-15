@@ -50,8 +50,12 @@ const Login = () => {
       </div>
 
       <div className="content flex justify-evenly">
-        <div className={`img rounded-md ${styles.flexCenter}`}>
-          <img src={breakfast05} alt="breakfast" className="h-[200px]" />
+        <div className={`img items-center flex justify-center`}>
+          <img
+            src={breakfast01}
+            alt="breakfast"
+            className="h-[200px] w-[200px] rounded-full"
+          />
         </div>
 
         <div className="form text-blue-500 p-2">
