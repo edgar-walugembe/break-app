@@ -11,6 +11,7 @@ import Orders from "./Orders";
 import OrderHistory from "./OrderHistory";
 import SetPassword from "./SetPassword";
 import UserList from "./UserList";
+import Notification from "./Notification";
 
 export {
   AddProduct,
@@ -22,6 +23,7 @@ export {
   ForgotPassword,
   Menu,
   Navbar,
+  Notification,
   Orders,
   OrderHistory,
   SetPassword,

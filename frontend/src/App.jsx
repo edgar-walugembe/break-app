@@ -17,6 +17,7 @@ import {
   ForgotPassword,
   Menu,
   Navbar,
+  Notification,
   Orders,
   OrderHistory,
   SetPassword,
@@ -56,6 +57,10 @@ const App = () => {
             {
               path: "/home/product",
               element: <Product />,
+            },
+            {
+              path: "/home/notifications",
+              element: <Notification />,
             },
             {
               path: "/home",
