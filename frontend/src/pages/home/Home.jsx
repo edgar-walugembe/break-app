@@ -23,6 +23,7 @@ const Home = () => {
       <div className="flex h-full">
         <Menu />
         <div className="outlet w-full">
+          <Navbar />
           <Outlet />
         </div>
       </div>

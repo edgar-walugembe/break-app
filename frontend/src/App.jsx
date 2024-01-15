@@ -22,6 +22,8 @@ import {
   OrderHistory,
   SetPassword,
   UserList,
+  UserSettings,
+  UserAccount,
 } from "./components";
 
 const App = () => {
@@ -61,6 +63,14 @@ const App = () => {
             {
               path: "/home/notifications",
               element: <Notification />,
+            },
+            {
+              path: "/home/user_settings",
+              element: <UserSettings />,
+            },
+            {
+              path: "/home/user_account",
+              element: <UserAccount />,
             },
             {
               path: "/home",

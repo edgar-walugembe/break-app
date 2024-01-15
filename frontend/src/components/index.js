@@ -12,6 +12,8 @@ import OrderHistory from "./OrderHistory";
 import SetPassword from "./SetPassword";
 import UserList from "./UserList";
 import Notification from "./Notification";
+import UserSettings from "./UserSettings.jsx";
+import UserAccount from "./UserAccount.jsx";
 
 export {
   AddProduct,
@@ -27,5 +29,7 @@ export {
   Orders,
   OrderHistory,
   SetPassword,
+  UserAccount,
   UserList,
+  UserSettings,
 };
