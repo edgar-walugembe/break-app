@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className="flex justify-between p-2 ">
       <div>
         <h3>Hello, Username</h3>
-        <p>{formattedDate}</p>
+        <p className="font-semibold">{formattedDate}</p>
       </div>
       <div className="flex gap-5 items-center">
         <Link to="/home/user_account">
