@@ -21,11 +21,11 @@ const Navbar = () => {
       </div>
       <div className="flex gap-5 items-center">
         <Link to="/home/user_account">
-          <FaUser className="w-[32px] h-[32px] text-black" />
+          <FaUser className="w-[32px] h-[32px] text-yellow-300" />
         </Link>
 
         <Link to="/home/user_settings">
-          <IoSettings className="w-[32px] h-[32px] text-black" />
+          <IoSettings className="w-[32px] h-[32px] text-yellow-300" />
         </Link>
       </div>
     </div>
