@@ -31,7 +31,7 @@ const Menu = () => {
       </div>
 
       <div className="flex flex-col justify-between gap-5 ">
-        <div className={`rounded menuSpan`}>
+        <div className={`rounded menuSpan`} id="active">
           <Link to="/home/order" className="flex justify-evenly w-full p-2">
             <TbClockQuestion className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Orders</span>
@@ -64,7 +64,9 @@ const Menu = () => {
       </div>
 
       <div className="mb-4 sm:mb-2">
-        <img src={odyssey_logo} alt="odyssey_logo" className={`h-[50px] `} />
+        <Link to="https://www.odysseytech.co/">
+          <img src={odyssey_logo} alt="odyssey_logo" className={`h-[50px] `} />
+        </Link>
       </div>
     </div>
   );

@@ -81,6 +81,16 @@ const App = () => {
         {
           path: "/password",
           element: <Password />,
+          children: [
+            {
+              path: "/password/set_password",
+              element: <SetPassword />,
+            },
+            {
+              path: "/password/reset_password",
+              element: <ForgotPassword />,
+            },
+          ],
         },
       ],
     },

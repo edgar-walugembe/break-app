@@ -12,6 +12,16 @@
       a {
         text-decoration: none;
       }
+
+      a::after {
+        position: absolute;
+        content: "";
+        width: 8px;
+        height: 8px;
+        background-color: black;
+        right: -30px;
+        border-radius: 50%;
+      }
     }
 
     .menu > .footer {

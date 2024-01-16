@@ -37,7 +37,7 @@ const Login = () => {
       </div>
 
       <div className="flex justify-end items-end p-2">
-        <Link to="/password">
+        <Link to="/password/set_password">
           <Button
             // onClick={(event) => submitForm(event)}
             variant="secondary"
@@ -78,6 +78,7 @@ const Login = () => {
               // onSubmit={}
               // autoComplete="true"
               >
+                <p>Login if you already set your password</p>
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="username">
@@ -94,27 +95,6 @@ const Login = () => {
                       <Form.Control.Feedback type="invalid">
                         {/* UserName is required. */}
                         {errors.username}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="email">
-                      <Form.Label>E-mail</Form.Label>
-                      <Form.Control
-                        required={true}
-                        name="email"
-                        type="text"
-                        placeholder="Enter E-mail."
-                        value={values.email}
-                        onChange={handleChange}
-                        isInvalid={!!errors.email}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {/* E-mail is required. */}
-                        {errors.email}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Col>
