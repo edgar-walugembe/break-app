@@ -99,7 +99,7 @@ const OrderHistory = () => {
         <h2>Previous Orders</h2>
       </div>
 
-      <div className="w-[80%] flex justify-center">
+      <div className="w-full">
         <DataGrid
           rows={rows}
           columns={columns}
