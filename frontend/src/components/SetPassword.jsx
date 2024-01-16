@@ -18,7 +18,7 @@ const SetPassword = () => {
     <div className={`login p-5 flex flex-col justify-evenly`}>
       <div>
         <h1 className="text-center font-extrabold text-[50px] text-blue-500">
-          Set Your Password for Your Account
+          Set A Password for Your Account
         </h1>
       </div>
 

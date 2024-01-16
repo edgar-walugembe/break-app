@@ -36,7 +36,7 @@ const Login = () => {
         </h1>
       </div>
 
-      <div className="flex justify-end items-end p-2">
+      <div className="flex justify-end items-end p-2 gap-10">
         <Link to="/password/set_password">
           <Button
             // onClick={(event) => submitForm(event)}
@@ -45,6 +45,17 @@ const Login = () => {
             size="md"
           >
             SetPassword
+          </Button>
+        </Link>
+
+        <Link to="/password/reset_password">
+          <Button
+            // onClick={(event) => submitForm(event)}
+            variant="warning"
+            type="button"
+            size="md"
+          >
+            Forgot Password
           </Button>
         </Link>
       </div>
@@ -78,7 +89,9 @@ const Login = () => {
               // onSubmit={}
               // autoComplete="true"
               >
-                <p>Login if you already set your password</p>
+                <p className="font-bold italic text-yellow-400">
+                  Login if you already set your password
+                </p>
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="username">
@@ -128,7 +141,7 @@ const Login = () => {
             <Link to="/home">
               <Button
                 // onClick={(event) => submitForm(event)}
-                variant="primary"
+                variant="success"
                 type="button"
                 size="md"
               >
