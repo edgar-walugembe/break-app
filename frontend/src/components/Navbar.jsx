@@ -25,7 +25,7 @@ const Navbar = () => {
           <FaUser className="w-[32px] h-[32px] text-yellow-300" />
         </Link>
 
-        <Notification />
+        <Notification className="w-[32px] h-[32px]" />
 
         <Link to="/home/user_settings">
           <IoSettings className="w-[32px] h-[32px] text-yellow-300" />
