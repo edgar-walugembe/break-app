@@ -13,6 +13,7 @@ import {
   Card,
   EditProduct,
   EditUser,
+  Finances,
   Footer,
   ForgotPassword,
   Menu,
@@ -59,6 +60,10 @@ const App = () => {
             {
               path: "/home/product",
               element: <Product />,
+            },
+            {
+              path: "/home/finances",
+              element: <Finances />,
             },
             {
               path: "/home/notifications",

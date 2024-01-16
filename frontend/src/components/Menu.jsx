@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+
+//images imports
 import breakfast00 from "../assets/break_logo.png";
 import breakfast01 from "../assets/break_logo.30.jpeg";
 import breakfast02 from "../assets/break_logo.40.jpg";
@@ -9,13 +11,11 @@ import breakfast03 from "../assets/break_logo.50.png";
 import breakfast04 from "../assets/break_logo.png";
 import odyssey_logo from "../assets/odyssey.png";
 
+//icon imports
 import { TbClockQuestion } from "react-icons/tb";
 import { FaUsers } from "react-icons/fa";
 import { IoFastFood } from "react-icons/io5";
-import { IoNotificationsCircleOutline } from "react-icons/io5";
-
-import styles from "../style";
-import Footer from "./Footer";
+import { GiCash } from "react-icons/gi";
 
 const Menu = () => {
   return (
@@ -53,12 +53,9 @@ const Menu = () => {
         </div>
 
         <div className={`rounded menuSpan`}>
-          <Link
-            to="/home/notifications"
-            className="flex justify-evenly w-full p-2"
-          >
-            <IoNotificationsCircleOutline className="w-[24px] h-[24px] text-black" />
-            <span className="text-black">Notifications</span>
+          <Link to="/home/finances" className="flex justify-evenly w-full p-2">
+            <GiCash className="w-[24px] h-[24px] text-black" />
+            <span className="text-black">Finances</span>
           </Link>
         </div>
       </div>

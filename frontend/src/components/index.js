@@ -14,6 +14,7 @@ import UserList from "./UserList";
 import Notification from "./Notification";
 import UserSettings from "./UserSettings.jsx";
 import UserAccount from "./UserAccount.jsx";
+import Finances from "./Finances.jsx";
 
 export {
   AddProduct,
@@ -21,6 +22,7 @@ export {
   Card,
   EditProduct,
   EditUser,
+  Finances,
   Footer,
   ForgotPassword,
   Menu,
