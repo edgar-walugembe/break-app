@@ -23,20 +23,20 @@
         border-radius: 50%;
       }
     }
-
-    .menu > .footer {
-      left: 0;
-    }
   }
 
   .outlet {
     padding: 5px 20px;
   }
 
-  .footer {
-    background-color: #272822;
-    /* position: fixed; */
-    bottom: 0;
-    width: 100vw;
+  .highlight {
+    padding: 5px 20px;
+    background-color: yellow;
+    border-radius: 20px;
+    height: 150px;
+
+    .item {
+      padding: 5px 20px;
+    }
   }
 }

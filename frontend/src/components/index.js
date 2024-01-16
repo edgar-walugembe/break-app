@@ -14,15 +14,15 @@ import UserList from "./UserList";
 import Notification from "./Notification";
 import UserSettings from "./UserSettings.jsx";
 import UserAccount from "./UserAccount.jsx";
-import Finances from "./Finances.jsx";
+import Debt from "./Debt.jsx";
 
 export {
   AddProduct,
   AddUser,
   Card,
+  Debt,
   EditProduct,
   EditUser,
-  Finances,
   Footer,
   ForgotPassword,
   Menu,

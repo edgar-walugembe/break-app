@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { DataGrid } from "@mui/x-data-grid";
+import Highlights from "./Highlights";
 
 const OrderHistory = () => {
   const columns = [
@@ -122,10 +123,12 @@ const OrderHistory = () => {
       </div>
 
       <div className="flex justify-end">
-        <Button type="button" variant="secondary" size="lg">
+        <Button type="button" variant="primary" size="lg">
           Place Your Order
         </Button>
       </div>
+
+      <Highlights />
     </div>
   );
 };

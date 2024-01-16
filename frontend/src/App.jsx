@@ -6,14 +6,14 @@ import {
   useNavigate,
 } from "react-router-dom";
 import "./App.css";
-import { Home, Login, User, Product, Order, Password } from "./pages";
+import { Home, Login, User, Product, Order, Password, Finances } from "./pages";
 import {
   AddProduct,
   AddUser,
   Card,
+  Debt,
   EditProduct,
   EditUser,
-  Finances,
   Footer,
   ForgotPassword,
   Menu,
