@@ -22,9 +22,9 @@ const ForgotPassword = () => {
     secondPassword: yup.string().required(),
   });
   return (
-    <div className={`login p-5 flex flex-col justify-evenly`}>
+    <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h1 className="text-center font-extrabold text-[50px] text-blue-500">
+        <h1 className="text-center font-extrabold text-[35px] text-blue-500">
           Set New Password for Your Account
         </h1>
       </div>
@@ -134,7 +134,7 @@ const ForgotPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
-            <Button onClick={notify} variant="primary" type="button" size="md">
+            <Button onClick={notify} variant="primary" type="button" size="sm">
               Save New Password
             </Button>
 
@@ -143,7 +143,7 @@ const ForgotPassword = () => {
                 // onClick={(event) => submitForm(event)}
                 variant="info"
                 type="button"
-                size="md"
+                size="sm"
               >
                 Back to Login
               </Button>

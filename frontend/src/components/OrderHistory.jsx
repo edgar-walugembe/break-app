@@ -153,7 +153,11 @@ const OrderHistory = () => {
             </Button>
           </div>
         </div>
-        <div className="right"></div>
+        <div className="right p-5 text-center justify-center items-center">
+          <h1 className="text-blue-900 text-[50px] font-bold">
+            Did You Make An Order Today ??
+          </h1>
+        </div>
       </div>
 
       <Highlights />

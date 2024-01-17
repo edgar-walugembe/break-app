@@ -15,9 +15,9 @@ const SetPassword = () => {
   });
 
   return (
-    <div className={`login p-5 flex flex-col justify-evenly`}>
+    <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h1 className="text-center font-extrabold text-[50px] text-blue-500">
+        <h1 className="text-center font-extrabold text-[35px] text-blue-500">
           Set A Password for Your Account
         </h1>
       </div>
@@ -133,7 +133,7 @@ const SetPassword = () => {
                 // onClick={(event) => submitForm(event)}
                 variant="primary"
                 type="button"
-                size="md"
+                size="sm"
               >
                 Login
               </Button>

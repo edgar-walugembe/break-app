@@ -8,13 +8,11 @@ const Highlights = () => {
         <h3 className="text-yellow-300 text-[14px]">Highlights</h3>
       </div>
 
-      <div className=" flex justify-center gap-4 items-center h-[80%] w-[100%] pb-2">
-        <div className="item h-[90%] w-[20%] rounded-xl">Debt Status</div>
-        <div className="item h-[90%] w-[20%] rounded-xl ">Balance Status</div>
-        <div className="item h-[90%] w-[20%] rounded-xl">Order Status</div>
-        <div className="item h-[90%] w-[20%] rounded-xl">
-          Notification Status
-        </div>
+      <div className=" flex justify-center gap-4 items-center w-[100%]">
+        <div className="item w-[20%] rounded-full">Debt Status</div>
+        <div className="item w-[20%] rounded-full ">Balance Status</div>
+        <div className="item w-[20%] rounded-full">Order Status</div>
+        <div className="item w-[20%] rounded-full">Notification Status</div>
       </div>
     </div>
   );
