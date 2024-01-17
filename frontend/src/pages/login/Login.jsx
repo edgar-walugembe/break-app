@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import * as formik from "formik";
 import * as yup from "yup";
 import "./login.css";
-import styles, { specials } from "../../style";
+
+//image imports
 import breakfast00 from "../../assets/break_logo.20.png";
 import breakfast01 from "../../assets/break_logo.30.jpeg";
 import breakfast02 from "../../assets/break_logo.40.jpg";
@@ -50,7 +51,7 @@ const Login = () => {
 
         <Link to="/password/reset_password">
           <Button
-            // onClick={(event) => submitForm(event)}
+            // onClick={notify}
             variant="warning"
             type="button"
             size="md"
@@ -143,7 +144,8 @@ const Login = () => {
                 // onClick={(event) => submitForm(event)}
                 variant="success"
                 type="button"
-                size="md"
+                size="lg"
+                className="rounded"
               >
                 Login
               </Button>

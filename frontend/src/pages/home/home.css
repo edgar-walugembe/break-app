@@ -31,12 +31,13 @@
 
   .highlight {
     padding: 5px 20px;
-    background-color: yellow;
+    background-color: #272822;
     border-radius: 20px;
-    height: 150px;
+    height: 240px;
 
     .item {
       padding: 5px 20px;
+      background-color: yellow;
     }
   }
 }

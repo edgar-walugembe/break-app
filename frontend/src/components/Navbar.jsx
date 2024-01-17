@@ -17,18 +17,18 @@ const Navbar = () => {
   return (
     <div className="flex justify-between p-2 ">
       <div>
-        <h3>Hello, Username</h3>
-        <p className="font-semibold">{formattedDate}</p>
+        <h2 className="text-blue-900">Hello, Username</h2>
+        <p className="font-semibold text-blue-500">{formattedDate}</p>
       </div>
       <div className="flex gap-5 items-center">
         <Link to="/home/user_account">
-          <FaUser className="w-[32px] h-[32px] text-yellow-300" />
+          <FaUser className="w-[32px] h-[32px] text-blue-500" />
         </Link>
 
         <Notification className="w-[32px] h-[32px]" />
 
         <Link to="/home/user_settings">
-          <IoSettings className="w-[32px] h-[32px] text-yellow-300" />
+          <IoSettings className="w-[32px] h-[32px] text-blue-500" />
         </Link>
       </div>
     </div>

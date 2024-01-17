@@ -5,6 +5,13 @@ import * as yup from "yup";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+//toast imports
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const notify = () => {
+  toast.success("Password has been reset successfully !");
+};
+
 const ForgotPassword = () => {
   const { Formik } = formik;
 
@@ -127,19 +134,25 @@ const ForgotPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
+            <Button onClick={notify} variant="primary" type="button" size="md">
+              Save New Password
+            </Button>
+
             <Link to="/">
               <Button
                 // onClick={(event) => submitForm(event)}
-                variant="primary"
+                variant="info"
                 type="button"
                 size="md"
               >
-                Save New Password
+                Back to Login
               </Button>
             </Link>
           </div>
         </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

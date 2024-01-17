@@ -3,27 +3,41 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { DataGrid } from "@mui/x-data-grid";
 import Highlights from "./Highlights";
+import { Link } from "react-router-dom";
+
+//toast imports
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const notify = () => {
+  toast.success("let's chat");
+};
 
 const OrderHistory = () => {
   const columns = [
-    { field: "id", headerName: "ID", width: 150 },
+    { field: "id", headerName: "ID", width: 80 },
     {
       field: "dateOfOrder",
       headerName: "Date of Order",
-      width: 300,
+      width: 160,
       editable: true,
     },
     {
       field: "productSelected",
-      headerName: "Product Selected",
-      width: 300,
+      headerName: "Product",
+      width: 160,
       editable: true,
     },
     {
       field: "quantitySelected",
-      headerName: "Quantity Selected",
-      type: "number",
-      width: 300,
+      headerName: "Qty",
+      // type: "number",
+      width: 160,
+      editable: true,
+    },
+    {
+      field: "madeBy",
+      headerName: "Owner",
+      width: 160,
       editable: true,
     },
     // {
@@ -97,38 +111,54 @@ const OrderHistory = () => {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex justify-between">
-        <h2>Previous Orders</h2>
+        <h3 className="text-black">Previous Orders</h3>
       </div>
 
-      <div className="w-full">
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
-              },
-            },
-          }}
-          pageSizeOptions={[5]}
-          checkboxSelection
-          disableRowSelectionOnClick
-          style={{
-            fontSize: "20px",
-            border: "3px solid yellow",
-            borderRadius: "20px",
-          }}
-        />
-      </div>
+      <div className="flex">
+        <div className="left flex flex-col gap-4">
+          <div className="w-full">
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 4,
+                  },
+                },
+              }}
+              pageSizeOptions={[4]}
+              checkboxSelection
+              disableRowSelectionOnClick
+              style={{
+                fontSize: "20px",
+                border: "3px solid yellow",
+                borderRadius: "20px",
+                width: "max-content",
+                // backgroundColor: "#272822",
+                // color: "white",
+              }}
+            />
+          </div>
 
-      <div className="flex justify-end">
-        <Button type="button" variant="primary" size="lg">
-          Place Your Order
-        </Button>
+          <div className="flex justify-end gap-4">
+            <Link to="/home/product">
+              <Button type="button" variant="primary" size="lg">
+                Place Your Order
+              </Button>
+            </Link>
+
+            <Button onClick={notify} type="button" variant="warning" size="lg">
+              Notify
+            </Button>
+          </div>
+        </div>
+        <div className="right"></div>
       </div>
 
       <Highlights />
+
+      <ToastContainer />
     </div>
   );
 };
