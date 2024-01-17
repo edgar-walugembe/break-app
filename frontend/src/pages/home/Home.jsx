@@ -22,7 +22,7 @@ const Home = () => {
     <section className="home">
       <div className="flex h-full">
         <Menu />
-        <div className="outlet w-full">
+        <div className="outlet w-full h-full">
           <Navbar />
           <Outlet />
         </div>

@@ -30,11 +30,11 @@ const Login = () => {
     // fetchDev();
   };
   return (
-    <div className={`login p-5 flex flex-col justify-evenly`}>
+    <div className={`login p-5  flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h1 className="text-center font-extrabold text-[50px] text-blue-500">
+        <h2 className="text-center font-extrabold text-[35px] text-blue-500">
           Make your Order Now!
-        </h1>
+        </h2>
       </div>
 
       <div className="flex justify-end items-end p-2 gap-10">
@@ -43,7 +43,8 @@ const Login = () => {
             // onClick={(event) => submitForm(event)}
             variant="secondary"
             type="button"
-            size="md"
+            size="sm"
+            className="text-[12px]"
           >
             SetPassword
           </Button>
@@ -54,7 +55,7 @@ const Login = () => {
             // onClick={notify}
             variant="warning"
             type="button"
-            size="md"
+            size="sm"
           >
             Forgot Password
           </Button>
@@ -66,7 +67,7 @@ const Login = () => {
           <img
             src={breakfast01}
             alt="breakfast"
-            className="h-[200px] w-[200px] rounded-full"
+            className="h-[100px] w-[100px] rounded-full"
           />
         </div>
 
@@ -144,8 +145,8 @@ const Login = () => {
                 // onClick={(event) => submitForm(event)}
                 variant="success"
                 type="button"
-                size="lg"
-                className="rounded"
+                size="sm"
+                className="rounded-full"
               >
                 Login
               </Button>

@@ -14,30 +14,30 @@ const notify = () => {
 
 const OrderHistory = () => {
   const columns = [
-    { field: "id", headerName: "ID", width: 80 },
+    { field: "id", headerName: "ID", width: 70 },
     {
       field: "dateOfOrder",
       headerName: "Date of Order",
-      width: 160,
+      width: 100,
       editable: true,
     },
     {
       field: "productSelected",
       headerName: "Product",
-      width: 160,
+      width: 100,
       editable: true,
     },
     {
       field: "quantitySelected",
       headerName: "Qty",
       // type: "number",
-      width: 160,
+      width: 100,
       editable: true,
     },
     {
       field: "madeBy",
       headerName: "Owner",
-      width: 160,
+      width: 100,
       editable: true,
     },
     // {
@@ -109,14 +109,14 @@ const OrderHistory = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-10">
-      <div className="flex justify-between">
-        <h3 className="text-black">Previous Orders</h3>
-      </div>
+    <div className="flex flex-col h-screen justify-evenly">
+      {/* <div className="flex justify-between"></div> */}
 
       <div className="flex">
-        <div className="left flex flex-col gap-4">
-          <div className="w-full">
+        <div className="left flex flex-col">
+          <h3 className="text-black text-[14px]">Previous Orders</h3>
+
+          <div className="w-full h-full">
             <DataGrid
               rows={rows}
               columns={columns}
@@ -131,9 +131,9 @@ const OrderHistory = () => {
               checkboxSelection
               disableRowSelectionOnClick
               style={{
-                fontSize: "20px",
+                fontSize: "12px",
                 border: "3px solid yellow",
-                borderRadius: "20px",
+                borderRadius: "10px",
                 width: "max-content",
                 // backgroundColor: "#272822",
                 // color: "white",
@@ -141,14 +141,14 @@ const OrderHistory = () => {
             />
           </div>
 
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-end gap-4 mt-2">
             <Link to="/home/product">
-              <Button type="button" variant="primary" size="lg">
+              <Button type="button" variant="primary" size="sm">
                 Place Your Order
               </Button>
             </Link>
 
-            <Button onClick={notify} type="button" variant="warning" size="lg">
+            <Button onClick={notify} type="button" variant="warning" size="sm">
               Notify
             </Button>
           </div>

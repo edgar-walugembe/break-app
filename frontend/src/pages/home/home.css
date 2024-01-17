@@ -26,17 +26,17 @@
   }
 
   .outlet {
-    padding: 5px 20px;
+    padding: 5px 10px;
   }
 
   .highlight {
-    padding: 5px 20px;
+    padding: 2px 5px;
     background-color: #272822;
     border-radius: 20px;
-    height: 240px;
+    height: 80px;
 
     .item {
-      padding: 5px 20px;
+      padding: 2px 5px;
       background-color: yellow;
     }
   }
