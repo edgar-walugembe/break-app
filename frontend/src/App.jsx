@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./App.css";
-import { Dashboard } from "./pages";
+import styles, { layout } from "./style";
 import {
   CTA,
   Footer,
@@ -13,20 +13,26 @@ import {
 
 const App = () => {
   return (
-    <div className="font-poppins">
-      <div className="">
-        <Navbar />
+    <div className="font-poppins bg-primary w-full overflow-hidden">
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Navbar />
+        </div>
       </div>
 
-      <div className="">
-        <Hero />
+      <div className={`bg-primary ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Hero />
+        </div>
       </div>
 
-      <div className="">
-        <Menu />
-        <Services />
-        <CTA />
-        <Footer />
+      <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Menu />
+          <Services />
+          <CTA />
+          <Footer />
+        </div>
       </div>
     </div>
   );
