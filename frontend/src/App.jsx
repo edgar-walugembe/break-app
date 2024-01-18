@@ -1,37 +1,35 @@
 /* eslint-disable no-unused-vars */
+import React from "react";
 import "./App.css";
+import { Dashboard } from "./pages";
 import {
-  Home,
-  Login,
-  User,
-  Product,
-  Order,
-  Password,
-  Finances,
-  Dashboard,
-} from "./pages";
-import {
-  AddProduct,
-  AddUser,
-  Card,
-  Debt,
-  EditProduct,
-  EditUser,
+  CTA,
   Footer,
-  ForgotPassword,
+  Hero,
   Menu,
   Navbar,
-  Notification,
-  Orders,
-  OrderHistory,
-  SetPassword,
-  UserList,
-  UserSettings,
-  UserAccount,
-} from "./components/dashboardComponents";
+  Services,
+} from "./components/userAppComponents";
 
 const App = () => {
-  return <Dashboard />;
+  return (
+    <div className="font-poppins">
+      <div className="">
+        <Navbar />
+      </div>
+
+      <div className="">
+        <Hero />
+      </div>
+
+      <div className="">
+        <Menu />
+        <Services />
+        <CTA />
+        <Footer />
+      </div>
+    </div>
+  );
 };
 
 export default App;

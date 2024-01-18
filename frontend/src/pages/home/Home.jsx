@@ -5,7 +5,6 @@ import {
   Card,
   EditProduct,
   EditUser,
-  Footer,
   ForgotPassword,
   Menu,
   Navbar,

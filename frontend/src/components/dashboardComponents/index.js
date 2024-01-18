@@ -3,7 +3,6 @@ import AddUser from "./AddUser";
 import Card from "./Card";
 import EditProduct from "./EditProduct";
 import EditUser from "./EditUser";
-import Footer from "./Footer";
 import ForgotPassword from "./ForgotPassword";
 import Menu from "./Menu";
 import Navbar from "./Navbar";
@@ -23,7 +22,6 @@ export {
   Debt,
   EditProduct,
   EditUser,
-  Footer,
   ForgotPassword,
   Menu,
   Navbar,

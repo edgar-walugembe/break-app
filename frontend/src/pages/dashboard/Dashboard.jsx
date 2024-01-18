@@ -17,7 +17,6 @@ import {
   Debt,
   EditProduct,
   EditUser,
-  Footer,
   ForgotPassword,
   Menu,
   Navbar,
