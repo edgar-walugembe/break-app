@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Debt } from "../../components";
+import { Debt } from "../../components/dashboardComponents";
 
 const Finances = () => {
   return (

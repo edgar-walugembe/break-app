@@ -7,12 +7,8 @@ import * as yup from "yup";
 import "./login.css";
 
 //image imports
-import breakfast00 from "../../assets/break_logo.20.png";
-import breakfast01 from "../../assets/break_logo.30.jpeg";
-import breakfast02 from "../../assets/break_logo.40.jpg";
-import breakfast03 from "../../assets/break_logo.50.png";
-import breakfast04 from "../../assets/break_logo.png";
-import breakfast05 from "../../assets/break_logo.20_no.png";
+
+import breakfast01 from "../../assets/break_logo.jpeg";
 
 const Login = () => {
   const { Formik } = formik;
@@ -38,7 +34,7 @@ const Login = () => {
       </div>
 
       <div className="flex justify-end items-end p-2 gap-10">
-        <Link to="/password/set_password">
+        {/* <Link to="/password/set_password">
           <Button
             // onClick={(event) => submitForm(event)}
             variant="secondary"
@@ -48,7 +44,7 @@ const Login = () => {
           >
             SetPassword
           </Button>
-        </Link>
+        </Link> */}
 
         <Link to="/password/reset_password">
           <Button

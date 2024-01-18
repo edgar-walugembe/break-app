@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 //images imports
-import breakfast00 from "../assets/break_logo.png";
-import breakfast01 from "../assets/break_logo.30.jpeg";
-import breakfast02 from "../assets/break_logo.40.jpg";
-import breakfast03 from "../assets/break_logo.50.png";
-import breakfast04 from "../assets/break_logo.png";
-import odyssey_logo from "../assets/odyssey.png";
+import breakfast01 from "../../assets/break_logo.jpeg";
+import odyssey_logo from "../../assets/odyssey.png";
 
 //icon imports
 import { TbClockQuestion } from "react-icons/tb";
