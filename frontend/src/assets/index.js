@@ -6,7 +6,7 @@ import chapati from "./chapati.jpg";
 import chapati00 from "./chapati00.jpg";
 import close from "./close.svg";
 import eggs from "./eggs.jpg";
-import logo from "./logo.svg";
+import logo from "./break-fast-high-resolution-logo-white-transparent.png";
 import menu from "./menu.svg";
 import odyssey_logo from "./odyssey.png";
 import pani from "./pancakes.jpeg";

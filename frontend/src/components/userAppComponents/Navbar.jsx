@@ -7,7 +7,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={logo} alt="breakApp_logo" className="w-[130px] h-[50px]" />
+      <img src={logo} alt="breakApp_logo" className="w-[130px] h-[36px]" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         <li
@@ -36,7 +36,7 @@ const Navbar = () => {
         <img
           src={toggle ? close : menu}
           alt="menu"
-          className="w-[28px] h-[28px] object-contain"
+          className="w-[26px] h-[24px] object-contain"
           onClick={() => setToggle((prev) => !prev)}
         />
 
