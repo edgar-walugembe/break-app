@@ -18,8 +18,8 @@ const Hero = () => {
           <GiCash className="text-white w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2 center`}>
             A daily
-            <span className="text-white"> Budget </span>of UgSh
-            <span className="text-white"> 2000</span>
+            <span className="text-dark"> Budget </span>of UgSh
+            <span className="text-dark"> 2000</span>
           </p>
         </div>
         <div className=""></div>
