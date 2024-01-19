@@ -1,12 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import styles from "../../style";
 
 const Footer = () => {
   return (
-    <div className="footer flex justify-between px-4 py-3 items-center text-white font-semibold">
-      <p className="text-center mb-0">Break App</p>
-      <p className="text-center mb-0">@2024</p>
-    </div>
+    <section className={`${styles.flexCenter} flex-col`}>
+      <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
+        <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+          Break App
+        </p>
+        <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+          Copyright Ⓒ 2024 BreakFast. All Rights Reserved.
+        </p>
+      </div>
+    </section>
   );
 };
 

@@ -3,6 +3,10 @@ import React, { useState } from "react";
 // import styles, { layout } from "../../style";
 import { close, logo, menu } from "../../assets";
 
+//icons
+import { FaUser } from "react-icons/fa";
+import { IoIosNotificationsOutline } from "react-icons/io";
+
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
@@ -13,22 +17,25 @@ const Navbar = () => {
         <li
           className={`font-poppins font-normal cursor-pointer text-[16px] text-white mr-10`}
         >
-          me
+          Menu
         </li>
         <li
           className={`font-poppins font-normal cursor-pointer text-[16px] text-white mr-10`}
         >
-          you
+          Services
         </li>
         <li
           className={`font-poppins font-normal cursor-pointer text-[16px] text-white mr-10`}
         >
-          them
+          Status
         </li>
         <li
           className={`font-poppins font-normal cursor-pointer text-[16px] text-white mr-0`}
         >
-          us
+          <div className="flex w-[80px] p-2 gap-2 rounded h-[40px] bg-yellow">
+            <FaUser className="w-[24px] h-[24px] text-black" />
+            <span className="text-black">User</span>
+          </div>
         </li>
       </ul>
 
@@ -49,22 +56,25 @@ const Navbar = () => {
             <li
               className={`font-poppins font-normal cursor-pointer text-[16px] text-white mb-4`}
             >
-              me
+              Menu
             </li>
             <li
               className={`font-poppins font-normal cursor-pointer text-[16px] text-white mb-4`}
             >
-              you
+              Services
             </li>
             <li
               className={`font-poppins font-normal cursor-pointer text-[16px] text-white mb-4`}
             >
-              them
+              Status
             </li>
             <li
               className={`font-poppins font-normal cursor-pointer text-[16px] text-white mb-0`}
             >
-              us
+              <div className="flex w-[80px] h-[40px] p-2 gap-2 rounded bg-yellow text-black">
+                <FaUser className="w-[24px] h-[24px]" />
+                <span>User</span>
+              </div>
             </li>
             ;
           </ul>
