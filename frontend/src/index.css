@@ -6,6 +6,12 @@
 @tailwind utilities;
 
 :root {
+  --black-gradient: linear-gradient(
+    144.39deg,
+    #ffffff -278.56%,
+    #6d6d6d -78.47%,
+    #11101d 91.61%
+  );
   line-height: 1.5;
   background-color: #ffffff33;
   font-synthesis: none;
@@ -21,7 +27,7 @@ body {
   scroll-behavior: smooth;
   width: 100%;
   height: 100%;
-  position: fixed;
+  /* position: fixed; */
 }
 
 ::-webkit-scrollbar {
@@ -31,4 +37,26 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: yellow;
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+.bg-black-gradient {
+  background: linear-gradient(
+    144.39deg,
+    #ffffff -278.56%,
+    #6d6d6d -78.47%,
+    #11101d 91.61%
+  );
 }

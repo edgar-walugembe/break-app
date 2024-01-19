@@ -32,7 +32,7 @@ const Navbar = () => {
         <li
           className={`font-poppins font-normal cursor-pointer text-[16px] text-white mr-0`}
         >
-          <div className="flex w-[80px] p-2 gap-2 rounded h-[40px] bg-yellow">
+          <div className="flex w-[90px] p-2 gap-3 rounded h-[40px] bg-yellow">
             <FaUser className="w-[24px] h-[24px] text-black" />
             <span className="text-black">User</span>
           </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
             <li
               className={`font-poppins font-normal cursor-pointer text-[16px] text-white mb-0`}
             >
-              <div className="flex w-[80px] h-[40px] p-2 gap-2 rounded bg-yellow text-black">
+              <div className="flex w-[90px] h-[40px] p-2 gap-2 rounded bg-yellow text-black">
                 <FaUser className="w-[24px] h-[24px]" />
                 <span>User</span>
               </div>
