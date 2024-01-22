@@ -135,7 +135,7 @@ const SetPassword = () => {
                 type="button"
                 size="sm"
               >
-                Login
+                Save
               </Button>
             </Link>
           </div>

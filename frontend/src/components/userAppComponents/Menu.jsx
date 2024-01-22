@@ -12,7 +12,7 @@ const Menu = () => {
   return (
     <section id="features" className={layout.section}>
       <div className={layout.sectionInfo}>
-        <h2>Available Snacks</h2>
+        <h2 className="text-white">Available Snacks</h2>
       </div>
       ;
     </section>

@@ -13,7 +13,6 @@ import {
 import {
   AddProduct,
   AddUser,
-  Card,
   Debt,
   EditProduct,
   EditUser,
@@ -32,7 +31,7 @@ import {
 const Dashboard = () => {
   const Layout = () => {
     return (
-      <div className="w-full h-screen font-poppins">
+      <div className="w-full h-full font-poppins">
         <Outlet />
       </div>
     );

@@ -2,7 +2,6 @@
 import {
   AddProduct,
   AddUser,
-  Card,
   EditProduct,
   EditUser,
   ForgotPassword,
