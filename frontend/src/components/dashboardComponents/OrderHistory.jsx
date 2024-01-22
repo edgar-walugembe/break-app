@@ -116,7 +116,7 @@ const OrderHistory = () => {
         <div className="left flex flex-col">
           <h3 className="text-black text-[14px]">Previous Orders</h3>
 
-          <div className="w-full h-full">
+          <div className="w-full">
             <DataGrid
               rows={rows}
               columns={columns}
@@ -160,7 +160,7 @@ const OrderHistory = () => {
         </div>
       </div>
 
-      <Highlights />
+      {/* <Highlights /> */}
 
       <ToastContainer />
     </div>

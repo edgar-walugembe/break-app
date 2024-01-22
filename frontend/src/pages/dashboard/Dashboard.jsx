@@ -31,7 +31,7 @@ import {
 const Dashboard = () => {
   const Layout = () => {
     return (
-      <div className="w-full h-full font-poppins">
+      <div className="w-full font-poppins">
         <Outlet />
       </div>
     );
