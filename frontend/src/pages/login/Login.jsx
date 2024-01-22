@@ -158,7 +158,10 @@ const Login = () => {
             </Link> */}
 
             <div className={`rounded menuSpan`}>
-              <Link to="/home" className="flex justify-evenly w-full p-2 ">
+              <Link
+                to="/Admin/Dashboard"
+                className="flex justify-evenly w-full p-2 "
+              >
                 {/* <FaUsers className="w-[24px] h-[24px] text-black" /> */}
                 <span className="text-black text-[14px]">Log In</span>
               </Link>
