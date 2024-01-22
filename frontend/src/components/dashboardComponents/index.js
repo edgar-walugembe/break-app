@@ -1,6 +1,5 @@
 import AddProduct from "./AddProduct";
 import AddUser from "./AddUser";
-import Card from "./Card";
 import EditProduct from "./EditProduct";
 import EditUser from "./EditUser";
 import ForgotPassword from "./ForgotPassword";
@@ -18,7 +17,6 @@ import Debt from "./Debt.jsx";
 export {
   AddProduct,
   AddUser,
-  Card,
   Debt,
   EditProduct,
   EditUser,
