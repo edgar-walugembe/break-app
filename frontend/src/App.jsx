@@ -39,6 +39,7 @@ import {
   UserSettings,
   UserAccount,
 } from "./components/dashboardComponents";
+import UserApp from "./components/userAppComponents/UserApp";
 
 const App = () => {
   // <div className="font-poppins bg-black  w-full overflow-hidden">
@@ -118,19 +119,47 @@ const App = () => {
               path: "/Admin/Dashboard",
               element: <OrderHistory />,
             },
+            {
+              path: "/Admin/Dashboard/password",
+              element: <Password />,
+              children: [
+                {
+                  path: "/Admin/Dashboard/password/set_password",
+                  element: <SetPassword />,
+                },
+                {
+                  path: "/Admin/Dashboard/password/reset_password",
+                  element: <ForgotPassword />,
+                },
+              ],
+            },
           ],
         },
         {
-          path: "/password",
-          element: <Password />,
+          path: "/User/home",
+          element: <UserApp />,
           children: [
             {
-              path: "/password/set_password",
-              element: <SetPassword />,
+              path: "/User/home",
+              element: <OrderHistory />,
             },
             {
-              path: "/password/reset_password",
-              element: <ForgotPassword />,
+              path: "/User/home/orders",
+              element: <Orders />,
+            },
+            {
+              path: "/User/home/password",
+              element: <Password />,
+              children: [
+                {
+                  path: "/User/home/password/set_password",
+                  element: <SetPassword />,
+                },
+                {
+                  path: "/User/home/password/reset_password",
+                  element: <ForgotPassword />,
+                },
+              ],
             },
           ],
         },
