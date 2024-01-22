@@ -9,6 +9,15 @@
   transform: translate(-50%, -50%);
   border-radius: 20px;
 
+  .menuSpan {
+    background-color: yellow;
+    width: 250px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
   .content {
     .form {
       width: 100%;
@@ -22,6 +31,15 @@
       border: 1px solid #fff;
       border-radius: 10px;
       /* width: 60%; */
+    }
+
+    .menuSpan {
+      background-color: yellow;
+      width: 100%;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 }

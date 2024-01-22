@@ -7,8 +7,7 @@ import * as yup from "yup";
 import "./login.css";
 
 //image imports
-
-import breakfast01 from "../../assets/break_logo.jpeg";
+import { logo_spin } from "../../assets";
 
 const Login = () => {
   const { Formik } = formik;
@@ -45,7 +44,7 @@ const Login = () => {
             SetPassword
           </Button>
         </Link> */}
-
+        {/* 
         <Link to="/password/reset_password">
           <Button
             // onClick={notify}
@@ -55,15 +54,25 @@ const Login = () => {
           >
             Forgot Password
           </Button>
-        </Link>
+        </Link> */}
+
+        <div className={`rounded menuSpan`}>
+          <Link
+            to="/password/reset_password"
+            className="flex justify-evenly w-full p-2 "
+          >
+            {/* <FaUsers className="w-[24px] h-[24px] text-black" /> */}
+            <span className="text-black text-[14px]">Forgot Password</span>
+          </Link>
+        </div>
       </div>
 
       <div className="content flex justify-evenly">
         <div className={`img items-center flex justify-center`}>
           <img
-            src={breakfast01}
+            src={logo_spin}
             alt="breakfast"
-            className="h-[100px] w-[100px] rounded-full"
+            className="h-[140px] w-[140px] rounded-full animate-spin animate-spin-slow"
           />
         </div>
 
@@ -92,13 +101,13 @@ const Login = () => {
                 </p>
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="username">
-                      <Form.Label>UserName</Form.Label>
+                    <Form.Group className="mb-3" controlId="username">
+                      {/* <Form.Label>UserName</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="username"
                         type="text"
-                        placeholder="Enter Username"
+                        placeholder="Username"
                         value={values.username}
                         onChange={handleChange}
                         isInvalid={!!errors.username}
@@ -113,13 +122,13 @@ const Login = () => {
 
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="password">
-                      <Form.Label>Password</Form.Label>
+                    <Form.Group className="mb-3" controlId="password">
+                      {/* <Form.Label>Password</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="password"
                         type="password"
-                        placeholder="Enter Password."
+                        placeholder="Password."
                         value={values.password}
                         onChange={handleChange}
                         isInvalid={!!errors.password}
@@ -136,17 +145,24 @@ const Login = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
-            <Link to="/home">
+            {/* <Link to="/home">
               <Button
                 // onClick={(event) => submitForm(event)}
-                variant="success"
+                variant="primary"
                 type="button"
                 size="sm"
-                className="rounded-full"
+                className="rounded-full px-10"
               >
-                Login
+                Log In
               </Button>
-            </Link>
+            </Link> */}
+
+            <div className={`rounded menuSpan`}>
+              <Link to="/home" className="flex justify-evenly w-full p-2 ">
+                {/* <FaUsers className="w-[24px] h-[24px] text-black" /> */}
+                <span className="text-black text-[14px]">Log In</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
