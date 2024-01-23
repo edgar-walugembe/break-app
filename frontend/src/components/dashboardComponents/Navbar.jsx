@@ -23,7 +23,7 @@ const Navbar = () => {
         </p>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <Link to="/home/user_account">
           <FaUser className="w-[20px] h-[20px] text-blue-500" />
         </Link>

@@ -11,7 +11,7 @@ import {
   OrderHistory,
   SetPassword,
   UserList,
-} from "../../components/dashboardComponents";
+} from "../../../components/dashboardComponents";
 import { Outlet } from "react-router-dom";
 import "./home.css";
 
