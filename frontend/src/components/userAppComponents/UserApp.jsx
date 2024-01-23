@@ -6,7 +6,7 @@ import { Home } from "../../pages";
 
 const UserApp = () => {
   return (
-    <div className="font-poppins bg-black  w-full overflow-hidden">
+    <div className="font-poppins bg-black  w-full overflow-hidden text-white">
       {/* <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
