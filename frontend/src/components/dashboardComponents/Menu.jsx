@@ -8,9 +8,8 @@ import { Button } from "react-bootstrap";
 import { logo, odyssey_logo } from "../../assets";
 
 //icon imports
-import { TbClockQuestion } from "react-icons/tb";
 import { FaUsers } from "react-icons/fa";
-import { IoFastFood } from "react-icons/io5";
+import { IoFastFood, IoCartOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 
 const Menu = () => {
@@ -28,7 +27,7 @@ const Menu = () => {
             to="/Admin/Dashboard/order"
             className="flex justify-evenly w-full p-2"
           >
-            <TbClockQuestion className="w-[24px] h-[24px] text-black" />
+            <IoCartOutline className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Orders</span>
           </Link>
         </div>
@@ -49,7 +48,7 @@ const Menu = () => {
             className="flex justify-evenly w-full p-2"
           >
             <IoFastFood className="w-[24px] h-[24px] text-black" />
-            <span className="text-black">Food Menu</span>
+            <span className="text-black">Products</span>
           </Link>
         </div>
 

@@ -5,7 +5,7 @@ import { close, logo, menu } from "../../assets";
 import { Link } from "react-router-dom";
 
 //icons
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaUsers } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 import { Notification } from "../dashboardComponents";
@@ -175,7 +175,7 @@ const Navbar = () => {
                 className="flex items-center justify-center bg-yellow rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
-                <i className="pi pi-inbox text-cyan-500 text-xl"></i>
+                <FaUsers className="text-xl" />
               </div>
             </div>
             <span className="text-success font-medium">520 </span>
