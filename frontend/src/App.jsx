@@ -1,27 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./App.css";
-import styles, { layout } from "./style";
-// import {
-//   CTA,
-//   Footer,
-//   Hero,
-//   Menu,
-//   Navbar,
-//   Services,
-// } from "./components/userAppComponents";
-
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import {
-  Home,
-  Login,
-  User,
-  Product,
-  Order,
-  Password,
-  Finances,
-  Dashboard,
-} from "./pages";
+import { Home, Login, User, Product, Order, Password, Finances } from "./pages";
 import {
   AddProduct,
   AddUser,
@@ -39,33 +20,9 @@ import {
   UserSettings,
   UserAccount,
 } from "./components/dashboardComponents";
-import UserApp from "./components/userAppComponents/UserApp";
+import { UserApp } from "./components/userAppComponents";
 
 const App = () => {
-  // <div className="font-poppins bg-black  w-full overflow-hidden">
-  //   <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-  //     <div className={`${styles.boxWidth}`}>
-  //       <Navbar />
-  //     </div>
-  //   </div>
-
-  //   <div className={` ${styles.flexStart} bg-black`}>
-  //     <div className={`${styles.boxWidth}`}>
-  //       <Hero />
-  //     </div>
-  //   </div>
-
-  //   <div className={`${styles.paddingX} ${styles.flexStart} bg-black`}>
-  //     <div className={`${styles.boxWidth}`}>
-  //       <Menu />
-  //       <Services />
-  //       <CTA />
-  //       <Footer />
-  //     </div>
-  //   </div>
-  // </div>
-  // <Dashboard />;
-
   const Layout = () => {
     return (
       <div className="w-full h-full font-poppins">

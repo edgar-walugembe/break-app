@@ -2,7 +2,7 @@
   height: 100vh;
 
   .menu {
-    background-color: #272822;
+    background-color: #000;
     padding: 0px 20px;
     border-right: 4px solid yellow;
 
@@ -17,13 +17,20 @@
       a::after {
         position: absolute;
         content: "";
-        width: 8px;
-        height: 8px;
+        width: 0px;
+        height: 0px;
         background-color: black;
-        right: 5px;
-        top: 16px;
         border-radius: 50%;
+        top: 50%;
+        right: 6px;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
       }
+    }
+
+    .menuSpan#active a::after {
+      width: 8px;
+      height: 8px;
     }
   }
 

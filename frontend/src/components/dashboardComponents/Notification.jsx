@@ -5,7 +5,6 @@ import {
   PopoverNotificationCenter,
   NotificationBell,
 } from "@novu/notification-center";
-import { IoNotificationsCircleOutline } from "react-icons/io5";
 
 const Notification = () => {
   return (
@@ -15,12 +14,7 @@ const Notification = () => {
         applicationIdentifier={"eDGCaSBCSaoC"}
       >
         <PopoverNotificationCenter colorScheme={"light"}>
-          {({ unseenCount }) => (
-            <NotificationBell
-              className="w-[32px] h-[32px] text-yellow-300"
-              unseenCount={unseenCount}
-            />
-          )}
+          {({ unseenCount }) => <NotificationBell unseenCount={unseenCount} />}
         </PopoverNotificationCenter>
       </NovuProvider>
     </div>

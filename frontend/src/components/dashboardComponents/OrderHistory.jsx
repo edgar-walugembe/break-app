@@ -112,7 +112,7 @@ const OrderHistory = () => {
     <div className="flex flex-col justify-evenly">
       {/* <div className="flex justify-between"></div> */}
 
-      <div className="flex">
+      {/* <div className="flex">
         <div className="left flex flex-col">
           <h3 className="text-black text-[14px]">Previous Orders</h3>
 
@@ -153,12 +153,7 @@ const OrderHistory = () => {
             </Button>
           </div>
         </div>
-        <div className="right p-5 text-center justify-center items-center">
-          <h1 className="text-blue-900 text-[50px] font-bold">
-            Did You Make An Order Today ??
-          </h1>
-        </div>
-      </div>
+      </div> */}
 
       {/* <Highlights /> */}
 

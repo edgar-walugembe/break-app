@@ -16,22 +16,22 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between">
-      <div className="flex flex-col items-center">
-        <h2 className="text-blue-900 text-[18px]">Hello, Username</h2>
+      <div className="flex flex-col">
+        <h5 className="text-blue-900">Hello, Admin</h5>
         <p className="font-semibold text-blue-500 text-[12px]">
           {formattedDate}
         </p>
       </div>
 
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4">
         <Link to="/home/user_account">
-          <FaUser className="w-[24px] h-[24px] text-blue-500" />
+          <FaUser className="w-[20px] h-[20px] text-blue-500" />
         </Link>
 
-        <Notification className="w-[24px] h-[24px]" />
+        <Notification className="w-[20px] h-[20px]" />
 
         <Link to="/home/user_settings">
-          <IoSettings className="w-[24px] h-[24px] text-blue-500" />
+          <IoSettings className="w-[20px] h-[20px] text-blue-500" />
         </Link>
       </div>
     </div>
