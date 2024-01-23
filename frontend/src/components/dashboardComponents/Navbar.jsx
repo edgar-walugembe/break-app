@@ -32,13 +32,13 @@ const Navbar = () => {
           </div>
 
           <div className="flex gap-4 items-center">
-            <Link to="/home/user_account">
+            <Link to="/Admin/Dashboard/user_account/">
               <FaUser className="w-[20px] h-[20px] text-primary" />
             </Link>
 
             <Notification className="w-[20px] h-[20px]" />
 
-            <Link to="/home/user_settings">
+            <Link to="/Admin/Dashboard/user_settings/">
               <IoSettings className="w-[20px] h-[20px] text-primary" />
             </Link>
           </div>
@@ -126,8 +126,8 @@ const Navbar = () => {
                 <IoFastFood className="text-xl" />
               </div>
             </div>
-            <span className="text-primary font-medium">85 </span>
-            <span className="text-secondary">responded</span>
+            <span className="text-primary font-medium">06 </span>
+            <span className="text-secondary">newly added</span>
           </div>
         </div>
       </div>

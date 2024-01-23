@@ -31,9 +31,7 @@ import { Button } from "react-bootstrap";
 import { logo, odyssey_logo } from "../../assets";
 
 //icon imports
-import { TbClockQuestion } from "react-icons/tb";
-import { FaUsers } from "react-icons/fa";
-import { IoFastFood } from "react-icons/io5";
+import { IoFastFood, IoCartOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 
 const Menu = () => {
@@ -48,17 +46,17 @@ const Menu = () => {
       <div className="flex flex-col justify-between gap-5 ">
         <div className={`rounded menuSpan`} id="active">
           <Link
-            to="/User/home/order"
+            to="/User/home/order/"
             className="flex justify-evenly w-full p-2"
           >
-            <TbClockQuestion className="w-[24px] h-[24px] text-black" />
+            <IoCartOutline className="w-[24px] h-[24px] text-black" />
             <span className="text-black">Orders</span>
           </Link>
         </div>
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/User/home/product"
+            to="/User/home/product/"
             className="flex justify-evenly w-full p-2"
           >
             <IoFastFood className="w-[24px] h-[24px] text-black" />
@@ -68,7 +66,7 @@ const Menu = () => {
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/User/home/finances"
+            to="/User/home/finances/"
             className="flex justify-evenly w-full p-2"
           >
             <GiCash className="w-[24px] h-[24px] text-black" />

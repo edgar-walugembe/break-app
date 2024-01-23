@@ -13,7 +13,7 @@ const UserApp = () => {
 
 export default UserApp;
 
-//I am changing the userapp here
+//I am changing the userApp here
 // it will have the same interface with as the admin app but the difference will
 //functionality .
 

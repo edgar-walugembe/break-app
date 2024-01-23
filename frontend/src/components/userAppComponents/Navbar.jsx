@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 //icons
 import { FaUser, FaUsers } from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
+import { IoSettings, IoFastFood } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 import { Notification } from "../dashboardComponents";
 
@@ -106,13 +106,13 @@ const Navbar = () => {
           </div>
 
           <div className="flex gap-4 items-center">
-            <Link to="/home/user_account">
+            <Link to="/User/home/password/user_account/">
               <FaUser className="w-[20px] h-[20px] text-blue-500" />
             </Link>
 
             <Notification className="w-[20px] h-[20px]" />
 
-            <Link to="/home/user_settings">
+            <Link to="/User/home/password/user_settings/">
               <IoSettings className="w-[20px] h-[20px] text-blue-500" />
             </Link>
           </div>
@@ -127,7 +127,7 @@ const Navbar = () => {
                 <span className="block text-secondary font-medium mb-3">
                   Orders
                 </span>
-                <div className="text-black font-medium text-xl">152</div>
+                <div className="text-black font-medium text-xl">30</div>
               </div>
               <div
                 className="flex items-center justify-center bg-yellow rounded"
@@ -136,7 +136,7 @@ const Navbar = () => {
                 <i className="pi pi-shopping-cart text-blue-500 text-xl"></i>
               </div>
             </div>
-            <span className="text-success font-medium">24 new </span>
+            <span className="text-success font-medium">01 new </span>
             <span className="text-secondary">since last visit</span>
           </div>
         </div>
@@ -148,17 +148,17 @@ const Navbar = () => {
                 <span className="block text-secondary font-medium mb-3">
                   Budget
                 </span>
-                <div className="text-black font-medium text-xl">$2.100</div>
+                <div className="text-black font-medium text-xl">$2000</div>
               </div>
               <div
                 className="flex items-center justify-center bg-yellow rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
-                <i className="pi pi-map-marker text-orange-500 text-xl"></i>
+                <GiCash className="text-xl" />
               </div>
             </div>
-            <span className="text-success font-medium">%52+ </span>
-            <span className="text-secondary">since last week</span>
+            {/* <span className="text-success font-medium"> </span> */}
+            <span className="text-secondary">daily budget</span>
           </div>
         </div>
 
@@ -167,18 +167,18 @@ const Navbar = () => {
             <div className="flex justify-between mb-3">
               <div>
                 <span className="block text-secondary font-medium mb-3">
-                  Users
+                  Products
                 </span>
-                <div className="text-black font-medium text-xl">28441</div>
+                <div className="text-black font-medium text-xl">40</div>
               </div>
               <div
                 className="flex items-center justify-center bg-yellow rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
-                <FaUsers className="text-xl" />
+                <IoFastFood className="text-xl" />
               </div>
             </div>
-            <span className="text-success font-medium">520 </span>
+            <span className="text-success font-medium">4 </span>
             <span className="text-secondary">newly registered</span>
           </div>
         </div>
@@ -188,9 +188,9 @@ const Navbar = () => {
             <div className="flex justify-between mb-3">
               <div>
                 <span className="block text-secondary font-medium mb-3">
-                  Debts
+                  Debt
                 </span>
-                <div className="text-black font-medium text-xl">152 Unread</div>
+                <div className="text-black font-medium text-xl">-$1000</div>
               </div>
               <div
                 className="flex items-center justify-center bg-yellow rounded"
@@ -200,8 +200,8 @@ const Navbar = () => {
                 <GiCash className="text-xl" />
               </div>
             </div>
-            <span className="text-success font-medium">85 </span>
-            <span className="text-secondary">responded</span>
+            <span className="text-success font-medium"> </span>
+            <span className="text-secondary">have a debt</span>
           </div>
         </div>
       </div>

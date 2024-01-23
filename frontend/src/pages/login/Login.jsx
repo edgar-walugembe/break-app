@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <div className={`login p-5  flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h2 className="text-center font-extrabold text-[35px] text-blue-500">
+        <h2 className="text-center font-extrabold text-[35px] text-primary">
           Make your Order Now!
         </h2>
       </div>

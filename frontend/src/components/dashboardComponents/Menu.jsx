@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 //images imports
-
 import { logo, odyssey_logo } from "../../assets";
 
 //icon imports
@@ -16,7 +14,7 @@ const Menu = () => {
   return (
     <div className={`menu h-full w-[250px] flex flex-col justify-between`}>
       <div className="items-center flex justify-center mt-4">
-        <Link to="/Admin/Dashboard">
+        <Link to="/Admin/Dashboard/">
           <img src={logo} alt="app_logo" className="h-[35px]" />
         </Link>
       </div>
@@ -24,7 +22,7 @@ const Menu = () => {
       <div className="flex flex-col justify-between gap-5 ">
         <div className={`rounded menuSpan`} id="active">
           <Link
-            to="/Admin/Dashboard/order"
+            to="/Admin/Dashboard/order/"
             className="flex justify-evenly w-full p-2"
           >
             <IoCartOutline className="w-[24px] h-[24px] text-black" />
@@ -34,7 +32,7 @@ const Menu = () => {
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/Admin/Dashboard/user"
+            to="/Admin/Dashboard/user/"
             className="flex justify-evenly w-full p-2 "
           >
             <FaUsers className="w-[24px] h-[24px] text-black" />
@@ -44,7 +42,7 @@ const Menu = () => {
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/Admin/Dashboard/product"
+            to="/Admin/Dashboard/product/"
             className="flex justify-evenly w-full p-2"
           >
             <IoFastFood className="w-[24px] h-[24px] text-black" />
@@ -54,7 +52,7 @@ const Menu = () => {
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/Admin/Dashboard/finances"
+            to="/Admin/Dashboard/finances/"
             className="flex justify-evenly w-full p-2"
           >
             <GiCash className="w-[24px] h-[24px] text-black" />
