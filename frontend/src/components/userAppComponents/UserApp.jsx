@@ -5,7 +5,7 @@ import { Home00 } from "../../pages";
 
 const UserApp = () => {
   return (
-    <div className="font-poppins  w-full overflow-hidden text-black">
+    <div className="font-poppins  w-full overflow-hidden">
       <Home00 />
     </div>
   );

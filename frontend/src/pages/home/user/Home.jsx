@@ -8,9 +8,24 @@ import {
   Navbar,
   Services,
 } from "../../../components/userAppComponents/index";
+import { Outlet } from "react-router-dom";
+import "./home.css";
 
 const Home00 = () => {
-  return <div>Home</div>;
+  return (
+    <section className="home">
+      <div className="flex h-full">
+        <Menu />
+        <div className="h-full w-full">
+          <Navbar />
+
+          <div className="outlet">
+            <Outlet />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Home00;
