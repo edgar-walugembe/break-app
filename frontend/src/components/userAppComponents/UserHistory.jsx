@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-const CTA = () => {
-  return <div>CTA</div>;
+const UserHistory = () => {
+  return <div>UserHistory</div>;
 };
 
-export default CTA;
+export default UserHistory;

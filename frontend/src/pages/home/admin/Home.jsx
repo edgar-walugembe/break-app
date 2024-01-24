@@ -20,9 +20,12 @@ const Home = () => {
     <section className="home">
       <div className="flex h-full">
         <Menu />
-        <div className="outlet w-full h-full">
+        <div className="h-full w-full">
           <Navbar />
-          <Outlet />
+
+          <div className="outlet">
+            <Outlet />
+          </div>
         </div>
       </div>
     </section>

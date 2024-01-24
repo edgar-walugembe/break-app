@@ -22,7 +22,7 @@ const Menu = () => {
       <div className="flex flex-col justify-between gap-5 ">
         <div className={`rounded menuSpan`} id="active">
           <Link
-            to="/Admin/Dashboard/order/"
+            to="/Admin/Dashboard/orders/"
             className="flex justify-evenly w-full p-2"
           >
             <IoCartOutline className="w-[24px] h-[24px] text-black" />
@@ -32,7 +32,7 @@ const Menu = () => {
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/Admin/Dashboard/user/"
+            to="/Admin/Dashboard/users/"
             className="flex justify-evenly w-full p-2 "
           >
             <FaUsers className="w-[24px] h-[24px] text-black" />
@@ -42,7 +42,7 @@ const Menu = () => {
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/Admin/Dashboard/product/"
+            to="/Admin/Dashboard/products/"
             className="flex justify-evenly w-full p-2"
           >
             <IoFastFood className="w-[24px] h-[24px] text-black" />

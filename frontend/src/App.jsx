@@ -2,7 +2,16 @@
 import React from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { Home, Login, User, Product, Order, Password, Finances } from "./pages";
+import {
+  Home,
+  Login,
+  User,
+  Product,
+  Order,
+  Password,
+  Finances,
+  Home00,
+} from "./pages";
 import {
   AddProduct,
   AddUser,
@@ -20,7 +29,12 @@ import {
   UserSettings,
   UserAccount,
 } from "./components/dashboardComponents";
-import { UserApp } from "./components/userAppComponents";
+import {
+  FoodMenu,
+  UserApp,
+  UserFinances,
+  UserHistory,
+} from "./components/userAppComponents";
 
 const App = () => {
   const Layout = () => {
@@ -45,15 +59,15 @@ const App = () => {
           element: <Home />,
           children: [
             {
-              path: "/Admin/Dashboard/order",
+              path: "/Admin/Dashboard/orders",
               element: <Order />,
             },
             {
-              path: "/Admin/Dashboard/user",
+              path: "/Admin/Dashboard/users",
               element: <User />,
             },
             {
-              path: "/Admin/Dashboard/product",
+              path: "/Admin/Dashboard/products",
               element: <Product />,
             },
             {
@@ -81,11 +95,11 @@ const App = () => {
               element: <Password />,
               children: [
                 {
-                  path: "/Admin/Dashboard/password/set_password",
+                  path: "/Admin/Dashboard/password/set_password/:id",
                   element: <SetPassword />,
                 },
                 {
-                  path: "/Admin/Dashboard/password/reset_password",
+                  path: "/Admin/Dashboard/password/reset_password/:id",
                   element: <ForgotPassword />,
                 },
               ],
@@ -94,26 +108,42 @@ const App = () => {
         },
         {
           path: "/User/home",
-          element: <UserApp />,
+          element: <Home00 />,
           children: [
             {
               path: "/User/home",
-              element: <OrderHistory />,
+              element: <UserHistory />,
             },
             {
-              path: "/User/home/orders",
-              element: <Orders />,
+              path: "/User/home/food_menu",
+              element: <FoodMenu />,
+            },
+            {
+              path: "/User/home/orders/:id",
+              element: <UserHistory />,
+            },
+            {
+              path: "/User/home/finances/:id",
+              element: <UserFinances />,
+            },
+            {
+              path: "/User/home/user_settings/:id",
+              element: <UserSettings />,
+            },
+            {
+              path: "/User/home/user_account/:id",
+              element: <UserAccount />,
             },
             {
               path: "/User/home/password",
               element: <Password />,
               children: [
                 {
-                  path: "/User/home/password/set_password",
+                  path: "/User/home/password/set_password/:id",
                   element: <SetPassword />,
                 },
                 {
-                  path: "/User/home/password/reset_password",
+                  path: "/User/home/password/reset_password/:id",
                   element: <ForgotPassword />,
                 },
               ],

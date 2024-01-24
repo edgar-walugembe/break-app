@@ -106,14 +106,14 @@ const Navbar = () => {
           </div>
 
           <div className="flex gap-4 items-center">
-            <Link to="/User/home/password/user_account/">
-              <FaUser className="w-[20px] h-[20px] text-blue-500" />
+            <Link to="/User/home/user_account/:id">
+              <FaUser className="w-[20px] h-[20px] text-primary" />
             </Link>
 
             <Notification className="w-[20px] h-[20px]" />
 
-            <Link to="/User/home/password/user_settings/">
-              <IoSettings className="w-[20px] h-[20px] text-blue-500" />
+            <Link to="/User/home/user_settings/:id">
+              <IoSettings className="w-[20px] h-[20px] text-primary" />
             </Link>
           </div>
         </div>

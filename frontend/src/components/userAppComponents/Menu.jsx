@@ -46,31 +46,31 @@ const Menu = () => {
       <div className="flex flex-col justify-between gap-5 ">
         <div className={`rounded menuSpan`} id="active">
           <Link
-            to="/User/home/order/"
-            className="flex justify-evenly w-full p-2"
+            to="/User/home/orders/:id/"
+            className="flex flex-col justify-center items-center w-full p-2"
           >
-            <IoCartOutline className="w-[24px] h-[24px] text-black" />
-            <span className="text-black">Orders</span>
+            <IoCartOutline className="w-[22px] h-[22px] text-black" />
+            <span className="text-black text-[14px]">Orders</span>
           </Link>
         </div>
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/User/home/product/"
-            className="flex justify-evenly w-full p-2"
+            to="/User/home/food_menu/"
+            className="flex flex-col justify-center items-center w-full p-2"
           >
-            <IoFastFood className="w-[24px] h-[24px] text-black" />
-            <span className="text-black">Food Menu</span>
+            <IoFastFood className="w-[22px] h-[22px] text-black" />
+            <span className="text-black text-[14px]">Food Menu</span>
           </Link>
         </div>
 
         <div className={`rounded menuSpan`}>
           <Link
-            to="/User/home/finances/"
-            className="flex justify-evenly w-full p-2"
+            to="/User/home/finances/:id/"
+            className="flex flex-col justify-center items-center w-full p-2"
           >
-            <GiCash className="w-[24px] h-[24px] text-black" />
-            <span className="text-black">Finances</span>
+            <GiCash className="w-[22px] h-[22px] text-black" />
+            <span className="text-black text-[14px]">Finances</span>
           </Link>
         </div>
       </div>

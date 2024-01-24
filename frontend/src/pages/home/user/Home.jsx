@@ -1,13 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import {
-  CTA,
-  Footer,
-  Hero,
-  Menu,
-  Navbar,
-  Services,
-} from "../../../components/userAppComponents/index";
+import { Menu, Navbar } from "../../../components/userAppComponents";
 import { Outlet } from "react-router-dom";
 import "./home.css";
 
