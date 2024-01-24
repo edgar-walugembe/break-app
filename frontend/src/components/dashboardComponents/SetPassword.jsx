@@ -47,7 +47,7 @@ const SetPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="username">
-                      <Form.Label>UserName</Form.Label>
+                      {/* <Form.Label>UserName</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="username"
@@ -128,7 +128,7 @@ const SetPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
-            <Link to="/home">
+            <Link to="/">
               <Button
                 // onClick={(event) => submitForm(event)}
                 variant="primary"

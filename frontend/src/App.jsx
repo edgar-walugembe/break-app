@@ -55,6 +55,20 @@ const App = () => {
           element: <Login />,
         },
         {
+          path: "/password",
+          element: <Password />,
+          children: [
+            {
+              path: "/password/set_password/:id",
+              element: <SetPassword />,
+            },
+            {
+              path: "/password/reset_password/:id",
+              element: <ForgotPassword />,
+            },
+          ],
+        },
+        {
           path: "/Admin/Dashboard",
           element: <Home />,
           children: [
@@ -133,20 +147,6 @@ const App = () => {
             {
               path: "/User/home/user_account/:id",
               element: <UserAccount />,
-            },
-            {
-              path: "/User/home/password",
-              element: <Password />,
-              children: [
-                {
-                  path: "/User/home/password/set_password/:id",
-                  element: <SetPassword />,
-                },
-                {
-                  path: "/User/home/password/reset_password/:id",
-                  element: <ForgotPassword />,
-                },
-              ],
             },
           ],
         },
