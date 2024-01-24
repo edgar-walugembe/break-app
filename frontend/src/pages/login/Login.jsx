@@ -33,35 +33,11 @@ const Login = () => {
       </div>
 
       <div className="flex justify-end items-end p-2 gap-10">
-        {/* <Link to="/password/set_password">
-          <Button
-            // onClick={(event) => submitForm(event)}
-            variant="secondary"
-            type="button"
-            size="sm"
-            className="text-[12px]"
-          >
-            SetPassword
-          </Button>
-        </Link> */}
-        {/* 
-        <Link to="/password/reset_password">
-          <Button
-            // onClick={notify}
-            variant="warning"
-            type="button"
-            size="sm"
-          >
-            Forgot Password
-          </Button>
-        </Link> */}
-
         <div className={`rounded menuSpan`}>
           <Link
             to="/password/reset_password"
             className="flex justify-evenly w-full p-2 "
           >
-            {/* <FaUsers className="w-[24px] h-[24px] text-black" /> */}
             <span className="text-black text-[14px]">Forgot Password</span>
           </Link>
         </div>

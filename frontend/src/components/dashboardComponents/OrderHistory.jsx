@@ -90,7 +90,7 @@ const OrderHistory = () => {
         >
           <Link
             to="/Admin/Dashboard/users/"
-            className="flex justify-evenly w-full p-2"
+            className="flex justify-evenly w-full py-1"
           >
             <span className="text-black">Add New Product</span>
           </Link>

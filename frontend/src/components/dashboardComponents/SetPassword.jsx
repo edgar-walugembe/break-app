@@ -5,6 +5,9 @@ import * as yup from "yup";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+//image imports
+import { logo_spin } from "../../assets";
+
 const SetPassword = () => {
   const { Formik } = formik;
 
@@ -17,12 +20,20 @@ const SetPassword = () => {
   return (
     <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h1 className="text-center font-extrabold text-[35px] text-blue-500">
+        <h2 className="text-center font-extrabold text-[35px] text-blue-500">
           Set A Password for Your Account
-        </h1>
+        </h2>
       </div>
 
       <div className="content flex justify-evenly">
+        <div className={`img items-center flex justify-center`}>
+          <img
+            src={logo_spin}
+            alt="breakfast"
+            className="h-[140px] w-[140px] rounded-full animate-spin animate-spin-slow"
+          />
+        </div>
+
         <div className="form text-blue-500 p-2">
           <Formik
             validationSchema={schema}
@@ -63,26 +74,6 @@ const SetPassword = () => {
                     </Form.Group>
                   </Col>
                 </Row>
-
-                {/* <Row>
-                  <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="email">
-                      <Form.Label>E-mail</Form.Label>
-                      <Form.Control
-                        required={true}
-                        name="email"
-                        type="text"
-                        placeholder="E-mail."
-                        value={values.email}
-                        onChange={handleChange}
-                        isInvalid={!!errors.email}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.email}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Col>
-                </Row> */}
 
                 <Row>
                   <Col xs={12} md={12}>
@@ -128,16 +119,13 @@ const SetPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
-            <Link to="/">
-              <Button
-                // onClick={(event) => submitForm(event)}
-                variant="primary"
-                type="button"
-                size="sm"
-              >
-                Save
-              </Button>
-            </Link>
+            <div
+              className={`rounded button-yellow self-end text-[14px] col-12`}
+            >
+              <Link to="/" className="flex justify-evenly w-full">
+                <span className="text-black">Save Password</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
