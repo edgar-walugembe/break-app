@@ -83,9 +83,11 @@ const OrderHistory = () => {
   } products.`;
 
   return (
-    <div className="surface-ground px-2 py-1 md:px-4 lg:px-6 ">
+    <div className="surface-ground px-2 py-1 md:px-4 lg:px-6">
       <div className="grid">
-        <div className={`rounded button-yellow mb-1 self-end text-[14px]`}>
+        <div
+          className={`rounded button-yellow mb-1 self-end text-[14px] col-12`}
+        >
           <Link
             to="/Admin/Dashboard/users/"
             className="flex justify-evenly w-full p-2"
@@ -94,32 +96,26 @@ const OrderHistory = () => {
           </Link>
         </div>
 
-        <div className="card p-2">
+        <div className="card p-2 col-12">
           <DataTable
             value={products}
+            showGridlines
+            stripedRows
             header={header}
             footer={footer}
-            tableStyle={{ minWidth: "60rem" }}
+            tableStyle={{ minWidth: "50rem" }}
           >
-            <Column field="name" header="Name"></Column>
-            <Column header="Image" body={imageBodyTemplate}></Column>
-            <Column
-              field="price"
-              header="Price"
-              body={priceBodyTemplate}
-            ></Column>
-            <Column field="category" header="Category"></Column>
-            {/* <Column
-            field="rating"
-            header="Reviews"
-            body={ratingBodyTemplate}
-          ></Column> */}
-            <Column header="Status" body={statusBodyTemplate}></Column>
+            <Column field="name" header="Name" />
+            <Column header="Image" body={imageBodyTemplate} />
+            <Column field="price" header="Price" body={priceBodyTemplate} />
+            <Column field="category" header="Category" />
+            <Column field="rating" header="Reviews" body={ratingBodyTemplate} />
+            <Column header="Status" body={statusBodyTemplate} />
           </DataTable>
         </div>
-
-        <ToastContainer />
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

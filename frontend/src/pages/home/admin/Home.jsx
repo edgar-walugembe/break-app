@@ -18,9 +18,9 @@ import "./home.css";
 const Home = () => {
   return (
     <section className="home h-full">
-      <div className="flex relative">
+      <div className="flex">
         <Menu />
-        <div className="w-full">
+        <div className="w-full ml-[250px]">
           <Navbar />
 
           <div className="outlet">

@@ -12,7 +12,9 @@ import { GiCash } from "react-icons/gi";
 
 const Menu = () => {
   return (
-    <div className={`menu w-[250px] h-screen flex flex-col justify-between`}>
+    <div
+      className={`menu w-[250px] h-full fixed flex flex-col justify-between`}
+    >
       <div className="items-center flex justify-center mt-4">
         <Link to="/Admin/Dashboard/">
           <img src={logo} alt="app_logo" className="h-[35px]" />

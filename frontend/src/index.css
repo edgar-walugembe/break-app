@@ -27,10 +27,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -69,11 +65,4 @@ body {
     #6d6d6d -78.47%,
     #11101d 91.61%
   );
-}
-
-.card {
-  background: var(--surface-card);
-  /* padding: 2rem; */
-  border-radius: 10px;
-  /* margin-bottom: 1rem; */
 }
