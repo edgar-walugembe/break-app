@@ -20,9 +20,9 @@ const SetPassword = () => {
   return (
     <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h2 className="text-center font-extrabold text-[35px] text-blue-500">
+        <h3 className="text-center font-extrabold text-[35px] text-blue-500">
           Set A Password for Your Account
-        </h2>
+        </h3>
       </div>
 
       <div className="content flex justify-evenly">
@@ -54,11 +54,10 @@ const SetPassword = () => {
               // onSubmit={}
               // autoComplete="true"
               >
-                {/* <p>Login if you already set your password</p> */}
+                <p>Welcome! set your password</p>
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="username">
-                      {/* <Form.Label>UserName</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="username"
@@ -78,7 +77,6 @@ const SetPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="firstPassword">
-                      {/* <Form.Label>Enter Password</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="firstPassword"
@@ -98,7 +96,6 @@ const SetPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="secondPassword">
-                      {/* <Form.Label>Confirm Password</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="secondPassword"
