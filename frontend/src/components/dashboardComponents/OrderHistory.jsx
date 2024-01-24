@@ -10,6 +10,7 @@ import { ProductService } from "../../service/ProductService";
 //toast imports
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 const notify = () => {
   toast.success("let's chat");
 };
@@ -33,7 +34,7 @@ const OrderHistory = () => {
       <img
         src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
         alt={product.image}
-        className="w-6rem shadow-2 border-round"
+        className="w-[3rem] h-[3rem] shadow rounded"
       />
     );
   };
@@ -82,13 +83,22 @@ const OrderHistory = () => {
   } products.`;
 
   return (
-    <div className="grid">
-      <div className="card col-12 md:col-6 lg:col-3">
+    <div className="flex flex-col">
+      <div className={`rounded button-yellow mb-1 self-end text-[14px]`}>
+        <Link
+          to="/Admin/Dashboard/users/"
+          className="flex justify-evenly w-full p-2"
+        >
+          <span className="text-black">Add New Product</span>
+        </Link>
+      </div>
+
+      <div className="card">
         <DataTable
           value={products}
           header={header}
           footer={footer}
-          tableStyle={{ minWidth: "60rem", minHeight: "600px" }}
+          tableStyle={{ minWidth: "60rem" }}
         >
           <Column field="name" header="Name"></Column>
           <Column header="Image" body={imageBodyTemplate}></Column>
@@ -98,11 +108,11 @@ const OrderHistory = () => {
             body={priceBodyTemplate}
           ></Column>
           <Column field="category" header="Category"></Column>
-          <Column
+          {/* <Column
             field="rating"
             header="Reviews"
             body={ratingBodyTemplate}
-          ></Column>
+          ></Column> */}
           <Column header="Status" body={statusBodyTemplate}></Column>
         </DataTable>
       </div>

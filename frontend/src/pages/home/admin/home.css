@@ -9,6 +9,7 @@
     .menuSpan {
       background-color: yellow;
       position: relative;
+      font-size: 14px;
 
       a {
         text-decoration: none;
@@ -38,15 +39,12 @@
     padding: 5px 10px;
   }
 
-  .highlight {
-    padding: 2px 5px;
-    background-color: #272822;
-    border-radius: 20px;
-    height: 80px;
+  .button-yellow {
+    background-color: yellow;
+    width: 250px;
 
-    .item {
-      padding: 2px 5px;
-      background-color: yellow;
+    a {
+      text-decoration: none;
     }
   }
 }
