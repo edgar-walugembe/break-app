@@ -12,6 +12,9 @@ const notify = () => {
   toast.success("Password has been reset successfully !");
 };
 
+//image imports
+import { logo_spin } from "../../assets";
+
 const ForgotPassword = () => {
   const { Formik } = formik;
 
@@ -24,12 +27,20 @@ const ForgotPassword = () => {
   return (
     <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h1 className="text-center font-extrabold text-[35px] text-blue-500">
-          Set New Password for Your Account
-        </h1>
+        <h3 className="text-center font-extrabold text-[35px] text-blue-500">
+          SET NEW PASSWORD FOR YOUR ACCOUNT
+        </h3>
       </div>
 
       <div className="content flex justify-evenly">
+        <div className={`img items-center flex justify-center`}>
+          <img
+            src={logo_spin}
+            alt="breakfast"
+            className="h-[140px] w-[140px] rounded-full animate-spin animate-spin-slow"
+          />
+        </div>
+
         <div className="form text-blue-500 p-2">
           <Formik
             validationSchema={schema}
@@ -53,12 +64,12 @@ const ForgotPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="username">
-                      <Form.Label>UserName</Form.Label>
+                      {/* <Form.Label>UserName</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="username"
                         type="text"
-                        placeholder="Enter Username"
+                        placeholder="Username"
                         value={values.username}
                         onChange={handleChange}
                         isInvalid={!!errors.username}
@@ -73,12 +84,12 @@ const ForgotPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="email">
-                      <Form.Label>E-mail</Form.Label>
+                      {/* <Form.Label>E-mail</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="email"
                         type="text"
-                        placeholder="Enter E-mail."
+                        placeholder="E-mail."
                         value={values.email}
                         onChange={handleChange}
                         isInvalid={!!errors.email}
@@ -93,7 +104,7 @@ const ForgotPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="firstPassword">
-                      <Form.Label>Enter New Password</Form.Label>
+                      {/* <Form.Label>Enter New Password</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="firstPassword"
@@ -113,7 +124,7 @@ const ForgotPassword = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-2" controlId="secondPassword">
-                      <Form.Label>Confirm New Password</Form.Label>
+                      {/* <Form.Label>Confirm New Password</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="secondPassword"
@@ -134,7 +145,15 @@ const ForgotPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
-            <Button onClick={notify} variant="primary" type="button" size="sm">
+            <div className={`rounded menuSpan`}>
+              <Link to="" className="flex justify-evenly w-full p-2 ">
+                <span className="text-black text-[14px]" onClick={notify}>
+                  Save Password
+                </span>
+              </Link>
+            </div>
+
+            {/* <Button onClick={notify} variant="primary" type="button" size="sm">
               Save New Password
             </Button>
 
@@ -147,7 +166,7 @@ const ForgotPassword = () => {
               >
                 Back to Login
               </Button>
-            </Link>
+            </Link>*/}
           </div>
         </div>
       </div>

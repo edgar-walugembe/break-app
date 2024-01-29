@@ -24,6 +24,7 @@ import {
   Notification,
   Orders,
   OrderHistory,
+  ProductList,
   SetPassword,
   UserList,
   UserSettings,
@@ -75,14 +76,32 @@ const App = () => {
             {
               path: "/Admin/Dashboard/orders",
               element: <Order />,
+              children: [
+                {
+                  path: "/Admin/Dashboard/orders/all",
+                  element: <OrderHistory />,
+                },
+              ],
             },
             {
               path: "/Admin/Dashboard/users",
               element: <User />,
+              children: [
+                {
+                  path: "/Admin/Dashboard/users/all",
+                  element: <UserList />,
+                },
+              ],
             },
             {
               path: "/Admin/Dashboard/products",
               element: <Product />,
+              children: [
+                {
+                  path: "/Admin/Dashboard/products/all",
+                  element: <ProductList />,
+                },
+              ],
             },
             {
               path: "/Admin/Dashboard/finances",
@@ -133,8 +152,14 @@ const App = () => {
               element: <FoodMenu />,
             },
             {
-              path: "/User/home/orders/:id",
-              element: <UserHistory />,
+              path: "/User/home/orders/",
+              element: <Order />,
+              children: [
+                {
+                  path: "/User/home/orders/:id",
+                  element: <UserHistory />,
+                },
+              ],
             },
             {
               path: "/User/home/finances/:id",

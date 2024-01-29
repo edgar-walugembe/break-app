@@ -13,6 +13,7 @@ import Notification from "./Notification";
 import UserSettings from "./UserSettings.jsx";
 import UserAccount from "./UserAccount.jsx";
 import Debt from "./Debt.jsx";
+import ProductList from "./ProductList";
 
 export {
   AddProduct,
@@ -26,6 +27,7 @@ export {
   Notification,
   Orders,
   OrderHistory,
+  ProductList,
   SetPassword,
   UserAccount,
   UserList,
