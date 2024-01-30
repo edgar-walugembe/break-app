@@ -22,7 +22,7 @@
       }
     }
 
-    .menuSpan#active a::after {
+    .menuSpan.active a::after {
       width: 8px;
       height: 8px;
     }

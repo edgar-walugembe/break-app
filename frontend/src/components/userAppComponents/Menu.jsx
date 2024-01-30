@@ -1,28 +1,5 @@
-// /* eslint-disable no-unused-vars */
-// import React from "react";
-
-// //styles
-// import styles, { layout } from "../../style";
-
-// //icons
-// import { LuPlusCircle } from "react-icons/lu";
-// import { MdOutlineExposurePlus1, MdOutlineExposurePlus2 } from "react-icons/md";
-
-// const Menu = () => {
-//   return (
-//     <section id="features" className={layout.section}>
-//       <div className={layout.sectionInfo}>
-//         <h2 className="text-white">Available Snacks</h2>
-//       </div>
-//       ;
-//     </section>
-//   );
-// };
-
-// export default Menu;
-
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -35,14 +12,15 @@ import { IoFastFood, IoCartOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 
 const Menu = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleActive = (divId) => {
+    setIsActive(divId === isActive ? null : divId);
+  };
+
   return (
     <div className={`menu h-full w-[250px] flex flex-col justify-between`}>
-      <div className="items-center flex justify-center mt-2">
-        {/* <Link to="/User/home/">
-          <img src={logo} alt="app_logo" className="h-[35px]" />
-          <img src={favicon} alt="app_logo" className="h-[35px]" />
-        </Link> */}
-
+      <div className="items-center flex justify-center mt-4">
         <Link to="/User/home/">
           <img
             src={logo}
@@ -61,7 +39,10 @@ const Menu = () => {
       </div>
 
       <div className="flex flex-col justify-between gap-5 ">
-        <div className={`rounded menuSpan`} id="active">
+        <div
+          className={`rounded menuSpan ${isActive === 1 ? "active" : ""}`}
+          onClick={() => toggleActive(1)}
+        >
           <Link
             to="/User/home/orders/:id/"
             className="flex flex-col justify-center items-center w-full p-2"
@@ -73,7 +54,10 @@ const Menu = () => {
           </Link>
         </div>
 
-        <div className={`rounded menuSpan`}>
+        <div
+          className={`rounded menuSpan ${isActive === 2 ? "active" : ""}`}
+          onClick={() => toggleActive(2)}
+        >
           <Link
             to="/User/home/food_menu/"
             className="flex flex-col justify-center items-center w-full p-2"
@@ -85,7 +69,10 @@ const Menu = () => {
           </Link>
         </div>
 
-        <div className={`rounded menuSpan`}>
+        <div
+          className={`rounded menuSpan ${isActive === 3 ? "active" : ""}`}
+          onClick={() => toggleActive(3)}
+        >
           <Link
             to="/User/home/finances/:id/"
             className="flex flex-col justify-center items-center w-full p-2"
