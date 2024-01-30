@@ -12,7 +12,7 @@ import { IoFastFood, IoCartOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 
 const Menu = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(1);
 
   const toggleActive = (divId) => {
     setIsActive(divId === isActive ? null : divId);
