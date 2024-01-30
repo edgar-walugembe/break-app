@@ -2,14 +2,10 @@
   height: 100vh;
 
   .menu {
-    background-color: #000;
     padding: 0px 20px;
     border-right: 4px solid yellow;
 
     .menuSpan {
-      background-color: yellow;
-      position: relative;
-
       a {
         text-decoration: none;
       }

@@ -133,7 +133,7 @@ const Navbar = () => {
                 className="flex items-center justify-center bg-yellow rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
-                <i className="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                <i className="pi pi-shopping-cart text-black text-xl"></i>
               </div>
             </div>
             <span className="text-success font-medium">01 new </span>

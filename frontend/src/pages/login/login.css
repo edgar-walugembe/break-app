@@ -1,7 +1,7 @@
 .login {
   color: blue;
   /* background-color: #272822; */
-  background-color: #000;
+  background-color: #29221d;
   width: 56%;
   /* height: 60%; */
   position: absolute;
@@ -11,7 +11,7 @@
   border-radius: 20px;
 
   .menuSpan {
-    background-color: yellow;
+    background-color: #f7b900;
     width: 250px;
 
     a {
@@ -35,7 +35,7 @@
     }
 
     .menuSpan {
-      background-color: yellow;
+      background-color: #f7b900;
       width: 100%;
 
       a {
