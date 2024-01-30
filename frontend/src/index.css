@@ -94,5 +94,8 @@ body {
     background-color: #f7b900;
     font-size: 14px;
     position: relative;
+
+    span {
+    }
   }
 }

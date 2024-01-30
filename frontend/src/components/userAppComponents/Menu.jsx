@@ -28,7 +28,7 @@ import { Button } from "react-bootstrap";
 
 //images imports
 
-import { logo, odyssey_logo } from "../../assets";
+import { favicon, favicon00, logo, odyssey_logo } from "../../assets";
 
 //icon imports
 import { IoFastFood, IoCartOutline } from "react-icons/io5";
@@ -38,8 +38,25 @@ const Menu = () => {
   return (
     <div className={`menu h-full w-[250px] flex flex-col justify-between`}>
       <div className="items-center flex justify-center mt-2">
-        <Link to="/User/home/">
+        {/* <Link to="/User/home/">
           <img src={logo} alt="app_logo" className="h-[35px]" />
+          <img src={favicon} alt="app_logo" className="h-[35px]" />
+        </Link> */}
+
+        <Link to="/User/home/">
+          <img
+            src={logo}
+            alt="app_logo"
+            className="h-[35px] hidden sm:inline"
+          />
+        </Link>
+
+        <Link to="/User/home/">
+          <img
+            src={favicon}
+            alt="app_logo"
+            className="h-[50px] inline sm:hidden"
+          />
         </Link>
       </div>
 
@@ -50,7 +67,9 @@ const Menu = () => {
             className="flex flex-col justify-center items-center w-full p-2"
           >
             <IoCartOutline className="w-[22px] h-[22px] text-black" />
-            <span className="text-black text-[14px]">Orders</span>
+            <span className="text-black text-[14px] hidden sm:inline-block">
+              Orders
+            </span>
           </Link>
         </div>
 
@@ -60,7 +79,9 @@ const Menu = () => {
             className="flex flex-col justify-center items-center w-full p-2"
           >
             <IoFastFood className="w-[22px] h-[22px] text-black" />
-            <span className="text-black text-[14px]">Food Menu</span>
+            <span className="text-black text-[14px] hidden sm:inline-block">
+              Food Menu
+            </span>
           </Link>
         </div>
 
@@ -70,14 +91,28 @@ const Menu = () => {
             className="flex flex-col justify-center items-center w-full p-2"
           >
             <GiCash className="w-[22px] h-[22px] text-black" />
-            <span className="text-black text-[14px]">Finances</span>
+            <span className="text-black text-[14px] hidden sm:inline-block">
+              Finances
+            </span>
           </Link>
         </div>
       </div>
 
-      <div className="mb-4 sm:mb-2">
+      <div className="mb-4 sm:mb-2 items-center flex justify-center">
         <Link to="https://www.odysseytech.co/">
-          <img src={odyssey_logo} alt="odyssey_logo" className={`h-[50px]`} />
+          <img
+            src={odyssey_logo}
+            alt="odyssey_logo"
+            className={`h-[50px] hidden sm:inline`}
+          />
+        </Link>
+
+        <Link to="https://www.odysseytech.co/">
+          <img
+            src={favicon00}
+            alt="odyssey_logo"
+            className={`h-[50px] inline sm:hidden`}
+          />
         </Link>
       </div>
     </div>
