@@ -37,21 +37,10 @@ const Login = () => {
 
   return (
     <div className={`login p-5  flex flex-col justify-evenly text-[12px]`}>
-      <div>
-        <h2 className="text-center font-bold text-[35px]">
-          MAKE YOUR ORDER NOW!
+      <div className="mb-2">
+        <h2 className="text-center text-white font-bold text-[35px]">
+          Make Your Order Now !
         </h2>
-      </div>
-
-      <div className="flex justify-end items-end p-2 gap-10">
-        <div className={`rounded menuSpan`}>
-          <Link
-            to="/password/reset_password"
-            className="flex justify-evenly w-full p-2 "
-          >
-            <span className="text-black text-[14px]">Forgot Password</span>
-          </Link>
-        </div>
       </div>
 
       <div className="content flex justify-evenly">
@@ -64,6 +53,19 @@ const Login = () => {
         </div>
 
         <div className="form p-2">
+          <div className="flex justify-end items-end p-2 gap-10">
+            <div className={`rounded forgotSpan mb-2`}>
+              <Link
+                to="/password/reset_password"
+                className="flex justify-evenly w-full p-2 "
+              >
+                <span className="text-black font-semibold text-[14px]">
+                  Forgot Password
+                </span>
+              </Link>
+            </div>
+          </div>
+
           <Formik
             validationSchema={schema}
             // onSubmit={saveDev}
@@ -83,9 +85,6 @@ const Login = () => {
               // onSubmit={}
               // autoComplete="true"
               >
-                <p className="font-bold italic">
-                  Login if you already set your password
-                </p>
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-3" controlId="username">
@@ -129,7 +128,7 @@ const Login = () => {
 
           <div className="flex gap-2 justify-center">
             <div
-              className={`rounded menuSpan`}
+              className={`rounded loginSpan`}
               onClick={() => handleLogin("admin")}
             >
               <Link
@@ -137,7 +136,9 @@ const Login = () => {
                 // to="/User/home"
                 className="flex justify-evenly w-full p-2 "
               >
-                <span className="text-black text-[14px]">Log In</span>
+                <span className="text-black font-semibold text-[14px]">
+                  Log In
+                </span>
               </Link>
             </div>
           </div>

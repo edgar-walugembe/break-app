@@ -35,9 +35,18 @@
     } 
     */
 
-    .menuSpan {
+    .loginSpan {
       background-color: #f7b900;
       width: 100%;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .forgotSpan {
+      background-color: #f7b900;
+      width: 250px;
 
       a {
         text-decoration: none;
