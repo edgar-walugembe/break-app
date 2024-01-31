@@ -28,11 +28,12 @@
       width: 40%;
     }
 
-    .form {
+    /* .form {
       border: 1px solid #fff;
       border-radius: 10px;
-      /* width: 60%; */
-    }
+      width: 60%; 
+    } 
+    */
 
     .menuSpan {
       background-color: #f7b900;

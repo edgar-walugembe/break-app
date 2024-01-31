@@ -122,20 +122,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Orders
                 </span>
                 <div className="text-black font-medium text-xl">30</div>
               </div>
               <div
-                className="flex items-center justify-center bg-light_cream rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <i className="pi pi-shopping-cart text-black text-xl"></i>
               </div>
             </div>
-            <span className="text-success font-medium">01 new </span>
-            <span className="text-secondary">since last visit</span>
+            <span className="text-black font-medium">01 new </span>
+            <span className="text-primary">since last visit</span>
           </div>
         </div>
 
@@ -143,20 +143,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Budget
                 </span>
                 <div className="text-black font-medium text-xl">$2000</div>
               </div>
               <div
-                className="flex items-center justify-center bg-light_cream rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <GiCash className="text-xl" />
               </div>
             </div>
-            {/* <span className="text-success font-medium"> </span> */}
-            <span className="text-secondary">daily budget</span>
+
+            <span className="text-primary">daily budget</span>
           </div>
         </div>
 
@@ -164,20 +164,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Products
                 </span>
                 <div className="text-black font-medium text-xl">40</div>
               </div>
               <div
-                className="flex items-center justify-center bg-light_cream rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <IoFastFood className="text-xl" />
               </div>
             </div>
-            <span className="text-success font-medium">4 </span>
-            <span className="text-secondary">newly registered</span>
+            <span className="text-black font-medium">4 </span>
+            <span className="text-primary">newly registered</span>
           </div>
         </div>
 
@@ -185,21 +185,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Debt
                 </span>
                 <div className="text-black font-medium text-xl">-$1000</div>
               </div>
               <div
-                className="flex items-center justify-center bg-light_cream rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
-                {/* <i className="pi pi-cash text-purple-500 text-xl"></i> */}
                 <GiCash className="text-xl" />
               </div>
             </div>
             <span className="text-success font-medium"> </span>
-            <span className="text-secondary">have a debt</span>
+            <span className="text-primary">have a debt</span>
           </div>
         </div>
       </div>

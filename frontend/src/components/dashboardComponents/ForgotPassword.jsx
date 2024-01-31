@@ -26,11 +26,7 @@ const ForgotPassword = () => {
   });
   return (
     <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
-      <div>
-        <h3 className="text-center font-extrabold text-[35px]">
-          SET NEW PASSWORD FOR YOUR ACCOUNT
-        </h3>
-      </div>
+      <div></div>
 
       <div className="content flex justify-evenly">
         <div className={`img items-center flex justify-center`}>
@@ -42,6 +38,10 @@ const ForgotPassword = () => {
         </div>
 
         <div className="form p-2">
+          <h3 className="text-center text-white text-[35px] mb-2">
+            Set New Password
+          </h3>
+
           <Formik
             validationSchema={schema}
             // onSubmit={saveDev}
@@ -63,8 +63,7 @@ const ForgotPassword = () => {
               >
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="username">
-                      {/* <Form.Label>UserName</Form.Label> */}
+                    <Form.Group className="mb-1" controlId="username">
                       <Form.Control
                         required={true}
                         name="username"
@@ -83,8 +82,7 @@ const ForgotPassword = () => {
 
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="email">
-                      {/* <Form.Label>E-mail</Form.Label> */}
+                    <Form.Group className="mb-1" controlId="email">
                       <Form.Control
                         required={true}
                         name="email"
@@ -103,8 +101,7 @@ const ForgotPassword = () => {
 
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="firstPassword">
-                      {/* <Form.Label>Enter New Password</Form.Label> */}
+                    <Form.Group className="mb-1" controlId="firstPassword">
                       <Form.Control
                         required={true}
                         name="firstPassword"
@@ -123,8 +120,7 @@ const ForgotPassword = () => {
 
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="secondPassword">
-                      {/* <Form.Label>Confirm New Password</Form.Label> */}
+                    <Form.Group className="mb-1" controlId="secondPassword">
                       <Form.Control
                         required={true}
                         name="secondPassword"
@@ -144,29 +140,17 @@ const ForgotPassword = () => {
             )}
           </Formik>
 
-          <div className="flex gap-2 justify-center">
+          <div className="flex gap-2 justify-center mt-2">
             <div className={`rounded menuSpan`}>
               <Link to="" className="flex justify-evenly w-full p-2 ">
-                <span className="text-black text-[14px]" onClick={notify}>
+                <span
+                  className="text-black font-semibold text-[14px]"
+                  onClick={notify}
+                >
                   Save Password
                 </span>
               </Link>
             </div>
-
-            {/* <Button onClick={notify} variant="primary" type="button" size="sm">
-              Save New Password
-            </Button>
-
-            <Link to="/">
-              <Button
-                // onClick={(event) => submitForm(event)}
-                variant="info"
-                type="button"
-                size="sm"
-              >
-                Back to Login
-              </Button>
-            </Link>*/}
           </div>
         </div>
       </div>

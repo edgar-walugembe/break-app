@@ -18,12 +18,10 @@ const SetPassword = () => {
   });
 
   return (
-    <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
-      <div>
-        <h3 className="text-center font-extrabold text-[35px]">
-          SET A PASSWORD FOR YOUR ACCOUNT
-        </h3>
-      </div>
+    <div
+      className={`login p-5 flex flex-col justify-evenly text-[12px] text-white`}
+    >
+      <div></div>
 
       <div className="content flex justify-evenly">
         <div className={`img items-center flex justify-center`}>
@@ -35,6 +33,10 @@ const SetPassword = () => {
         </div>
 
         <div className="form p-2">
+          <h3 className="text-center font-extrabold text-[35px] mb-2">
+            Welcome 😊😊! Set A Password
+          </h3>
+
           <Formik
             validationSchema={schema}
             // onSubmit={saveDev}
@@ -54,10 +56,9 @@ const SetPassword = () => {
               // onSubmit={}
               // autoComplete="true"
               >
-                <p>Welcome! set your password</p>
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="username">
+                    <Form.Group className="mb-1" controlId="username">
                       <Form.Control
                         required={true}
                         name="username"
@@ -76,7 +77,7 @@ const SetPassword = () => {
 
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="firstPassword">
+                    <Form.Group className="mb-1" controlId="firstPassword">
                       <Form.Control
                         required={true}
                         name="firstPassword"
@@ -95,7 +96,7 @@ const SetPassword = () => {
 
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-2" controlId="secondPassword">
+                    <Form.Group className="mb-1" controlId="secondPassword">
                       <Form.Control
                         required={true}
                         name="secondPassword"
@@ -115,12 +116,12 @@ const SetPassword = () => {
             )}
           </Formik>
 
-          <div className="flex gap-2 justify-center">
+          <div className="flex gap-2 justify-center mt-2">
             <div
               className={`rounded button-yellow self-end text-[14px] col-12`}
             >
               <Link to="/" className="flex justify-evenly w-full">
-                <span className="text-black">Save Password</span>
+                <span className="text-black font-semibold">Save Password</span>
               </Link>
             </div>
           </div>
