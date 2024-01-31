@@ -10,6 +10,7 @@ import "./login.css";
 import { logo_spin } from "../../assets";
 
 const Login = () => {
+  //form Handling
   const { Formik } = formik;
 
   const schema = yup.object().shape({
@@ -24,6 +25,16 @@ const Login = () => {
     // devRef.current.requestSubmit();
     // fetchDev();
   };
+
+  //route Handling
+  const handleLogin = (role) => {
+    if (role === "admin") {
+      window.location.href = "/Admin/Dashboard";
+    } else if (role === "user") {
+      window.location.href = "/User/home";
+    }
+  };
+
   return (
     <div className={`login p-5  flex flex-col justify-evenly text-[12px]`}>
       <div>
@@ -78,7 +89,6 @@ const Login = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-3" controlId="username">
-                      {/* <Form.Label>UserName</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="username"
@@ -89,7 +99,6 @@ const Login = () => {
                         isInvalid={!!errors.username}
                       />
                       <Form.Control.Feedback type="invalid">
-                        {/* UserName is required. */}
                         {errors.username}
                       </Form.Control.Feedback>
                     </Form.Group>
@@ -99,7 +108,6 @@ const Login = () => {
                 <Row>
                   <Col xs={12} md={12}>
                     <Form.Group className="mb-3" controlId="password">
-                      {/* <Form.Label>Password</Form.Label> */}
                       <Form.Control
                         required={true}
                         name="password"
@@ -110,7 +118,6 @@ const Login = () => {
                         isInvalid={!!errors.password}
                       />
                       <Form.Control.Feedback type="invalid">
-                        {/* password is required. */}
                         {errors.password}
                       </Form.Control.Feedback>
                     </Form.Group>
@@ -121,25 +128,15 @@ const Login = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center">
-            {/* <Link to="/home">
-              <Button
-                // onClick={(event) => submitForm(event)}
-                variant="primary"
-                type="button"
-                size="sm"
-                className="rounded-full px-10"
-              >
-                Log In
-              </Button>
-            </Link> */}
-
-            <div className={`rounded menuSpan`}>
+            <div
+              className={`rounded menuSpan`}
+              onClick={() => handleLogin("admin")}
+            >
               <Link
                 // to="/Admin/Dashboard"
-                to="/User/home"
+                // to="/User/home"
                 className="flex justify-evenly w-full p-2 "
               >
-                {/* <FaUsers className="w-[24px] h-[24px] text-black" /> */}
                 <span className="text-black text-[14px]">Log In</span>
               </Link>
             </div>
