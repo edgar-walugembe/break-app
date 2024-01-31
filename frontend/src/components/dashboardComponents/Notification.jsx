@@ -14,7 +14,12 @@ const Notification = () => {
         applicationIdentifier={"eDGCaSBCSaoC"}
       >
         <PopoverNotificationCenter colorScheme={"light"}>
-          {({ unseenCount }) => <NotificationBell unseenCount={unseenCount} />}
+          {({ unseenCount }) => (
+            <NotificationBell
+              unseenCount={unseenCount}
+              className="text-black"
+            />
+          )}
         </PopoverNotificationCenter>
       </NovuProvider>
     </div>

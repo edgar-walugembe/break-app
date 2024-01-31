@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "blue",
+        primary: "cyan",
         secondary: "gray",
         dimWhite: "#242424",
         dimBlue: "rgba(9, 151, 124, 0.1)",
@@ -13,6 +13,7 @@ export default {
       },
       backgroundColor: {
         yellow: "yellow",
+        cyan: "cyan",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

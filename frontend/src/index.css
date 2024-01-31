@@ -42,7 +42,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: yellow;
+  background-color: cyan;
 }
 
 @keyframes spin-slow {
@@ -88,10 +88,10 @@ body {
 }
 
 .menu {
-  background-color: rgba(0, 0, 0, 0.568);
+  background-color: black;
 
   .menuSpan {
-    background-color: #fff;
+    background-color: cyan;
     font-size: 14px;
     position: relative;
 

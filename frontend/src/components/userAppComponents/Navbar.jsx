@@ -98,28 +98,26 @@ const Navbar = () => {
     <div className="surface-ground px-2 py-1 md:px-4 lg:px-6 ">
       <div className="grid">
         <div className="flex justify-between col-12">
-          <div className="flex flex-col">
-            <h5 className="text-blue-900">Hello, {Username}</h5>
-            <p className="font-semibold text-blue-500 text-[12px]">
-              {formattedDate}
-            </p>
+          <div className="flex flex-col text-black">
+            <h5 className="">Hello, {Username}</h5>
+            <p className="font-semibold text-[12px]">{formattedDate}</p>
           </div>
 
           <div className="flex gap-4 items-center">
             <Link to="/User/home/user_account/:id">
-              <FaUser className="w-[20px] h-[20px] text-primary" />
+              <FaUser className="w-[20px] h-[20px] text-black" />
             </Link>
 
             <Notification className="w-[20px] h-[20px]" />
 
             <Link to="/User/home/user_settings/:id">
-              <IoSettings className="w-[20px] h-[20px] text-primary" />
+              <IoSettings className="w-[20px] h-[20px] text-black" />
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="grid">
+      <div className="grid surface-ground">
         <div className="col-12 md:col-6 lg:col-3">
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
@@ -130,7 +128,7 @@ const Navbar = () => {
                 <div className="text-black font-medium text-xl">30</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-light_cream rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <i className="pi pi-shopping-cart text-black text-xl"></i>
@@ -151,7 +149,7 @@ const Navbar = () => {
                 <div className="text-black font-medium text-xl">$2000</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-light_cream rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <GiCash className="text-xl" />
@@ -172,7 +170,7 @@ const Navbar = () => {
                 <div className="text-black font-medium text-xl">40</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-light_cream rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <IoFastFood className="text-xl" />
@@ -193,7 +191,7 @@ const Navbar = () => {
                 <div className="text-black font-medium text-xl">-$1000</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-light_cream rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 {/* <i className="pi pi-cash text-purple-500 text-xl"></i> */}
