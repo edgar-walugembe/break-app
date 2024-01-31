@@ -19,7 +19,9 @@ const Menu = () => {
   };
 
   return (
-    <div className={`menu h-full w-[250px] flex flex-col justify-between`}>
+    <div
+      className={`menu w-[250px] h-full fixed flex flex-col justify-between`}
+    >
       <div className="items-center flex justify-center mt-3">
         <Link to="/User/home/">
           <img

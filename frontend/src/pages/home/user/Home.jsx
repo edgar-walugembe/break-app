@@ -6,10 +6,10 @@ import "./home.css";
 
 const Home00 = () => {
   return (
-    <section className="home">
-      <div className="flex h-full">
+    <section className="home h-full">
+      <div className="flex">
         <Menu />
-        <div className="h-full w-full">
+        <div className="w-full ml-[250px]">
           <Navbar />
 
           <div className="outlet">

@@ -100,31 +100,31 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Date Of order",
+    label: "OrderId",
   },
   {
     id: "calories",
     numeric: true,
     disablePadding: false,
-    label: "Calories",
+    label: "Date Of order",
   },
   {
     id: "fat",
     numeric: true,
     disablePadding: false,
-    label: "Fat (g)",
+    label: "Status",
   },
   {
     id: "carbs",
     numeric: true,
     disablePadding: false,
-    label: "Carbs (g)",
+    label: "Debt Amount",
   },
   {
     id: "protein",
     numeric: true,
     disablePadding: false,
-    label: "Protein (g)",
+    label: "Time Of Order",
   },
 ];
 

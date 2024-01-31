@@ -117,9 +117,7 @@ const SetPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center mt-2">
-            <div
-              className={`rounded button-yellow self-end text-[14px] col-12`}
-            >
+            <div className={`rounded loginSpan self-end text-[14px] col-12`}>
               <Link to="/" className="flex justify-evenly w-full">
                 <span className="text-black font-semibold">Save Password</span>
               </Link>

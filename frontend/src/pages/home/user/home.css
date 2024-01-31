@@ -1,6 +1,4 @@
 .home {
-  height: 100vh;
-
   .menu {
     padding: 0px 20px;
     border-right: 4px solid cyan;
@@ -32,17 +30,5 @@
 
   .outlet {
     padding: 5px 10px;
-  }
-
-  .highlight {
-    padding: 2px 5px;
-    background-color: #272822;
-    border-radius: 20px;
-    height: 80px;
-
-    .item {
-      padding: 2px 5px;
-      background-color: yellow;
-    }
   }
 }

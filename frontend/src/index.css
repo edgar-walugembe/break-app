@@ -67,15 +67,6 @@ body {
   );
 }
 
-.button-yellow {
-  background-color: #f7b900;
-  width: 250px;
-
-  a {
-    text-decoration: none;
-  }
-}
-
 .login {
   color: #000;
   background-color: rgba(0, 0, 0, 0.568);

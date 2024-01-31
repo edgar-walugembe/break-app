@@ -141,7 +141,7 @@ const ForgotPassword = () => {
           </Formik>
 
           <div className="flex gap-2 justify-center mt-2">
-            <div className={`rounded menuSpan`}>
+            <div className={`rounded loginSpan`}>
               <Link to="" className="flex justify-evenly w-full p-2 ">
                 <span
                   className="text-black font-semibold text-[14px]"
