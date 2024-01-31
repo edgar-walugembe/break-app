@@ -27,7 +27,7 @@ const ForgotPassword = () => {
   return (
     <div className={`login p-5 flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h3 className="text-center font-extrabold text-[35px] text-blue-500">
+        <h3 className="text-center font-extrabold text-[35px]">
           SET NEW PASSWORD FOR YOUR ACCOUNT
         </h3>
       </div>
@@ -41,7 +41,7 @@ const ForgotPassword = () => {
           />
         </div>
 
-        <div className="form text-blue-500 p-2">
+        <div className="form p-2">
           <Formik
             validationSchema={schema}
             // onSubmit={saveDev}

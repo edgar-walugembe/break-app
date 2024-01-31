@@ -15,7 +15,7 @@ const Menu = () => {
     <div
       className={`menu w-[250px] h-full fixed flex flex-col justify-between`}
     >
-      <div className="items-center flex justify-center mt-2">
+      <div className="items-center flex justify-center mt-3">
         <Link to="/Admin/Dashboard/">
           <img src={logo} alt="app_logo" className="h-[35px]" />
         </Link>

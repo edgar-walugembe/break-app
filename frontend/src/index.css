@@ -77,8 +77,8 @@ body {
 }
 
 .login {
-  color: blue;
-  background-color: #29221d;
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.568);
   width: 56%;
   position: absolute;
   top: 50%;
@@ -88,10 +88,10 @@ body {
 }
 
 .menu {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.568);
 
   .menuSpan {
-    background-color: #f7b900;
+    background-color: #fff;
     font-size: 14px;
     position: relative;
 

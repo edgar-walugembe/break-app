@@ -38,7 +38,7 @@ const Login = () => {
   return (
     <div className={`login p-5  flex flex-col justify-evenly text-[12px]`}>
       <div>
-        <h2 className="text-center font-extrabold text-[35px] text-primary">
+        <h2 className="text-center font-bold text-[35px]">
           MAKE YOUR ORDER NOW!
         </h2>
       </div>
@@ -63,7 +63,7 @@ const Login = () => {
           />
         </div>
 
-        <div className="form text-blue-500 p-2">
+        <div className="form p-2">
           <Formik
             validationSchema={schema}
             // onSubmit={saveDev}
@@ -83,7 +83,7 @@ const Login = () => {
               // onSubmit={}
               // autoComplete="true"
               >
-                <p className="font-bold italic text-yellow-400">
+                <p className="font-bold italic">
                   Login if you already set your password
                 </p>
                 <Row>
