@@ -1,17 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {
-  AddProduct,
-  AddUser,
-  EditProduct,
-  EditUser,
-  ForgotPassword,
-  Menu,
-  Navbar,
-  Orders,
-  OrderHistory,
-  SetPassword,
-  UserList,
-} from "../../../components/dashboardComponents";
+import { Menu, Navbar } from "../../../components/dashboardComponents";
 import { Outlet } from "react-router-dom";
 import "./home.css";
 

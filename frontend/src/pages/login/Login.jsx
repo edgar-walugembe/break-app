@@ -52,8 +52,8 @@ const Login = () => {
           />
         </div>
 
-        <div className="form p-2 w-full">
-          <div className="flex justify-end items-end p-2 gap-10">
+        <div className="form py-2 w-full">
+          <div className="flex justify-end items-end p-0 gap-10">
             <div className={`rounded forgotSpan mb-2`}>
               <Link
                 to="/password/reset_password/:id"

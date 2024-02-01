@@ -13,7 +13,7 @@ const notify = () => {
 };
 
 //image imports
-import { logo_spin } from "../../assets";
+import { logo_spin } from "../assets";
 
 const ForgotPassword = () => {
   const { Formik } = formik;

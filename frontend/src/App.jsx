@@ -17,20 +17,19 @@ import {
   Finances,
   Home00,
 } from "./pages";
+import { ForgotPassword, SetPassword } from "./components";
 import {
   AddProduct,
   AddUser,
   Debt,
   EditProduct,
   EditUser,
-  ForgotPassword,
   Menu,
   Navbar,
   Notification,
   Orders,
   OrderHistory,
   ProductList,
-  SetPassword,
   UserList,
   UserSettings,
   UserAccount,

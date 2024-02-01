@@ -6,7 +6,7 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //image imports
-import { logo_spin } from "../../assets";
+import { logo_spin } from "../assets";
 
 const SetPassword = () => {
   const { Formik } = formik;
