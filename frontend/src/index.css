@@ -100,8 +100,11 @@ body {
     height: 320px !important;
 
     .card.img {
+      width: 220px;
+      height: 220px;
       object-fit: contain;
       object-position: center;
+      /* overflow: hidden; */
     }
 
     .card.title {

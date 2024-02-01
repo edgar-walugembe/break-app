@@ -62,7 +62,7 @@ export const cards = [
   {
     id: "7",
     icon: plus,
-    img: pani00,
+    img: pani,
     title: "Pancake",
     price: "100",
   },

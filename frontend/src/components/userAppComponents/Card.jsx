@@ -8,19 +8,14 @@ const Card = ({ title, id, price, img }) => {
     <div className="col-12 md:col-6 lg:col-4">
       <div className="card p-2 flex flex-col items-center justify-center rounded bg-white">
         <div className="card.img">
-          <img src={img} alt={title} className="w-full" />
+          <img src={img} alt={title} className="w-full h-[200px]" />
         </div>
 
-        <div className="card.title">
-          <h3 className="text-center font-semibold text-[16px]">{title}</h3>
-        </div>
+        <h3 className="text-center font-semibold text-[16px]">{title}</h3>
 
-        <div className="card.price flex  justify-between">
-          <span>Shs.{price}</span>
-          <span>
-            <FiPlusCircle className="text-xl text-black" />
-          </span>
-        </div>
+        <span>Shs.{price}</span>
+
+        <FiPlusCircle className="text-xl text-yellow" />
       </div>
     </div>
   );
