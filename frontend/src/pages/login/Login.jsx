@@ -52,7 +52,7 @@ const Login = () => {
           />
         </div>
 
-        <div className="form p-2">
+        <div className="form p-2 w-full">
           <div className="flex justify-end items-end p-2 gap-10">
             <div className={`rounded forgotSpan mb-2`}>
               <Link
@@ -66,65 +66,67 @@ const Login = () => {
             </div>
           </div>
 
-          <Formik
-            validationSchema={schema}
-            // onSubmit={saveDev}
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              gender: "",
-              dob: "",
-            }}
-          >
-            {({ handleChange, values, touched, errors }) => (
-              <Form
-              // noValidate
-              // validated={validated}
-              // ref={}
-              // onSubmit={}
-              // autoComplete="true"
-              >
-                <Row>
-                  <Col xs={12} md={12}>
-                    <Form.Group className="mb-3" controlId="username">
-                      <Form.Control
-                        required={true}
-                        name="username"
-                        type="text"
-                        placeholder="Username"
-                        value={values.username}
-                        onChange={handleChange}
-                        isInvalid={!!errors.username}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.username}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Col>
-                </Row>
+          <div className="mx-1">
+            <Formik
+              validationSchema={schema}
+              // onSubmit={saveDev}
+              initialValues={{
+                firstName: "",
+                lastName: "",
+                email: "",
+                gender: "",
+                dob: "",
+              }}
+            >
+              {({ handleChange, values, touched, errors }) => (
+                <Form
+                // noValidate
+                // validated={validated}
+                // ref={}
+                // onSubmit={}
+                // autoComplete="true"
+                >
+                  <Row>
+                    <Col xs={12} md={12}>
+                      <Form.Group className="mb-3" controlId="username">
+                        <Form.Control
+                          required={true}
+                          name="username"
+                          type="text"
+                          placeholder="Username"
+                          value={values.username}
+                          onChange={handleChange}
+                          isInvalid={!!errors.username}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.username}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-                <Row>
-                  <Col xs={12} md={12}>
-                    <Form.Group className="mb-3" controlId="password">
-                      <Form.Control
-                        required={true}
-                        name="password"
-                        type="password"
-                        placeholder="Password."
-                        value={values.password}
-                        onChange={handleChange}
-                        isInvalid={!!errors.password}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.password}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Col>
-                </Row>
-              </Form>
-            )}
-          </Formik>
+                  <Row>
+                    <Col xs={12} md={12}>
+                      <Form.Group className="mb-3" controlId="password">
+                        <Form.Control
+                          required={true}
+                          name="password"
+                          type="password"
+                          placeholder="Password."
+                          value={values.password}
+                          onChange={handleChange}
+                          isInvalid={!!errors.password}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.password}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                </Form>
+              )}
+            </Formik>
+          </div>
 
           <div className="flex gap-2 justify-center">
             <div

@@ -69,8 +69,7 @@ body {
 
 .login {
   color: #000;
-  /* background-color: rgba(0, 0, 0, 0.568); */
-  background-color: skyblue;
+  background-color: rgba(0, 0, 0, 0.568);
   width: 56%;
   position: absolute;
   top: 50%;
