@@ -24,22 +24,20 @@ const Navbar = () => {
     <div className="surface-ground px-2 py-1 md:px-4 lg:px-6 ">
       <div className="grid">
         <div className="flex justify-between col-12">
-          <div className="flex flex-col">
-            <h5 className="text-blue-900">Hello, Admin</h5>
-            <p className="font-semibold text-primary text-[12px]">
-              {formattedDate}
-            </p>
+          <div className="flex flex-col text-black">
+            <h5 className="">Hello, Admin</h5>
+            <p className="font-semibold text-[12px]">{formattedDate}</p>
           </div>
 
           <div className="flex gap-4 items-center">
             <Link to="/Admin/Dashboard/user_account/">
-              <FaUser className="w-[20px] h-[20px] text-primary" />
+              <FaUser className="w-[20px] h-[20px] text-black" />
             </Link>
 
-            <Notification className="w-[20px] h-[20px]" />
+            <Notification className="w-[20px] h-[20px] text-black" />
 
             <Link to="/Admin/Dashboard/user_settings/">
-              <IoSettings className="w-[20px] h-[20px] text-primary" />
+              <IoSettings className="w-[20px] h-[20px] text-black" />
             </Link>
           </div>
         </div>
@@ -50,20 +48,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Orders
                 </span>
                 <div className="text-black font-medium text-xl">152</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <IoCartOutline className="text-xl" />
               </div>
             </div>
-            <span className="text-primary font-medium">24 new </span>
-            <span className="text-secondary">since yesterday</span>
+            <span className="text-black font-medium">24 new </span>
+            <span className="text-primary">since yesterday</span>
           </div>
         </div>
 
@@ -71,20 +69,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Budget
                 </span>
                 <div className="text-black font-medium text-xl">$20,000</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <GiCash className="text-xl" />
               </div>
             </div>
-            <span className="text-primary font-medium">-$6000 </span>
-            <span className="text-secondary">since last week</span>
+            <span className="text-black font-medium">-$6000 </span>
+            <span className="text-primary">since last week</span>
           </div>
         </div>
 
@@ -92,20 +90,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Users
                 </span>
                 <div className="text-black font-medium text-xl">120</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
                 <FaUsers className="text-xl" />
               </div>
             </div>
-            <span className="text-primary font-medium">12 </span>
-            <span className="text-secondary">newly registered</span>
+            <span className="text-black font-medium">12 </span>
+            <span className="text-primary">newly registered</span>
           </div>
         </div>
 
@@ -113,21 +111,20 @@ const Navbar = () => {
           <div className="surface-card shadow p-3 rounded">
             <div className="flex justify-between mb-3">
               <div>
-                <span className="block text-secondary font-medium mb-3">
+                <span className="block text-primary font-medium mb-3">
                   Products
                 </span>
                 <div className="text-black font-medium text-xl">40</div>
               </div>
               <div
-                className="flex items-center justify-center bg-yellow rounded"
+                className="flex items-center justify-center bg-cyan rounded"
                 style={{ width: "2.5rem", height: "2.5rem" }}
               >
-                {/* <i className="pi pi-cash text-purple-500 text-xl"></i> */}
                 <IoFastFood className="text-xl" />
               </div>
             </div>
-            <span className="text-primary font-medium">06 </span>
-            <span className="text-secondary">newly added</span>
+            <span className="text-black font-medium">06 </span>
+            <span className="text-primary">newly added</span>
           </div>
         </div>
       </div>

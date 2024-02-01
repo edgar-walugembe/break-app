@@ -37,7 +37,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -69,7 +69,8 @@ body {
 
 .login {
   color: #000;
-  background-color: rgba(0, 0, 0, 0.568);
+  /* background-color: rgba(0, 0, 0, 0.568); */
+  background-color: skyblue;
   width: 56%;
   position: absolute;
   top: 50%;
