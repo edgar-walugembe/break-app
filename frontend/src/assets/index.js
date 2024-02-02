@@ -12,7 +12,7 @@ import logo from "./break-fast-high-resolution-logo-white-transparent.png";
 import logo_spin from "./home.png";
 import menu from "./menu.svg";
 import odyssey_logo from "./odyssey.png";
-import pani from "./pancakes-removebg-preview.png";
+import pani from "./facebook-event-cover-1920x1080.jpg";
 import pani00 from "./pankake.png";
 import plus from "./plus.svg";
 import rolex from "./rolex.jpg";

@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         cyan: "cyan",
+        amber: "#f7b900",
         secondary: "gray",
         dimWhite: "#242424",
         dimBlue: "rgba(9, 151, 124, 0.1)",
@@ -14,6 +15,7 @@ export default {
       backgroundColor: {
         yellow: "yellow",
         cyan: "cyan",
+        amber: "#f7b900",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

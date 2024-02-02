@@ -96,22 +96,21 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(220px, auto));
   grid-area: 1.5rem;
   .card {
-    background: #f7b900;
-    height: 320px !important;
+    position: relative;
 
     .card.img {
       width: 220px;
       height: 220px;
       object-fit: contain;
       object-position: center;
-      /* overflow: hidden; */
     }
 
-    .card.title {
-      padding: 40px 0 10px;
-    }
-
-    .card.price {
-    }
+    /* .icon.box {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 7px 10px;
+      border-radius: 0 0.5rem 0 0.5rem;
+    } */
   }
 }
