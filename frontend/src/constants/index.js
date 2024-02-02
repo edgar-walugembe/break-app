@@ -43,7 +43,7 @@ export const cards = [
     icon: plus,
     img: rolex,
     title: "Rolex",
-    price: ["1000", "1500", "2000"],
+    price: ["@1000", " @1500", " @2000"],
   },
   {
     id: "5",

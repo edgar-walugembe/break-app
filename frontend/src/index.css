@@ -55,7 +55,7 @@ body {
 }
 
 .animate-spin-slow {
-  animation: spin-slow 6s linear infinite;
+  animation: spin-slow 50s linear infinite;
 }
 
 .bg-black-gradient {
@@ -85,14 +85,10 @@ body {
     background-color: cyan;
     font-size: 14px;
     position: relative;
-
-    /* span {
-    } */
   }
 }
 
 .cards {
-  /* grid-template-columns: repeat(3, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(220px, auto));
   grid-area: 1.5rem;
   .card {
@@ -104,13 +100,5 @@ body {
       object-fit: contain;
       object-position: center;
     }
-
-    /* .icon.box {
-      position: absolute;
-      right: 0;
-      top: 0;
-      padding: 7px 10px;
-      border-radius: 0 0.5rem 0 0.5rem;
-    } */
   }
 }
