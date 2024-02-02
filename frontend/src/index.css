@@ -93,12 +93,24 @@ body {
   grid-area: 1.5rem;
   .card {
     position: relative;
+    border: 1px solid cyan;
+    cursor: pointer;
 
     .card.img {
       width: 220px;
       height: 220px;
       object-fit: contain;
       object-position: center;
+    }
+
+    span {
+      position: relative;
+    }
+  }
+
+  .card:hover {
+    span {
+      border-bottom: 2px solid #1f1f1f;
     }
   }
 }
