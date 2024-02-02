@@ -138,7 +138,7 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
+      <TableRow className="bg-amber">
         <TableCell padding="checkbox">
           <Checkbox
             color="primary"

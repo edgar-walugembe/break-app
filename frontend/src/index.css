@@ -67,6 +67,11 @@ body {
   );
 }
 
+.outlet {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
 .login {
   color: #000;
   background-color: rgba(0, 0, 0, 0.568);
@@ -93,7 +98,6 @@ body {
   grid-area: 1.5rem;
   .card {
     position: relative;
-    border: 1px solid cyan;
     cursor: pointer;
 
     .card.img {
@@ -110,7 +114,8 @@ body {
 
   .card:hover {
     span {
-      border-bottom: 2px solid #1f1f1f;
+      /* border-bottom: 2px solid #1f1f1f; */
+      border-bottom: 2px solid #f7b900;
     }
   }
 }

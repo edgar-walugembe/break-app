@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 //images imports
-
 import { favicon, favicon00, logo, odyssey_logo } from "../../assets";
 
 //icon imports
 import { IoFastFood, IoCartOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 
-const Menu = () => {
+const Menu = ({ count, decreaseCount, increaseCount }) => {
+  //active State
   const [isActive, setIsActive] = useState(1);
 
   const toggleActive = (divId) => {
@@ -39,9 +40,16 @@ const Menu = () => {
         </Link>
       </div>
 
+      <div>
+        <button onClick={increaseCount}>Increase Count</button>
+        <button onClick={decreaseCount}>Decrease Count</button>
+      </div>
+
       <div className="flex flex-col justify-between gap-5 ">
         <div
-          className={`rounded menuSpan ${isActive === 1 ? "active" : ""}`}
+          className={`rounded flex items-center menuSpan ${
+            isActive === 1 ? "active" : ""
+          }`}
           onClick={() => toggleActive(1)}
         >
           <Link
@@ -53,6 +61,15 @@ const Menu = () => {
               Orders
             </span>
           </Link>
+
+          {count > 0 && (
+            <div
+              className="icon.box mr-4 px-1 flex items-center justify-center bg-white rounded"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            >
+              <span className="text-black font-semibold">{count}</span>
+            </div>
+          )}
         </div>
 
         <div
@@ -105,6 +122,12 @@ const Menu = () => {
       </div>
     </div>
   );
+};
+
+Menu.propTypes = {
+  count: PropTypes.number,
+  decreaseCount: PropTypes.func,
+  increaseCount: PropTypes.func,
 };
 
 export default Menu;
