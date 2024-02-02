@@ -12,6 +12,11 @@ const FoodMenu = ({ count, decreaseCount, increaseCount }) => {
         <h3>Snacks Available</h3>
       </div>
 
+      <div>
+        <button onClick={increaseCount}>Increase Count</button>
+        <button onClick={decreaseCount}>Decrease Count</button>
+      </div>
+
       <div className="grid cards">
         {cards.map((item) => (
           <Card

@@ -40,10 +40,10 @@ const Menu = ({ count, decreaseCount, increaseCount }) => {
         </Link>
       </div>
 
-      <div>
+      {/* <div>
         <button onClick={increaseCount}>Increase Count</button>
         <button onClick={decreaseCount}>Decrease Count</button>
-      </div>
+      </div> */}
 
       <div className="flex flex-col justify-between gap-5 ">
         <div

@@ -6,10 +6,9 @@ import { FiPlusCircle } from "react-icons/fi";
 
 const Card = ({ title, price, img, increaseCount }) => {
   //increase count Function
-  const handleIncreaseCount = () => {
-    debugger;
-    increaseCount();
-  };
+  // const handleIncreaseCount = () => {
+  //   increaseCount();
+  // };
 
   return (
     <div className="col-12 md:col-6 lg:col-4 relative">
@@ -31,7 +30,7 @@ const Card = ({ title, price, img, increaseCount }) => {
         <div
           className="icon.box absolute mt-0 mr-0 flex items-center justify-center bg-amber rounded"
           style={{ width: "2.5rem", height: "2.5rem" }}
-          onClick={handleIncreaseCount}
+          onClick={increaseCount}
         >
           <FiPlusCircle className="text-xl text-white font-semibold" />
         </div>
@@ -43,10 +42,7 @@ const Card = ({ title, price, img, increaseCount }) => {
 Card.propTypes = {
   title: PropTypes.string,
   id: PropTypes.number,
-  // price: PropTypes.number,
   img: PropTypes.string,
-  count: PropTypes.number,
-  decreaseCount: PropTypes.func,
   increaseCount: PropTypes.func,
 };
 
