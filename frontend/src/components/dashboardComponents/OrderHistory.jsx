@@ -89,7 +89,7 @@ function createData(id, name, product, price, status, timestamps) {
     if (status === "served") {
       return {
         background: "cyan",
-        color: "white",
+        color: "black",
       };
     } else if (status === "pending") {
       return {
