@@ -182,7 +182,7 @@ function createData(id, img, name, price, timestamps) {
       imagePath = cassava;
       break;
     case "chapati":
-      imagePath = chapati;
+      imagePath = chapati00;
       break;
     case "eggs":
       imagePath = eggs;
@@ -331,7 +331,8 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            // align={headCell.numeric ? "right" : "left"}
+            align="center"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -559,6 +560,7 @@ export default function EnhancedTable() {
                           id={labelId}
                           scope="row"
                           padding="none"
+                          align="center"
                         >
                           {row.id}
                         </TableCell>
@@ -571,9 +573,9 @@ export default function EnhancedTable() {
                             />
                           )}
                         </TableCell>
-                        <TableCell align="right">{row.name}</TableCell>
-                        <TableCell align="right">{row.price}</TableCell>
-                        <TableCell align="right">{row.timestamps}</TableCell>
+                        <TableCell align="center">{row.name}</TableCell>
+                        <TableCell align="center">{row.price}</TableCell>
+                        <TableCell align="center">{row.timestamps}</TableCell>
                       </TableRow>
                     );
                   })}

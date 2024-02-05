@@ -84,31 +84,68 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 
-function createData(id, name, calories, fat, carbs, protein) {
+function createData(id, name, product, price, status, timestamps) {
+  const orderStatus = (status) => {
+    if (status === "served") {
+      return {
+        background: "cyan",
+        color: "white",
+      };
+    } else if (status === "pending") {
+      return {
+        background: "#f7b900",
+        color: "white",
+      };
+    } else if (status === "declined") {
+      return {
+        background: "red",
+        color: "white",
+      };
+    } else {
+      return {
+        background: "transparent",
+        color: "black",
+      };
+    }
+  };
+
+  const { background, color } = orderStatus(status);
+
   return {
     id,
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    product,
+    price,
+    status,
+    background: background,
+    color: color,
+    timestamps,
   };
 }
 
+const date = new Date();
+const formattedDate = date.toLocaleDateString({
+  weekday: "numeric",
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  timestamps: "numeric",
+});
+
 const rows = [
-  createData(1, "Cupcake", 305, 3.7, 67, 4.3),
-  createData(2, "Donut", 452, 25.0, 51, 4.9),
-  createData(3, "Eclair", 262, 16.0, 24, 6.0),
-  createData(4, "Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData(5, "Gingerbread", 356, 16.0, 49, 3.9),
-  createData(6, "Honeycomb", 408, 3.2, 87, 6.5),
-  createData(7, "Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData(8, "Jelly Bean", 375, 0.0, 94, 0.0),
-  createData(9, "KitKat", 518, 26.0, 65, 7.0),
-  createData(10, "Lollipop", 392, 0.2, 98, 0.0),
-  createData(11, "Marshmallow", 318, 0, 81, 2.0),
-  createData(12, "Nougat", 360, 19.0, 9, 37.0),
-  createData(13, "Oreo", 437, 18.0, 63, 4.0),
+  createData(1, "edgar", "banana", 1000, "served", formattedDate),
+  createData(2, "sam", "samosa", 2000, "pending", formattedDate),
+  createData(3, "allan", "chapati", 600, "declined", formattedDate),
+  createData(4, "denno", "sausage", 1500, "pending", formattedDate),
+  createData(5, "peter", "rolex", 700, "declined", formattedDate),
+  createData(6, "paul", "rolex", 1600, "served", formattedDate),
+  createData(7, "robert", "pancakes", 1000, "pending", formattedDate),
+  createData(8, "sharon", "pancakes", 1500, "served", formattedDate),
+  createData(9, "daniel", "banana", 2000, "served", formattedDate),
+  createData(10, "hope", "shortcakes", 1000, "served", formattedDate),
+  createData(11, "aaron", "cassava", 1000, "pending", formattedDate),
+  createData(12, "aariela", "eggs", 2000, "pending", formattedDate),
+  createData(13, "leticia", "cassava", 1000, "declined", formattedDate),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -148,28 +185,28 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "OrderId",
-  },
-  {
-    id: "calories",
-    numeric: true,
-    disablePadding: false,
     label: "Order Owner",
   },
   {
-    id: "fat",
+    id: "product",
+    numeric: true,
+    disablePadding: false,
+    label: "Product Name",
+  },
+  {
+    id: "price",
+    numeric: true,
+    disablePadding: false,
+    label: "Total Price",
+  },
+  {
+    id: "status",
     numeric: true,
     disablePadding: false,
     label: "Status",
   },
   {
-    id: "carbs",
-    numeric: true,
-    disablePadding: false,
-    label: "Debt Amount",
-  },
-  {
-    id: "protein",
+    id: "timestamps",
     numeric: true,
     disablePadding: false,
     label: "Time Of Order",
@@ -206,7 +243,8 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            // align={headCell.numeric ? "right" : "left"}
+            align="center"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -416,13 +454,26 @@ export default function EnhancedTable() {
                           id={labelId}
                           scope="row"
                           padding="none"
+                          align="center"
                         >
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{row.calories}</TableCell>
-                        <TableCell align="right">{row.fat}</TableCell>
-                        <TableCell align="right">{row.carbs}</TableCell>
-                        <TableCell align="right">{row.protein}</TableCell>
+                        <TableCell align="center">{row.product}</TableCell>
+                        <TableCell align="center">{row.price}</TableCell>
+                        <TableCell align="center">
+                          {" "}
+                          <span
+                            style={{
+                              backgroundColor: row.background,
+                              color: row.color,
+                              padding: "4px 8px",
+                              borderRadius: "4px",
+                            }}
+                          >
+                            {row.status}
+                          </span>
+                        </TableCell>
+                        <TableCell align="center">{row.timestamps}</TableCell>
                       </TableRow>
                     );
                   })}

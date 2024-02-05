@@ -30,7 +30,7 @@ export const cards = [
   },
   {
     id: 3,
-    img: chapati,
+    img: chapati00,
     title: "Chapati",
     price: 500,
   },
