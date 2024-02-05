@@ -124,7 +124,7 @@
 // export default ProductList;
 
 /* eslint-disable no-unused-vars */
-import * as React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 //material imports
@@ -167,7 +167,12 @@ import {
   samosa00,
   sausage,
 } from "../../assets";
-import { cards } from "../../constants";
+
+// //modal dialogs
+// import { CreateProduct, CreateUser, DeleteProduct } from "../modalComponents";
+
+//context imports
+import { ModalContext } from "../../contexts/ModalContext";
 
 function createData(id, img, name, price, timestamps) {
   let imagePath;
@@ -492,20 +497,24 @@ export default function EnhancedTable() {
     [order, orderBy, page, rowsPerPage]
   );
 
+  //context
+  const { openCreateProductDialog } = useContext(ModalContext);
+
   return (
     <div className="surface-ground px-0 py-1 md:px-4 lg:px-6 ">
       <div className="flex flex-col">
         <div className="flex justify-end items-end p-0 gap-10">
           <div
             className={`rounded button-yellow pdt mb-1 text-[14px] text-center py-2 col-12`}
+            onClick={openCreateProductDialog}
           >
-            <Link to="/Admin/Dashboard/users/" className="">
+            <Link className="">
               <span className="text-black w-full">Add New Product</span>
             </Link>
           </div>
         </div>
 
-        <Box sx={{ width: "100%" }} c>
+        <Box sx={{ width: "100%" }} c="true">
           <Paper sx={{ width: "100%", mb: 2 }}>
             <EnhancedTableToolbar numSelected={selected.length} />
             <TableContainer>

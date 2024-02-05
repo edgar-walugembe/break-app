@@ -20,12 +20,15 @@ const Navbar = () => {
     day: "numeric",
   });
 
+  const name = "eedga";
+
   return (
     <div className="surface-ground px-2 py-1 md:px-4 lg:px-6 ">
       <div className="grid">
         <div className="flex justify-between col-12">
           <div className="flex flex-col text-black">
-            <h5 className="">Hello, Admin</h5>
+            <h5 className="">Hello, {name}</h5>
+            <span>(Admin)</span>
             <p className="font-semibold text-[12px]">{formattedDate}</p>
           </div>
 

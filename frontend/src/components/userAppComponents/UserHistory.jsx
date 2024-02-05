@@ -308,7 +308,7 @@ export default function EnhancedTable() {
   return (
     <div className="surface-ground px-2 py-1 md:px-4 lg:px-6 ">
       <div className="grid">
-        <Box sx={{ width: "100%" }} c>
+        <Box sx={{ width: "100%" }} c="true">
           <Paper sx={{ width: "100%", mb: 2 }}>
             <EnhancedTableToolbar numSelected={selected.length} />
             <TableContainer>

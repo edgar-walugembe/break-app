@@ -28,7 +28,7 @@ const Card = ({ title, price, img }) => {
 
         <h3 className="text-center font-medium text-[16px]">{title}</h3>
 
-        <span className="text-center text-cyan font-medium mx-14 mb-1">
+        <span className="text-center text-black font-medium mx-14 mb-1">
           Shs.{price}
         </span>
 

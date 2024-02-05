@@ -388,7 +388,7 @@ export default function EnhancedTable() {
           </div>
         </div>
 
-        <Box sx={{ width: "100%" }} c>
+        <Box sx={{ width: "100%" }} c="true">
           <Paper sx={{ width: "100%", mb: 2 }}>
             <EnhancedTableToolbar numSelected={selected.length} />
             <TableContainer>
