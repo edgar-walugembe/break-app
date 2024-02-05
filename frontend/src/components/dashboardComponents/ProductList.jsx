@@ -170,9 +170,41 @@ import {
 import { cards } from "../../constants";
 
 function createData(id, img, name, price, timestamps) {
+  let imagePath;
+  switch (img) {
+    case "banana":
+      imagePath = banana;
+      break;
+    case "shortcake":
+      imagePath = cakes;
+      break;
+    case "cassava":
+      imagePath = cassava;
+      break;
+    case "chapati":
+      imagePath = chapati;
+      break;
+    case "eggs":
+      imagePath = eggs;
+      break;
+    case "pancakes":
+      imagePath = pani;
+      break;
+    case "rolex":
+      imagePath = rolex;
+      break;
+    case "samosa":
+      imagePath = samosa;
+      break;
+    case "sausage":
+      imagePath = sausage;
+      break;
+    default:
+      imagePath = "";
+  }
   return {
     id,
-    img,
+    img: imagePath,
     name,
     price,
     timestamps,
@@ -494,6 +526,14 @@ export default function EnhancedTable() {
                     const isItemSelected = isSelected(row.id);
                     const labelId = `enhanced-table-checkbox-${index}`;
 
+                    const centeredImageStyle = {
+                      display: "block",
+                      margin: "auto",
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                    };
+
                     return (
                       <TableRow
                         hover
@@ -522,7 +562,15 @@ export default function EnhancedTable() {
                         >
                           {row.id}
                         </TableCell>
-                        <TableCell align="right">{row.img}</TableCell>
+                        <TableCell align="center">
+                          {row.img && (
+                            <img
+                              src={row.img}
+                              alt={row.name}
+                              style={centeredImageStyle}
+                            />
+                          )}
+                        </TableCell>
                         <TableCell align="right">{row.name}</TableCell>
                         <TableCell align="right">{row.price}</TableCell>
                         <TableCell align="right">{row.timestamps}</TableCell>

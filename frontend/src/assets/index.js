@@ -5,7 +5,7 @@ import cassava from "./cassava.jpg";
 import chapati from "./chapati.jpg";
 import chapati00 from "./chapati00.jpg";
 import close from "./close.svg";
-import eggs from "./eggs.jpg";
+import eggs from "./eggs00.jpg";
 import favicon from "./break-fast-favicon-color.png";
 import favicon00 from "./odyssey 00.png";
 import logo from "./break-fast-high-resolution-logo-white-transparent.png";
