@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -10,13 +10,19 @@ import { favicon, favicon00, logo, odyssey_logo } from "../../assets";
 import { IoFastFood, IoCartOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
 
-const Menu = ({ count, decreaseCount, increaseCount }) => {
+//context import
+import { UserOrderContext } from "../../contexts/UserOrderContext";
+
+const Menu = () => {
   //active State
   const [isActive, setIsActive] = useState(1);
 
   const toggleActive = (divId) => {
     setIsActive(divId === isActive ? null : divId);
   };
+
+  //order State
+  const { count } = useContext(UserOrderContext);
 
   return (
     <div
@@ -39,11 +45,6 @@ const Menu = ({ count, decreaseCount, increaseCount }) => {
           />
         </Link>
       </div>
-
-      {/* <div>
-        <button onClick={increaseCount}>Increase Count</button>
-        <button onClick={decreaseCount}>Decrease Count</button>
-      </div> */}
 
       <div className="flex flex-col justify-between gap-5 ">
         <div
@@ -124,10 +125,17 @@ const Menu = ({ count, decreaseCount, increaseCount }) => {
   );
 };
 
-Menu.propTypes = {
-  count: PropTypes.number,
-  decreaseCount: PropTypes.func,
-  increaseCount: PropTypes.func,
-};
+// Menu.propTypes = {
+//   count: PropTypes.number,
+//   decreaseCount: PropTypes.func,
+//   increaseCount: PropTypes.func,
+// };
+
+{
+  /* <div>
+        <button onClick={increaseCount}>Increase Count</button>
+        <button onClick={decreaseCount}>Decrease Count</button>
+      </div> */
+}
 
 export default Menu;

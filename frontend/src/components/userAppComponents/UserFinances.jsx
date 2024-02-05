@@ -218,7 +218,7 @@ function EnhancedTableToolbar(props) {
           id="tableTitle"
           component="div"
         >
-          Financial Tracking
+          Financial Tracking...
         </Typography>
       )}
 

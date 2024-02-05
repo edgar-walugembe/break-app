@@ -29,7 +29,16 @@
   }
 
   .button-yellow {
-    background-color: yellow;
+    background-color: #ffff00;
+    width: 250px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .button-amber {
+    background-color: #f7b900;
     width: 250px;
 
     a {

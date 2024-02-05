@@ -38,7 +38,7 @@ export const cards = [
     id: 4,
     img: rolex,
     title: "Rolex",
-    price: [1000, 1500, 2000],
+    price: 0,
   },
   {
     id: 5,

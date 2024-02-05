@@ -1,14 +1,19 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { FiPlusCircle } from "react-icons/fi";
 
-const Card = ({ title, price, img, increaseCount }) => {
-  //increase count Function
-  // const handleIncreaseCount = () => {
-  //   increaseCount();
-  // };
+//context imports
+import { UserOrderContext } from "../../contexts/UserOrderContext";
+
+const Card = ({ title, price, img }) => {
+  //order State
+  const { setCount } = useContext(UserOrderContext);
+
+  const increaseCount = () => {
+    console.log("increaseCount");
+    setCount((prevCount) => prevCount + 1);
+  };
 
   return (
     <div className="col-12 md:col-6 lg:col-4 relative">
@@ -41,9 +46,8 @@ const Card = ({ title, price, img, increaseCount }) => {
 
 Card.propTypes = {
   title: PropTypes.string,
-  id: PropTypes.number,
   img: PropTypes.string,
-  increaseCount: PropTypes.func,
+  price: PropTypes.number,
 };
 
 export default Card;

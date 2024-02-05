@@ -210,7 +210,7 @@ function EnhancedTableToolbar(props) {
           id="tableTitle"
           component="div"
         >
-          Recent Orders
+          Recent Orders...
         </Typography>
       )}
 
