@@ -261,10 +261,20 @@ function MyDialog() {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" variant="outlined">
+          <Button
+            onClick={handleClose}
+            color="primary"
+            variant="contained"
+            style={{ background: "cyan", color: "black" }}
+          >
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary" variant="outlined">
+          <Button
+            onClick={handleSubmit}
+            color="primary"
+            variant="contained"
+            style={{ background: "yellow", color: "black" }}
+          >
             Save
           </Button>
         </DialogActions>
