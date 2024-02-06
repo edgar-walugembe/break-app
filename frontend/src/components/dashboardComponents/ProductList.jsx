@@ -150,6 +150,7 @@ import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
+import { Button } from "@mui/material";
 
 //image imports
 import {
@@ -168,14 +169,10 @@ import {
   sausage,
 } from "../../assets";
 
-// //modal dialogs
-// import { CreateProduct, CreateUser, DeleteProduct } from "../modalComponents";
-
 //context imports
 import { ModalContext } from "../../contexts/ModalContext";
 
-import MyDialog from "../modalComponents/product/CreateProduct";
-import { Button } from "@mui/material";
+import { CreateProduct, DeleteProduct } from "../modalComponents";
 
 function createData(id, img, name, price, timestamps) {
   let imagePath;
@@ -381,6 +378,14 @@ EnhancedTableHead.propTypes = {
 function EnhancedTableToolbar(props) {
   const { numSelected } = props;
 
+  //context
+  const { setOpenDeletePdt } = useContext(ModalContext);
+
+  const handleClickOpen = () => {
+    console.log("dialog opened");
+    setOpenDeletePdt(true);
+  };
+
   return (
     <Toolbar
       sx={{
@@ -417,7 +422,7 @@ function EnhancedTableToolbar(props) {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton onClick={handleClickOpen}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -507,11 +512,11 @@ export default function EnhancedTable() {
   );
 
   //context
-  const { setOpen } = useContext(ModalContext);
+  const { setOpenCreatePdt } = useContext(ModalContext);
 
   const handleClickOpen = () => {
     console.log("dialog opened");
-    setOpen(true);
+    setOpenCreatePdt(true);
   };
 
   return (
@@ -639,7 +644,8 @@ export default function EnhancedTable() {
           />
         </Box>
 
-        <MyDialog />
+        <CreateProduct />
+        <DeleteProduct />
       </div>
     </div>
   );

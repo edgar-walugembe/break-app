@@ -6,21 +6,9 @@ import { Outlet } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
-  //createProduct Modal
-  const [createProduct, setCreateProduct] = useState(false);
-
-  //open & close createProduct Dialog.
-  const openCreateProductDialog = (product) => {
-    setCreateProduct(product);
-    setCreateProduct(true);
-  };
-
-  const closeCreateProductDialog = () => {
-    setCreateProduct(false);
-    setCreateProduct(null);
-  };
-
-  const [open, setOpen] = useState(false);
+  const [openCreatePdt, setOpenCreatePdt] = useState(false);
+  const [openDeletePdt, setOpenDeletePdt] = useState(false);
+  const [openEditPdt, setOpenEditPdt] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -28,14 +16,14 @@ const Home = () => {
       <div className="flex">
         <ModalContext.Provider
           value={{
-            createProduct,
-            setCreateProduct,
-            closeCreateProductDialog,
-            openCreateProductDialog,
-            setOpen,
-            setInputValue,
             inputValue,
-            open,
+            setInputValue,
+            openCreatePdt,
+            openDeletePdt,
+            openEditPdt,
+            setOpenCreatePdt,
+            setOpenDeletePdt,
+            setOpenEditPdt,
           }}
         >
           <Menu />
