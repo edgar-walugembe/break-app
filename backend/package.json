@@ -4,11 +4,12 @@
   "private": true,
   "logging": true,
   "scripts": {
-    "start": "npm run start:app",
+    "start": "npm run create:db && npm run start:app",
     "start:app": "node ./bin/www",
     "start:dev": "nodemon --inspect",
-    "create:db": "npx sequelize-cli db:create",
-    "run:migrations": "npx sequelize-cli db:migrate"
+    "create:db": "sequelize db:create",
+    "run:migrations": "sequelize db:migrate",
+    "drop:db": "sequelize db:drop"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

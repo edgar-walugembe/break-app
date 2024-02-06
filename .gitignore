@@ -3,6 +3,9 @@
 #dependencies
 /backend/node_modules
 
+#env
+/backend/.env
+
 
 #frontend#
 
@@ -19,7 +22,7 @@
 
 
 # production
-/frontend/build
+/frontend/dist
 
 # misc
 /frontend/.DS_Store
