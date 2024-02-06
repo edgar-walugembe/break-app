@@ -174,6 +174,9 @@ import {
 //context imports
 import { ModalContext } from "../../contexts/ModalContext";
 
+import MyDialog from "../modalComponents/product/CreateProduct";
+import { Button } from "@mui/material";
+
 function createData(id, img, name, price, timestamps) {
   let imagePath;
   switch (img) {
@@ -303,6 +306,12 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: "Time Of Entry",
+  },
+  {
+    id: "actions",
+    numeric: true,
+    disablePadding: false,
+    label: "Actions",
   },
 ];
 
@@ -498,7 +507,12 @@ export default function EnhancedTable() {
   );
 
   //context
-  const { openCreateProductDialog } = useContext(ModalContext);
+  const { setOpen } = useContext(ModalContext);
+
+  const handleClickOpen = () => {
+    console.log("dialog opened");
+    setOpen(true);
+  };
 
   return (
     <div className="surface-ground px-0 py-1 md:px-4 lg:px-6 ">
@@ -506,7 +520,7 @@ export default function EnhancedTable() {
         <div className="flex justify-end items-end p-0 gap-10">
           <div
             className={`rounded button-yellow pdt mb-1 text-[14px] text-center py-2 col-12`}
-            onClick={openCreateProductDialog}
+            onClick={handleClickOpen}
           >
             <Link className="">
               <span className="text-black w-full">Add New Product</span>
@@ -585,6 +599,15 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.price}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
+                        <TableCell align="center">
+                          <Button
+                            // onClick={handleSubmit}
+                            color="warning"
+                            variant="contained"
+                          >
+                            Edit
+                          </Button>
+                        </TableCell>
                       </TableRow>
                     );
                   })}
@@ -615,6 +638,8 @@ export default function EnhancedTable() {
             label="Dense padding"
           />
         </Box>
+
+        <MyDialog />
       </div>
     </div>
   );

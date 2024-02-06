@@ -20,6 +20,9 @@ const Home = () => {
     setCreateProduct(null);
   };
 
+  const [open, setOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <section className="home h-full">
       <div className="flex">
@@ -29,6 +32,10 @@ const Home = () => {
             setCreateProduct,
             closeCreateProductDialog,
             openCreateProductDialog,
+            setOpen,
+            setInputValue,
+            inputValue,
+            open,
           }}
         >
           <Menu />

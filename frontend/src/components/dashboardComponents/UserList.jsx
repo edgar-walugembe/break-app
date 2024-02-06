@@ -92,15 +92,16 @@ import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
+import { Button } from "@mui/material";
 
-function createData(id, name, calories, fat, carbs, protein) {
+function createData(id, name, email, company, timestamps, actions) {
   return {
     id,
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    email,
+    company,
+    timestamps,
+    actions,
   };
 }
 
@@ -154,34 +155,40 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
+    id: "id",
     numeric: false,
     disablePadding: true,
     label: "UserId",
   },
   {
-    id: "calories",
+    id: "name",
     numeric: true,
     disablePadding: false,
     label: "Username",
   },
   {
-    id: "fat",
+    id: "email",
     numeric: true,
     disablePadding: false,
     label: "User E-mail",
   },
   {
-    id: "carbs",
+    id: "company",
     numeric: true,
     disablePadding: false,
     label: "User Company",
   },
   {
-    id: "protein",
+    id: "timestamps",
     numeric: true,
     disablePadding: false,
     label: "Time Of Entry",
+  },
+  {
+    id: "actions",
+    numeric: true,
+    disablePadding: false,
+    label: "Actions",
   },
 ];
 
@@ -215,7 +222,8 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            // align={headCell.numeric ? "right" : "left"}
+            align="center"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -435,13 +443,23 @@ export default function EnhancedTable() {
                           id={labelId}
                           scope="row"
                           padding="none"
+                          align="center"
                         >
-                          {row.name}
+                          {row.id}
                         </TableCell>
-                        <TableCell align="right">{row.calories}</TableCell>
-                        <TableCell align="right">{row.fat}</TableCell>
-                        <TableCell align="right">{row.carbs}</TableCell>
-                        <TableCell align="right">{row.protein}</TableCell>
+                        <TableCell align="center">{row.name}</TableCell>
+                        <TableCell align="center">{row.email}</TableCell>
+                        <TableCell align="center">{row.company}</TableCell>
+                        <TableCell align="center">{row.timestamps}</TableCell>
+                        <TableCell align="center">
+                          <Button
+                            // onClick={handleSubmit}
+                            color="warning"
+                            variant="contained"
+                          >
+                            Edit
+                          </Button>
+                        </TableCell>
                       </TableRow>
                     );
                   })}

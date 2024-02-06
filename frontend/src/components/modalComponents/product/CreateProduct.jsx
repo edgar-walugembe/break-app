@@ -1,176 +1,276 @@
 /* eslint-disable no-unused-vars */
+// /* eslint-disable no-unused-vars */
+// import React, { useContext } from "react";
+// import { Button, Row, Col, Modal, Form } from "react-bootstrap";
+// import * as formik from "formik";
+// import * as yup from "yup";
+
+// //context import
+// import { ModalContext } from "../../../contexts/ModalContext";
+
+// const CreateProduct = () => {
+//   //formik destructing
+//   const { Formik } = formik;
+
+//   const schema = yup.object().shape({
+//     firstName: yup.string().required(),
+//     lastName: yup.string().required(),
+//     email: yup.string().email().required(),
+//     gender: yup.string().required(),
+//     dob: yup.date().required(),
+//   });
+
+//   //context
+//   const {
+//     createProduct,
+//     setCreateProduct,
+//     openCreateProductDialog,
+//     closeCreateProductDialog,
+//   } = useContext(ModalContext);
+
+//   return (
+//     <Modal
+//       show={openCreateProductDialog}
+//       onHide={closeCreateProductDialog}
+//       size="lg"
+//       aria-labelledby="contained-modal-title-vcenter"
+//       centered
+//       keyboard={false}
+//       backdrop="static"
+//     >
+//       <Modal.Header closeButton>
+//         <Modal.Title id="contained-modal-title-vcenter">
+//           Add New Developer
+//         </Modal.Title>
+//       </Modal.Header>
+//       <Modal.Body>
+//         <Formik
+//           validationSchema={schema}
+//           // onSubmit={saveDev}
+//           // initialValues={{
+//           //   firstName: "",
+//           //   lastName: "",
+//           //   email: "",
+//           //   gender: "",
+//           //   dob: "",
+//           // }}
+//         >
+//           {({ handleChange, values, touched, errors }) => (
+//             <Form
+//               noValidate
+//               // validated={validated}
+//               // ref={devRef}
+//               // onSubmit={saveDev}
+//               autoComplete="true"
+//             >
+//               <Row>
+//                 <Col xs={12} md={6}>
+//                   <Form.Group className="mb-2 flex" controlId="firstName">
+//                     {" "}
+//                     <Form.Label>FirstName</Form.Label>
+//                     <Form.Control
+//                       required={true}
+//                       name="firstName"
+//                       type="text"
+//                       placeholder="Enter first name"
+//                       value={values.firstName}
+//                       onChange={handleChange}
+//                       isInvalid={!!errors.firstName}
+//                     />
+//                     <Form.Control.Feedback type="invalid">
+//                       {errors.firstName}
+//                     </Form.Control.Feedback>
+//                   </Form.Group>
+//                   {/* <Col xs={12} md={6}></Col> */}
+//                   <Form.Group className="mb-2" controlId="lastName">
+//                     <Form.Label>LastName</Form.Label>
+//                     <Form.Control
+//                       required={true}
+//                       name="lastName"
+//                       type="text"
+//                       placeholder="Enter last name"
+//                       value={values.lastName}
+//                       onChange={handleChange}
+//                       isInvalid={!!errors.lastName}
+//                     />
+//                     <Form.Control.Feedback type="invalid">
+//                       {errors.lastName}
+//                     </Form.Control.Feedback>
+//                   </Form.Group>
+//                 </Col>
+
+//                 <Col xs={12} md={6}>
+//                   <Form.Group className="mb-2" controlId="email">
+//                     <Form.Label>E-mail</Form.Label>
+//                     <Form.Control
+//                       name="email"
+//                       type="email"
+//                       placeholder="name@example.com"
+//                       value={values.email}
+//                       onChange={handleChange}
+//                       isInvalid={!!errors.email}
+//                     />
+//                     <Form.Control.Feedback type="invalid">
+//                       {errors.email}
+//                     </Form.Control.Feedback>
+//                   </Form.Group>
+//                 </Col>
+
+//                 <Col xs={12} md={6}>
+//                   <Form.Group className="mb-2" controlId="gender">
+//                     <Form.Label>Gender</Form.Label>
+//                     <Form.Select
+//                       name="gender"
+//                       required
+//                       aria-label="Select Gender"
+//                       value={values.gender}
+//                       onChange={handleChange}
+//                       isInvalid={!!errors.gender}
+//                     >
+//                       <option>Open this select menu</option>
+//                       <option value="Male">MALE</option>
+//                       <option value="Female">FEMALE</option>
+//                     </Form.Select>
+//                     <Form.Control.Feedback type="invalid">
+//                       {errors.gender}
+//                     </Form.Control.Feedback>
+//                   </Form.Group>
+//                 </Col>
+
+//                 <Col xs={12} md={6}>
+//                   <Form.Group className="mb-2" controlId="dob">
+//                     <Form.Label>Date of birth</Form.Label>
+//                     <Form.Control
+//                       name="dob"
+//                       type="date"
+//                       value={values.dob}
+//                       onChange={handleChange}
+//                       isInvalid={!!errors.dob}
+//                     />
+//                     <Form.Control.Feedback type="invalid">
+//                       {errors.dob}
+//                     </Form.Control.Feedback>
+//                   </Form.Group>
+//                 </Col>
+//               </Row>
+//             </Form>
+//           )}
+//         </Formik>
+//       </Modal.Body>
+//       <Modal.Footer>
+//         <Button variant="warning" onClick={closeCreateProductDialog}>
+//           Cancel
+//         </Button>
+
+//         <Button
+//           // onClick={(event) => submitForm(event)}
+//           variant="success"
+//           type="Button"
+//         >
+//           Submit
+//         </Button>
+//       </Modal.Footer>
+//     </Modal>
+//   );
+// };
+
+// export default CreateProduct;
+
 import React, { useContext } from "react";
-import { Button, Row, Col, Modal, Form } from "react-bootstrap";
-import * as formik from "formik";
-import * as yup from "yup";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+} from "@mui/material";
 
-//context import
+import Button from "@mui/material/Button";
+
 import { ModalContext } from "../../../contexts/ModalContext";
+import { close } from "../../../assets";
 
-const CreateProduct = () => {
-  //formik destructing
-  const { Formik } = formik;
+function MyDialog() {
+  const { inputValue, open, setOpen, setInputValue } = useContext(ModalContext);
 
-  const schema = yup.object().shape({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    email: yup.string().email().required(),
-    gender: yup.string().required(),
-    dob: yup.date().required(),
-  });
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-  //context
-  const {
-    createProduct,
-    setCreateProduct,
-    openCreateProductDialog,
-    closeCreateProductDialog,
-  } = useContext(ModalContext);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    // Handle submission logic here
+    console.log("Submitted value:", inputValue);
+    handleClose();
+  };
 
   return (
-    <Modal
-      show={openCreateProductDialog}
-      onHide={closeCreateProductDialog}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      keyboard={false}
-      backdrop="static"
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Add New Developer
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Formik
-          validationSchema={schema}
-          // onSubmit={saveDev}
-          // initialValues={{
-          //   firstName: "",
-          //   lastName: "",
-          //   email: "",
-          //   gender: "",
-          //   dob: "",
-          // }}
-        >
-          {({ handleChange, values, touched, errors }) => (
-            <Form
-              noValidate
-              // validated={validated}
-              // ref={devRef}
-              // onSubmit={saveDev}
-              autoComplete="true"
-            >
-              <Row>
-                <Col xs={12} md={6}>
-                  <Form.Group className="mb-2 flex" controlId="firstName">
-                    {" "}
-                    <Form.Label>FirstName</Form.Label>
-                    <Form.Control
-                      required={true}
-                      name="firstName"
-                      type="text"
-                      placeholder="Enter first name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      isInvalid={!!errors.firstName}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.firstName}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                  {/* <Col xs={12} md={6}></Col> */}
-                  <Form.Group className="mb-2" controlId="lastName">
-                    <Form.Label>LastName</Form.Label>
-                    <Form.Control
-                      required={true}
-                      name="lastName"
-                      type="text"
-                      placeholder="Enter last name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isInvalid={!!errors.lastName}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.lastName}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
+    <div>
+      <Dialog open={open} style={{ zIndex: 9999 }}>
+        <DialogTitle className="flex justify-between">
+          <span>Add New Product</span>
+          <div
+            onClick={handleClose}
+            className="bg-yellow rounded-full p-2 w-[28px] h-[28px] items-center flex"
+          >
+            <img src={close} alt="close" className="w-[24px] h-[24px]" />
+          </div>
+        </DialogTitle>
+        <DialogContent>
+          <div className="flex gap-4">
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Product Name"
+              type="text"
+              fullWidth
+              // value={inputValue}
+              onChange={handleInputChange}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="price"
+              label="Unit Price"
+              type="text"
+              fullWidth
+              // value={inputValue}
+              onChange={handleInputChange}
+            />
+          </div>
 
-                <Col xs={12} md={6}>
-                  <Form.Group className="mb-2" controlId="email">
-                    <Form.Label>E-mail</Form.Label>
-                    <Form.Control
-                      name="email"
-                      type="email"
-                      placeholder="name@example.com"
-                      value={values.email}
-                      onChange={handleChange}
-                      isInvalid={!!errors.email}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-
-                <Col xs={12} md={6}>
-                  <Form.Group className="mb-2" controlId="gender">
-                    <Form.Label>Gender</Form.Label>
-                    <Form.Select
-                      name="gender"
-                      required
-                      aria-label="Select Gender"
-                      value={values.gender}
-                      onChange={handleChange}
-                      isInvalid={!!errors.gender}
-                    >
-                      <option>Open this select menu</option>
-                      <option value="Male">MALE</option>
-                      <option value="Female">FEMALE</option>
-                    </Form.Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.gender}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-
-                <Col xs={12} md={6}>
-                  <Form.Group className="mb-2" controlId="dob">
-                    <Form.Label>Date of birth</Form.Label>
-                    <Form.Control
-                      name="dob"
-                      type="date"
-                      value={values.dob}
-                      onChange={handleChange}
-                      isInvalid={!!errors.dob}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.dob}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
-            </Form>
-          )}
-        </Formik>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="warning" onClick={closeCreateProductDialog}>
-          Cancel
-        </Button>
-
-        <Button
-          // onClick={(event) => submitForm(event)}
-          variant="success"
-          type="Button"
-        >
-          Submit
-        </Button>
-      </Modal.Footer>
-    </Modal>
+          <div>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="img"
+              label=""
+              type="file"
+              fullWidth
+              // value={inputValue}
+              onChange={handleInputChange}
+            />
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" variant="outlined">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit} color="primary" variant="outlined">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
-};
+}
 
-export default CreateProduct;
+export default MyDialog;
