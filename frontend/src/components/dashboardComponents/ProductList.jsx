@@ -172,7 +172,7 @@ import {
 //context imports
 import { ModalContext } from "../../contexts/ModalContext";
 
-import { CreateProduct, DeleteProduct } from "../modalComponents";
+import { CreateProduct, DeleteProduct, EditProduct } from "../modalComponents";
 
 function createData(id, img, name, price, timestamps) {
   let imagePath;
@@ -512,11 +512,16 @@ export default function EnhancedTable() {
   );
 
   //context
-  const { setOpenCreatePdt } = useContext(ModalContext);
+  const { setOpenCreatePdt, setOpenEditPdt } = useContext(ModalContext);
 
   const handleClickOpen = () => {
     console.log("dialog opened");
     setOpenCreatePdt(true);
+  };
+
+  const handleClickEdit = () => {
+    console.log("edit Pdt opened");
+    setOpenEditPdt(true);
   };
 
   return (
@@ -604,7 +609,7 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.price}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
-                        <TableCell align="center">
+                        <TableCell align="center" onClick={handleClickEdit}>
                           <Button
                             // onClick={handleSubmit}
                             style={{ background: "yellow", color: "black" }}
@@ -646,6 +651,7 @@ export default function EnhancedTable() {
 
         <CreateProduct />
         <DeleteProduct />
+        <EditProduct />
       </div>
     </div>
   );
