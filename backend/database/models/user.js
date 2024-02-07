@@ -25,7 +25,20 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        unique: {
+          args: true,
+          msg: "Email must be unique",
+        },
+        validate: {
+          isEmail: {
+            args: true,
+            msg: "Please enter a valid email address",
+          },
+          notNull: {
+            args: true,
+            msg: "email must not be empty",
+          },
+        },
       },
       company: {
         type: DataTypes.ENUM("Odyssey", "Upti"),
@@ -48,12 +61,12 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       status: {
-        type: DataTypes.ENUM("Active", "Inactive"),
+        type: DataTypes.ENUM("Active", "Inactive", "Suspended"),
         allowNull: false,
         defaultValue: "Active",
         validate: {
           isIn: {
-            args: [["Active", "Inactive"]],
+            args: [["Active", "Inactive", , "Suspended"]],
             msg: "Invalid Status",
           },
         },
