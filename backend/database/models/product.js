@@ -8,11 +8,36 @@ module.exports = (sequelize, DataTypes) => {
   }
   Product.init(
     {
-      productId: DataTypes.INTEGER,
-      img: DataTypes.STRING,
-      name: DataTypes.STRING,
-      unitPrice: DataTypes.INTEGER,
-      adminId: DataTypes.INTEGER,
+      productId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      img: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      unitPrice: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          isPositive(value) {
+            if (value <= 0) {
+              throw new Error("Price value must be a positive integer.");
+            }
+          },
+        },
+      },
+      adminId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,
