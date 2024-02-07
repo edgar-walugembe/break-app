@@ -46,8 +46,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="flex nav.cards rounded-md col-12">
-        <div className="py-2 px-4 nav_card w-full">
+      <div className="flex nav.cards rounded col-12">
+        <div className="py-2 px-4 nav_card card-1 w-full">
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">
@@ -102,7 +102,7 @@ const Navbar = () => {
           <span className="text-primary">newly registered</span>
         </div>
 
-        <div className="py-2 px-4 nav_card w-full">
+        <div className="py-2 px-4 nav_card card-4 w-full">
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">

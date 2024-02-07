@@ -124,10 +124,22 @@ body {
   background: yellow;
 }
 
-.nav.cards {
-  border: 0.2px gray solid;
+/* .nav.cards {
+  border: 0.2px gray solid; */
 
-  .nav_card {
-    border-right: 0.2px gray solid;
-  }
+.nav_card {
+  border-right: 1px rgba(128, 128, 128, 0.479) solid;
+  border-bottom: 1px rgba(128, 128, 128, 0.479) solid;
+  border-top: 1px rgba(128, 128, 128, 0.479) solid;
+}
+
+.card-1 {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-left: 1px rgba(128, 128, 128, 0.479) solid;
+}
+
+.card-4 {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
