@@ -46,89 +46,79 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="grid">
-        <div className="col-12 md:col-6 lg:col-3">
-          <div className="surface-card shadow p-3 rounded">
-            <div className="flex justify-between mb-3">
-              <div>
-                <span className="block text-primary font-medium mb-3">
-                  Orders
-                </span>
-                <div className="text-black font-medium text-xl">152</div>
-              </div>
-              <div
-                className="flex items-center justify-center bg-cyan rounded"
-                style={{ width: "2.5rem", height: "2.5rem" }}
-              >
-                <IoCartOutline className="text-xl" />
-              </div>
+      <div className="flex nav.cards rounded-md col-12">
+        <div className="py-2 px-4 nav_card w-full">
+          <div className="flex justify-between mb-3">
+            <div>
+              <span className="block text-primary font-medium mb-3">
+                Orders
+              </span>
+              <div className="text-black font-medium text-xl">152</div>
             </div>
-            <span className="text-black font-medium">24 new </span>
-            <span className="text-primary">since yesterday</span>
+            <div
+              className="flex items-center justify-center bg-cyan rounded"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            >
+              <IoCartOutline className="text-xl" />
+            </div>
           </div>
+          <span className="text-black font-medium">24 new </span>
+          <span className="text-primary">since yesterday</span>
         </div>
 
-        <div className="col-12 md:col-6 lg:col-3">
-          <div className="surface-card shadow p-3 rounded">
-            <div className="flex justify-between mb-3">
-              <div>
-                <span className="block text-primary font-medium mb-3">
-                  Budget
-                </span>
-                <div className="text-black font-medium text-xl">$20,000</div>
-              </div>
-              <div
-                className="flex items-center justify-center bg-cyan rounded"
-                style={{ width: "2.5rem", height: "2.5rem" }}
-              >
-                <GiCash className="text-xl" />
-              </div>
+        <div className="py-2 px-4 nav_card w-full">
+          <div className="flex justify-between mb-3">
+            <div>
+              <span className="block text-primary font-medium mb-3">
+                Budget
+              </span>
+              <div className="text-black font-medium text-xl">$20,000</div>
             </div>
-            <span className="text-black font-medium">-$6000 </span>
-            <span className="text-primary">since last week</span>
+            <div
+              className="flex items-center justify-center bg-cyan rounded"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            >
+              <GiCash className="text-xl" />
+            </div>
           </div>
+          <span className="text-black font-medium">-$6000 </span>
+          <span className="text-primary">since last week</span>
         </div>
 
-        <div className="col-12 md:col-6 lg:col-3">
-          <div className="surface-card shadow p-3 rounded">
-            <div className="flex justify-between mb-3">
-              <div>
-                <span className="block text-primary font-medium mb-3">
-                  Users
-                </span>
-                <div className="text-black font-medium text-xl">120</div>
-              </div>
-              <div
-                className="flex items-center justify-center bg-cyan rounded"
-                style={{ width: "2.5rem", height: "2.5rem" }}
-              >
-                <FaUsers className="text-xl" />
-              </div>
+        <div className="py-2 px-4 nav_card w-full">
+          <div className="flex justify-between mb-3">
+            <div>
+              <span className="block text-primary font-medium mb-3">Users</span>
+              <div className="text-black font-medium text-xl">120</div>
             </div>
-            <span className="text-black font-medium">12 </span>
-            <span className="text-primary">newly registered</span>
+            <div
+              className="flex items-center justify-center bg-cyan rounded"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            >
+              <FaUsers className="text-xl" />
+            </div>
           </div>
+          <span className="text-black font-medium">12 </span>
+          <span className="text-primary">newly registered</span>
         </div>
 
-        <div className="col-12 md:col-6 lg:col-3">
-          <div className="surface-card shadow p-3 rounded">
-            <div className="flex justify-between mb-3">
-              <div>
-                <span className="block text-primary font-medium mb-3">
-                  Products
-                </span>
-                <div className="text-black font-medium text-xl">40</div>
-              </div>
-              <div
-                className="flex items-center justify-center bg-cyan rounded"
-                style={{ width: "2.5rem", height: "2.5rem" }}
-              >
-                <IoFastFood className="text-xl" />
-              </div>
+        <div className="py-2 px-4 nav_card w-full">
+          <div className="flex justify-between mb-3">
+            <div>
+              <span className="block text-primary font-medium mb-3">
+                Products
+              </span>
+              <div className="text-black font-medium text-xl">40</div>
             </div>
-            <span className="text-black font-medium">06 </span>
-            <span className="text-primary">newly added</span>
+            <div
+              className="flex items-center justify-center bg-cyan rounded"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            >
+              <IoFastFood className="text-xl" />
+            </div>
           </div>
+          <span className="text-black font-medium">06 </span>
+          <span className="text-primary">newly added</span>
         </div>
       </div>
     </div>

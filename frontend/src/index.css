@@ -123,3 +123,11 @@ body {
 .button-yellow > .yellow {
   background: yellow;
 }
+
+.nav.cards {
+  border: 0.2px gray solid;
+
+  .nav_card {
+    border-right: 0.2px gray solid;
+  }
+}

@@ -6,10 +6,10 @@ import App from "./App.jsx";
 import "./index.css";
 import "./flags.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "primeicons/primeicons.css";
 
 //primeReact imports
 import { PrimeReactProvider } from "primereact/api";
+import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
