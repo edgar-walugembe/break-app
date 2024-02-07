@@ -1,72 +1,5 @@
-// /* eslint-disable no-unused-vars */
-// import React from "react";
-
-// const UserList = () => {
-//   return <div>UserList</div>;
-// };
-
-// export default UserList;
-
-// /* eslint-disable no-unused-vars */
-// import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-
-// //primeReact
-// import { DataTable } from "primereact/datatable";
-// import { Column } from "primereact/column";
-// import { ProductService } from "../../service/ProductService";
-
-// //toast imports
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// const notify = () => {
-//   toast.success("let's chat");
-// };
-
-// const OrderHistory = () => {
-//   const [products, setProducts] = useState([]);
-
-//   useEffect(() => {
-//     ProductService.getProductsMini().then((data) => setProducts(data));
-//   }, []);
-
-//   return (
-//     <div className="surface-ground px-2 py-1 md:px-4 lg:px-6">
-//       <div className="grid">
-//         <div
-//           className={`rounded button-yellow mb-1 self-end text-[14px] col-12`}
-//         >
-//           <Link
-//             to="/Admin/Dashboard/users/"
-//             className="flex justify-evenly w-full py-1"
-//           >
-//             <span className="text-black">Add New Product</span>
-//           </Link>
-//         </div>
-
-//         <div className="card p-2 col-12">
-//           <DataTable
-//             value={products}
-//             showGridlines
-//             tableStyle={{ minWidth: "50rem" }}
-//           >
-//             <Column field="code" header="Code"></Column>
-//             <Column field="name" header="Name"></Column>
-//             <Column field="category" header="Category"></Column>
-//             <Column field="quantity" header="Quantity"></Column>
-//           </DataTable>
-//         </div>
-//       </div>
-
-//       <ToastContainer />
-//     </div>
-//   );
-// };
-
-// export default OrderHistory;
-
 /* eslint-disable no-unused-vars */
-import * as React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 //material imports
@@ -93,6 +26,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
+
+//context imports
+import { ModalContext } from "../../contexts/ModalContext";
+
+import { CreateUser, DeleteUser, EditUser } from "../modalComponents";
 
 function createData(id, name, email, company, timestamps, actions) {
   return {
@@ -258,6 +196,14 @@ EnhancedTableHead.propTypes = {
 function EnhancedTableToolbar(props) {
   const { numSelected } = props;
 
+  //context
+  const { setOpenDeleteUser } = useContext(ModalContext);
+
+  const handleClickOpen = () => {
+    console.log("dialog opened");
+    setOpenDeleteUser(true);
+  };
+
   return (
     <Toolbar
       sx={{
@@ -294,7 +240,7 @@ function EnhancedTableToolbar(props) {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton onClick={handleClickOpen}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -383,14 +329,28 @@ export default function EnhancedTable() {
     [order, orderBy, page, rowsPerPage]
   );
 
+  //context
+  const { setOpenCreateUser, setOpenEditUser } = useContext(ModalContext);
+
+  const handleClickCreate = () => {
+    console.log("dialog opened");
+    setOpenCreateUser(true);
+  };
+
+  const handleClickEdit = () => {
+    console.log("edit User opened");
+    setOpenEditUser(true);
+  };
+
   return (
     <div className="surface-ground px-0 py-1 md:px-4 lg:px-6 ">
       <div className="flex flex-col">
         <div className="flex justify-end items-end p-0 gap-10">
           <div
             className={`rounded button-amber mb-1 text-[14px] text-center py-2 col-12`}
+            onClick={handleClickCreate}
           >
-            <Link to="/Admin/Dashboard/users/" className="">
+            <Link className="">
               <span className="text-black w-full">Add New User</span>
             </Link>
           </div>
@@ -451,12 +411,8 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.email}</TableCell>
                         <TableCell align="center">{row.company}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
-                        <TableCell align="center">
-                          <Button
-                            // onClick={handleSubmit}
-                            color="warning"
-                            variant="contained"
-                          >
+                        <TableCell align="center" onClick={handleClickEdit}>
+                          <Button color="warning" variant="contained">
                             Edit
                           </Button>
                         </TableCell>
@@ -490,6 +446,10 @@ export default function EnhancedTable() {
             label="Dense padding"
           />
         </Box>
+
+        <CreateUser />
+        <DeleteUser />
+        <EditUser />
       </div>
     </div>
   );

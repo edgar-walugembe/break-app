@@ -6,10 +6,16 @@ import { Outlet } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
+  //product State
   const [openCreatePdt, setOpenCreatePdt] = useState(false);
   const [openDeletePdt, setOpenDeletePdt] = useState(false);
   const [openEditPdt, setOpenEditPdt] = useState(false);
   const [inputValue, setInputValue] = useState("");
+
+  //user State
+  const [openCreateUser, setOpenCreateUser] = useState(false);
+  const [openDeleteUser, setOpenDeleteUser] = useState(false);
+  const [openEditUser, setOpenEditUser] = useState(false);
 
   return (
     <section className="home h-full">
@@ -24,6 +30,12 @@ const Home = () => {
             setOpenCreatePdt,
             setOpenDeletePdt,
             setOpenEditPdt,
+            openCreateUser,
+            openDeleteUser,
+            openEditUser,
+            setOpenCreateUser,
+            setOpenDeleteUser,
+            setOpenEditUser,
           }}
         >
           <Menu />

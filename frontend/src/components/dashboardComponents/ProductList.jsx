@@ -381,7 +381,7 @@ function EnhancedTableToolbar(props) {
   //context
   const { setOpenDeletePdt } = useContext(ModalContext);
 
-  const handleClickOpen = () => {
+  const handleClickDelete = () => {
     console.log("dialog opened");
     setOpenDeletePdt(true);
   };
@@ -422,7 +422,7 @@ function EnhancedTableToolbar(props) {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton onClick={handleClickOpen}>
+          <IconButton onClick={handleClickDelete}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -611,7 +611,6 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.timestamps}</TableCell>
                         <TableCell align="center" onClick={handleClickEdit}>
                           <Button
-                            // onClick={handleSubmit}
                             style={{ background: "yellow", color: "black" }}
                             variant="contained"
                           >

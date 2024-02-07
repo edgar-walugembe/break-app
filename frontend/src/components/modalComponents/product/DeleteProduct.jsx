@@ -42,7 +42,7 @@ function DeleteProduct() {
           <span>Delete Product</span>
           <div
             onClick={handleClose}
-            className="bg-yellow rounded-full p-2 w-[28px] h-[28px] items-center flex"
+            className="bg-black rounded-full p-2 w-[28px] h-[28px] items-center flex"
           >
             <img src={close} alt="close" className="w-[24px] h-[24px]" />
           </div>
