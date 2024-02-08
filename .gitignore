@@ -5,6 +5,7 @@
 
 #env
 /backend/.env
+/front/.env
 
 
 #frontend#
