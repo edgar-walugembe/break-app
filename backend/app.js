@@ -1,16 +1,16 @@
-let createError = require("http-errors");
-let express = require("express");
-let path = require("path");
-let cookieParser = require("cookie-parser");
-let logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const cors = require("cors");
 
-let indexRouter = require("./routes/index");
-let userRouter = require("./routes/user");
-let productRouter = require("./routes/product");
-let orderRouter = require("./routes/order");
+const indexRouter = require("./routes/index");
+const userRouter = require("./routes/user");
+const productRouter = require("./routes/product");
+const orderRouter = require("./routes/order");
 
-let app = express();
+const app = express();
 
 app.use(cors());
 

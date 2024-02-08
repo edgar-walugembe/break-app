@@ -6,7 +6,7 @@ const {} = require("../middlewares/product");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+  res.send("ndi product");
 });
 
 router.post("/product", function (req, res, next) {
