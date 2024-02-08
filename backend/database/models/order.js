@@ -8,10 +8,38 @@ module.exports = (sequelize, DataTypes) => {
   }
   Order.init(
     {
-      orderId: DataTypes.INTEGER,
-      dateOfOrder: DataTypes.DATE,
-      debt: DataTypes.INTEGER,
-      status: DataTypes.STRING,
+      orderId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      dateOfOrder: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      debt: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        validate: {
+          isMax(value) {
+            if (value > 1000) {
+              throw new Error("Debt must be less than or equal to 1000.");
+            }
+          },
+        },
+      },
+      status: {
+        type: DataTypes.ENUM("Declined", "Pending", "Served"),
+        defaultValue: "Pending",
+        allowNull: false,
+        validate: {
+          isIn: {
+            args: [["Declined", "Pending", "Served"]],
+            msg: "Invalid Status",
+          },
+        },
+      },
     },
     {
       sequelize,
