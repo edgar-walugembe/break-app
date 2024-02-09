@@ -1,16 +1,25 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-const {} = require("../controllers/order-controller");
+const {
+  createOrder,
+  deleteOrder,
+  editOrder,
+  fetchAllOrders,
+} = require("../controllers/order-controller");
+
 const {} = require("../middlewares/order");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("ndi order");
-});
+/* createOrder Route. */
+router.post("/createOrder", createOrder);
 
-router.post("/order", function (req, res, next) {
-  res.send("respond with a resource 0000");
-});
+/* deleteOrder Route. */
+router.delete("/deleteOrder", deleteOrder);
+
+/* editOrder Route. */
+router.patch("/editOrder", editOrder);
+
+/* fetchAllOrder Route. */
+router.get("/", fetchAllOrders);
 
 module.exports = router;

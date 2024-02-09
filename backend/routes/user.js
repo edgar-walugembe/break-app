@@ -1,11 +1,13 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 const {
   createUser,
   deleteUser,
   editUser,
   fetchAllUsers,
+  loginUser,
+  setUserPassword,
 } = require("../controllers/user-controller");
 
 const {} = require("../middlewares/user");
@@ -21,5 +23,11 @@ router.patch("/editUser", editUser);
 
 /* fetchAllUser Route. */
 router.get("/", fetchAllUsers);
+
+/* loginUser Route. */
+router.get("/login", loginUser);
+
+/* setPassword Route. */
+router.post("/setPassword", setUserPassword);
 
 module.exports = router;

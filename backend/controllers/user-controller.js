@@ -1,4 +1,5 @@
 const { User, Sequelize, sequelize } = require("../database/models");
+const bcrypt = require("bcrypt");
 
 // create new User
 async function createUser(req, res) {
@@ -27,7 +28,7 @@ async function deleteUser(req, res, next) {
   try {
     const userId = req.query.id;
 
-    const user = await User.findOne({ where: { id: devId } });
+    const user = await User.findOne({ where: { id: userId } });
     if (user) {
       await user.destroy();
       return res.status(202).send(`user id: ${userId} deleted successfully`);
@@ -67,9 +68,33 @@ async function editUser(req, res, next) {
   }
 }
 
+// set user password
+async function setUserPassword(req, res, next) {
+  try {
+    const hash = await bcrypt.hash(req.body.password, 11);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send({ error });
+  }
+}
+
+// login user
+async function loginUser(req, res, next) {
+  try {
+    const hash = await bcrypt.hash(req.body.password, 11);
+
+    const isMatch = await bcrypt.compare(req.body.password, hash);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send({ error });
+  }
+}
+
 module.exports = {
   createUser,
   deleteUser,
   editUser,
   fetchAllUsers,
+  loginUser,
+  setUserPassword,
 };

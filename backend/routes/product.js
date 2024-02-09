@@ -1,16 +1,25 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-const {} = require("../controllers/product-controller");
+const {
+  createProduct,
+  deleteProduct,
+  editProduct,
+  fetchAllProducts,
+} = require("../controllers/product-controller");
+
 const {} = require("../middlewares/product");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("ndi product");
-});
+/* createProduct Route. */
+router.post("/createProduct", createProduct);
 
-router.post("/product", function (req, res, next) {
-  res.send("respond with a resource 0000");
-});
+/* deleteProduct Route. */
+router.delete("/deleteProduct", deleteProduct);
+
+/* editProduct Route. */
+router.patch("/editProduct", editProduct);
+
+/* fetchAllProduct Route. */
+router.get("/", fetchAllProducts);
 
 module.exports = router;
