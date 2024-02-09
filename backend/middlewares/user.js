@@ -12,6 +12,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// auth a user
+async function authUser(req, res, next) {
+  next();
+}
+
 module.exports = {
   upload,
+  authUser,
 };

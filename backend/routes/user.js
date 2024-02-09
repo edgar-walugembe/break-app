@@ -10,7 +10,10 @@ const {
   setUserPassword,
 } = require("../controllers/user-controller");
 
-const {} = require("../middlewares/user");
+const { authUser } = require("../middlewares/user");
+
+/*userRole Route */
+router.get("/", authUser, function (req, res) {});
 
 /* createUser Route. */
 router.post("/createUser", createUser);
@@ -22,7 +25,7 @@ router.delete("/deleteUser", deleteUser);
 router.patch("/editUser", editUser);
 
 /* fetchAllUser Route. */
-router.get("/", fetchAllUsers);
+router.get("/users/all", fetchAllUsers);
 
 /* loginUser Route. */
 router.get("/login", loginUser);

@@ -10,6 +10,8 @@ const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const orderRouter = require("./routes/order");
 
+const { authenticateToken } = require("./authUser");
+
 const app = express();
 
 app.use(cors());
@@ -25,9 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/user", userRouter);
-app.use("/product", productRouter);
-app.use("/order", orderRouter);
+app.use("/users", userRouter);
+app.use("/products", productRouter);
+app.use("/orders", orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -43,6 +45,19 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+// user role handler
+app.get("/", function (req, res) {});
+
+app.get("/Admin/Dashboard", authenticateToken, function (req, res) {
+  if (req.user.role !== "admin") return res.sendStatus(403);
+  res.json({ message: "Admin route accessed" });
+});
+
+app.get("/User/home", authenticateToken, function (req, res) {
+  if (req.user.role !== "user") return res.sendStatus(403);
+  res.json({ message: "User route accessed" });
 });
 
 module.exports = app;
