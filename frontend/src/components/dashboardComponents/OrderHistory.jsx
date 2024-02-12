@@ -466,9 +466,6 @@ export default function EnhancedTable() {
                             <span
                               style={{
                                 backgroundColor: row.background,
-                                // color: row.color,
-                                // padding: "4px 8px",
-                                // borderRadius: "4px",
                               }}
                               className="status"
                             ></span>

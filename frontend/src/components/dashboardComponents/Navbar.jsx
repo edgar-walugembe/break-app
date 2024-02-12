@@ -11,6 +11,8 @@ import { IoFastFood, IoCartOutline } from "react-icons/io5";
 //Other imports
 import Notification from "./Notification";
 
+import { menu, close } from "../../assets";
+
 const Navbar = () => {
   const date = new Date();
   const formattedDate = date.toLocaleDateString("en-US", {
@@ -23,7 +25,7 @@ const Navbar = () => {
   const name = "eedga";
 
   return (
-    <div className="surface-ground px-2 py-1 md:px-4 lg:px-6 ">
+    <div className="surface-ground px-2 py-2 md:px-4 lg:px-6">
       <div className="grid">
         <div className="flex justify-between col-12">
           <div className="flex flex-col text-black">
@@ -46,8 +48,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="grid nav.cards rounded col-12">
-        <div className="py-2 px-4 nav_card card-1 col-12 md:col-6 lg:col-3">
+      <div className="grid nav.cards rounded">
+        <div className="py-2 px-2 nav_card card-1 col-12 md:col-6 lg:col-3">
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">
@@ -66,7 +68,7 @@ const Navbar = () => {
           <span className="text-primary">since yesterday</span>
         </div>
 
-        <div className="py-2 px-4 nav_card col-12 md:col-6 lg:col-3">
+        <div className="py-2 px-2 nav_card col-12 md:col-6 lg:col-3">
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">
@@ -85,7 +87,7 @@ const Navbar = () => {
           <span className="text-primary">since last week</span>
         </div>
 
-        <div className="py-2 px-4 nav_card col-12 md:col-6 lg:col-3">
+        <div className="py-2 px-2 nav_card col-12 md:col-6 lg:col-3">
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">Users</span>
@@ -102,7 +104,7 @@ const Navbar = () => {
           <span className="text-primary">newly registered</span>
         </div>
 
-        <div className="py-2 px-4 nav_card card-4 col-12 md:col-6 lg:col-3">
+        <div className="py-2 px-2 nav_card card-4 col-12 md:col-6 lg:col-3">
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">
