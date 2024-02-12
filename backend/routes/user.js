@@ -13,7 +13,9 @@ const {
 const { authUser } = require("../middlewares/user");
 
 /*userRole Route */
-router.get("/", authUser, function (req, res) {});
+router.get("/", authUser, function (req, res) {
+  res.json({ message: "users route accessed" });
+});
 
 /* createUser Route. */
 router.post("/createUser", createUser);
@@ -25,7 +27,7 @@ router.delete("/deleteUser", deleteUser);
 router.patch("/editUser", editUser);
 
 /* fetchAllUser Route. */
-router.get("/users/all", fetchAllUsers);
+router.get("/all", fetchAllUsers);
 
 /* loginUser Route. */
 router.get("/login", loginUser);

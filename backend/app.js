@@ -10,6 +10,8 @@ const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const orderRouter = require("./routes/order");
 
+const { authenticateToken } = require("./authUser");
+
 const app = express();
 
 app.use(cors());
@@ -24,10 +26,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+//home page
 app.use("/", indexRouter);
-app.use("/users", userRouter);
-app.use("/products", productRouter);
-app.use("/orders", orderRouter);
+
+// user routes
+app.use("/User/home", authenticateToken, userRouter);
+
+//admin routes
+app.use("/Admin/Dashboard", authenticateToken, indexRouter);
+app.use("/Admin/Dashboard/users", authenticateToken, userRouter);
+
+// accessible routes for both admin and user
+app.use("/Admin/Dashboard/products", authenticateToken, productRouter);
+app.use("/Admin/Dashboard/orders", authenticateToken, orderRouter);
+app.use("/User/home/products", authenticateToken, productRouter);
+app.use("/User/home/orders", authenticateToken, orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

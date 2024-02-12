@@ -17,13 +17,27 @@ function authenticateToken(req, res, next) {
     if (index >= secretKeys.length) {
       return res.sendStatus(403);
     }
-    jwt.verify(token, secretKeys[index], (err, user) => {
+    jwt.verify(token, secretKeys[index], async (err, user) => {
       if (err) {
         return tryNextSecret(index + 1);
       }
 
-      req.user = user;
-      next();
+      try {
+        const hashedPassword = await getPasswordFromDatabase(user.username);
+        const isPasswordValid = await bcrypt.compare(
+          user.password,
+          hashedPassword
+        );
+        if (isPasswordValid) {
+          req.user = user;
+          next();
+        } else {
+          res.sendStatus(403);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        res.sendStatus(500);
+      }
     });
   }
 
