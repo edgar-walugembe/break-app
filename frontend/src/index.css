@@ -143,3 +143,16 @@ body {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+
+.status {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  /* background-color: yellow; */
+  border-radius: 50%;
+  top: 50%;
+  left: 20px;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}

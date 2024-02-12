@@ -460,16 +460,18 @@ export default function EnhancedTable() {
                         </TableCell>
                         <TableCell align="center">{row.product}</TableCell>
                         <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">
+                        <TableCell align="center" className="relative">
                           {" "}
-                          <span
-                            style={{
-                              backgroundColor: row.background,
-                              color: row.color,
-                              padding: "4px 8px",
-                              borderRadius: "4px",
-                            }}
-                          >
+                          <span>
+                            <span
+                              style={{
+                                backgroundColor: row.background,
+                                // color: row.color,
+                                // padding: "4px 8px",
+                                // borderRadius: "4px",
+                              }}
+                              className="status"
+                            ></span>
                             {row.status}
                           </span>
                         </TableCell>

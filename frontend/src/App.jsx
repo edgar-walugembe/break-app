@@ -16,7 +16,7 @@ import {
   Order,
   Password,
   Finances,
-  Home0,
+  Home00,
 } from "./pages";
 import { ForgotPassword, SetPassword } from "./components";
 import {
@@ -144,7 +144,7 @@ const App = () => {
         },
         {
           path: "/User/home",
-          element: <Home0 />,
+          element: <Home00 />,
           children: [
             {
               path: "/User/home",
