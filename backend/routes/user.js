@@ -10,15 +10,15 @@ const {
   setUserPassword,
 } = require("../controllers/user-controller");
 
-const { authUser } = require("../middlewares/user");
+const { hashPassword, authenticateToken } = require("../middlewares/user");
 
 /*userRole Route */
-router.get("/", authUser, function (req, res) {
+router.get("/", function (req, res) {
   res.json({ message: "users route accessed" });
 });
 
 /* createUser Route. */
-router.post("/createUser", createUser);
+router.post("/createUser", hashPassword, createUser);
 
 /* deleteUser Route. */
 router.delete("/deleteUser", deleteUser);

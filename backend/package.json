@@ -4,7 +4,7 @@
   "private": true,
   "logging": true,
   "scripts": {
-    "start": "npm run create:db && npm run start:app",
+    "start": "npm run create:db && npm run run:migrations && npm run start:app",
     "start:app": "node ./bin/www",
     "start:dev": "nodemon --inspect",
     "create:db": "sequelize db:create",

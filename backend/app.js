@@ -30,17 +30,17 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 // user routes
-app.use("/User/home", authenticateToken, userRouter);
+app.use("/User/home", userRouter);
 
 //admin routes
-app.use("/Admin/Dashboard", authenticateToken, indexRouter);
-app.use("/Admin/Dashboard/users", authenticateToken, userRouter);
+app.use("/Admin/Dashboard", indexRouter);
+app.use("/Admin/Dashboard/users", userRouter);
 
 // accessible routes for both admin and user
-app.use("/Admin/Dashboard/products", authenticateToken, productRouter);
-app.use("/Admin/Dashboard/orders", authenticateToken, orderRouter);
-app.use("/User/home/products", authenticateToken, productRouter);
-app.use("/User/home/orders", authenticateToken, orderRouter);
+app.use("/Admin/Dashboard/products", productRouter);
+app.use("/Admin/Dashboard/orders", orderRouter);
+app.use("/User/home/products", productRouter);
+app.use("/User/home/orders", orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

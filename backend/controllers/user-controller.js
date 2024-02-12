@@ -1,5 +1,6 @@
 const { User, Sequelize, sequelize } = require("../database/models");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // create new User
 async function createUser(req, res) {
