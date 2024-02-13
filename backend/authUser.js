@@ -1,4 +1,4 @@
-const { User, Sequelize, sequelize } = require("./database/models");
+const { User } = require("./database/models");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -22,18 +22,29 @@ async function authenticateToken(req, res, next) {
     const userRole = user.userType;
 
     let jwtSecret;
+
+    const JWT_SECRET_USER = process.env.JWT_SECRET_USER;
+    const JWT_SECRET_ADMIN = process.env.JWT_SECRET_ADMIN;
+    const JWT_SECRET_SUPER = process.env.JWT_SECRET_SUPER;
+
+    if (!JWT_SECRET_USER || !JWT_SECRET_ADMIN || !JWT_SECRET_SUPER) {
+      return res
+        .status(500)
+        .json({ error: "JWT secret keys are not provided" });
+    }
+
     switch (userRole) {
       case "user":
-        jwtSecret = process.env.JWT_SECRET_USER;
+        jwtSecret = JWT_SECRET_USER;
         break;
       case "admin":
-        jwtSecret = process.env.JWT_SECRET_ADMIN;
+        jwtSecret = JWT_SECRET_ADMIN;
         break;
       case "super":
-        jwtSecret = process.env.JWT_SECRET_SUPER;
+        jwtSecret = JWT_SECRET_SUPER;
         break;
       default:
-        break;
+        return res.status(500).json({ error: "Invalid user role" });
     }
 
     const jwtToken = jwt.sign({ id: user.id, name: user.name }, jwtSecret);
