@@ -1,6 +1,7 @@
 const { User, Sequelize, sequelize } = require("../database/models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // create new User
 async function createUser(req, res) {
@@ -81,13 +82,26 @@ async function setUserPassword(req, res, next) {
 
 // login user
 async function loginUser(req, res, next) {
-  try {
-    const hash = await bcrypt.hash(req.body.password, 11);
+  const { name, password } = req.body;
 
-    const isMatch = await bcrypt.compare(req.body.password, hash);
+  try {
+    const user = await User.findOne({ name });
+
+    if (!user) {
+      return res.status(404).json({ message: "Incorrect name or password" });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: "Incorrect name or password" });
+    }
+
+    return res.status(200).json({ user });
+    next();
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ error });
+    return res.status(500).json({ error: "Internal server error" });
   }
 }
 

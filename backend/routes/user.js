@@ -30,7 +30,7 @@ router.patch("/editUser", editUser);
 router.get("/all", fetchAllUsers);
 
 /* loginUser Route. */
-router.get("/login", loginUser);
+router.get("/login", authenticateToken, loginUser);
 
 /* setPassword Route. */
 router.post("/setPassword", setUserPassword);

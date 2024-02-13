@@ -23,7 +23,7 @@ async function hashPassword(req, res, next) {
       return res.status(400).send({ message: "Password is required" });
     }
 
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 11);
 
     req.body.password = hashedPassword;
 
