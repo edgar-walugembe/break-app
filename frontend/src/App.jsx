@@ -32,13 +32,9 @@ import {
   UserFinances,
   UserHistory,
 } from "./components/userAppComponents";
+import { FormContext } from "./contexts";
 
 const App = () => {
-  //User Restrictions..
-  const userRole = "admin";
-
-  const isAdmin = userRole === "admin";
-
   const Layout = () => {
     return (
       <div className="w-full h-full font-poppins">
@@ -72,75 +68,73 @@ const App = () => {
         },
         {
           path: "/Admin/Dashboard",
-          element: isAdmin ? <Home /> : <Navigate to="/" />,
-          children: isAdmin
-            ? [
+          element: <Home />,
+          children: [
+            {
+              path: "/Admin/Dashboard/orders",
+              element: <Order />,
+              children: [
                 {
-                  path: "/Admin/Dashboard/orders",
-                  element: <Order />,
-                  children: [
-                    {
-                      path: "/Admin/Dashboard/orders/all",
-                      element: <OrderHistory />,
-                    },
-                  ],
-                },
-                {
-                  path: "/Admin/Dashboard/users",
-                  element: <User />,
-                  children: [
-                    {
-                      path: "/Admin/Dashboard/users/all",
-                      element: <UserList />,
-                    },
-                  ],
-                },
-                {
-                  path: "/Admin/Dashboard/products",
-                  element: <Product />,
-                  children: [
-                    {
-                      path: "/Admin/Dashboard/products/all",
-                      element: <ProductList />,
-                    },
-                  ],
-                },
-                {
-                  path: "/Admin/Dashboard/finances",
-                  element: <Finances />,
-                },
-                {
-                  path: "/Admin/Dashboard/notifications",
-                  element: <Notification />,
-                },
-                {
-                  path: "/Admin/Dashboard/user_settings",
-                  element: <UserSettings />,
-                },
-                {
-                  path: "/Admin/Dashboard/user_account",
-                  element: <UserAccount />,
-                },
-                {
-                  path: "/Admin/Dashboard",
+                  path: "/Admin/Dashboard/orders/all",
                   element: <OrderHistory />,
                 },
+              ],
+            },
+            {
+              path: "/Admin/Dashboard/users",
+              element: <User />,
+              children: [
                 {
-                  path: "/Admin/Dashboard/password",
-                  element: <Password />,
-                  children: [
-                    {
-                      path: "/Admin/Dashboard/password/set_password/:id",
-                      element: <SetPassword />,
-                    },
-                    {
-                      path: "/Admin/Dashboard/password/reset_password/:id",
-                      element: <ForgotPassword />,
-                    },
-                  ],
+                  path: "/Admin/Dashboard/users/all",
+                  element: <UserList />,
                 },
-              ]
-            : [],
+              ],
+            },
+            {
+              path: "/Admin/Dashboard/products",
+              element: <Product />,
+              children: [
+                {
+                  path: "/Admin/Dashboard/products/all",
+                  element: <ProductList />,
+                },
+              ],
+            },
+            {
+              path: "/Admin/Dashboard/finances",
+              element: <Finances />,
+            },
+            {
+              path: "/Admin/Dashboard/notifications",
+              element: <Notification />,
+            },
+            {
+              path: "/Admin/Dashboard/user_settings",
+              element: <UserSettings />,
+            },
+            {
+              path: "/Admin/Dashboard/user_account",
+              element: <UserAccount />,
+            },
+            {
+              path: "/Admin/Dashboard",
+              element: <OrderHistory />,
+            },
+            {
+              path: "/Admin/Dashboard/password",
+              element: <Password />,
+              children: [
+                {
+                  path: "/Admin/Dashboard/password/set_password/:id",
+                  element: <SetPassword />,
+                },
+                {
+                  path: "/Admin/Dashboard/password/reset_password/:id",
+                  element: <ForgotPassword />,
+                },
+              ],
+            },
+          ],
         },
         {
           path: "/User/home",

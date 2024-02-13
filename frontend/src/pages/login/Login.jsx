@@ -15,30 +15,37 @@ const Login = () => {
   const { Formik } = formik;
 
   const schema = yup.object().shape({
-    username: yup.string().required(),
+    name: yup.string().required(),
     password: yup.string().required(),
   });
 
   const [values, setValues] = useState({
-    username: "",
+    name: "",
     password: "",
   });
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  let res;
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    res = await axios.post("http://localhost:8000", values);
-
     try {
-      if (res.status === 200) {
-        console.log("logged in successfully");
-        navigate("/Admin/Dashboard");
-      }
+      const response = await axios.post("http://localhost:8000/", values);
+      console.log(response);
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      navigate("/Admin/Dashboard");
     } catch (error) {
-      console.error("Error details:", error);
+      if (error.response && error.response.data) {
+        console.error("Error response data:", error.response.data);
+        setError(error.response.data.error);
+      } else {
+        console.error("Error:", error);
+        setError("An unexpected error occurred");
+      }
     }
   };
 
@@ -77,27 +84,27 @@ const Login = () => {
             <Formik
               validationSchema={schema}
               initialValues={{
-                username: "",
+                name: "",
                 password: "",
               }}
               onSubmit={handleSubmit}
             >
               {({ handleChange, values, touched, errors }) => (
-                <Form autoComplete="true">
+                <Form autoComplete="true" onSubmit={handleSubmit}>
                   <Row>
                     <Col xs={12} md={12}>
-                      <Form.Group className="mb-3" controlId="username">
+                      <Form.Group className="mb-3" controlId="name">
                         <Form.Control
                           required={true}
-                          name="username"
+                          name="name"
                           type="text"
                           placeholder="Username"
-                          value={values.username}
+                          value={values.name}
                           onChange={handleChange}
-                          isInvalid={!!errors.username}
+                          isInvalid={!!errors.name}
                         />
                         <Form.Control.Feedback type="invalid">
-                          {errors.username}
+                          {errors.name}
                         </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
@@ -121,6 +128,8 @@ const Login = () => {
                       </Form.Group>
                     </Col>
                   </Row>
+
+                  {error && <p className="text-danger">{error}</p>}
 
                   <div className="flex gap-2 justify-center">
                     <button type="submit" className={`rounded loginSpan`}>
