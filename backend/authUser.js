@@ -34,20 +34,23 @@ async function authenticateToken(req, res, next) {
     }
 
     switch (userRole) {
-      case "user":
+      case "User":
         jwtSecret = JWT_SECRET_USER;
         break;
-      case "admin":
+      case "Admin":
         jwtSecret = JWT_SECRET_ADMIN;
         break;
-      case "super":
+      case "SuperAdmin":
         jwtSecret = JWT_SECRET_SUPER;
         break;
       default:
         return res.status(500).json({ error: "Invalid user role" });
     }
 
-    const jwtToken = jwt.sign({ id: user.id, name: user.name }, jwtSecret);
+    const jwtToken = jwt.sign(
+      { name: user.name, password: user.password },
+      jwtSecret
+    );
 
     res.json({ message: "Welcome Back User!", token: jwtToken });
   } catch (error) {
