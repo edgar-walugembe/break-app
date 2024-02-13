@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as formik from "formik";
 import * as yup from "yup";
 import "./login.css";
+import axios from "axios";
 
 //image imports
 import { logo_spin } from "../../assets";
@@ -15,23 +16,29 @@ const Login = () => {
 
   const schema = yup.object().shape({
     username: yup.string().required(),
-    email: yup.string().email().required(),
     password: yup.string().required(),
   });
 
-  const submitForm = async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    // devRef.current.requestSubmit();
-    // fetchDev();
-  };
+  const [values, setValues] = useState({
+    username: "",
+    password: "",
+  });
 
-  //route Handling
-  const handleLogin = (role) => {
-    if (role === "admin") {
-      window.location.href = "/Admin/Dashboard";
-    } else if (role === "user") {
-      window.location.href = "/User/home";
+  const navigate = useNavigate();
+
+  let res;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    res = await axios.post("http://localhost:8000", values);
+
+    try {
+      if (res.status === 200) {
+        console.log("logged in successfully");
+        navigate("/Admin/Dashboard");
+      }
+    } catch (error) {
+      console.error("Error details:", error);
     }
   };
 
@@ -69,23 +76,14 @@ const Login = () => {
           <div className="mx-1">
             <Formik
               validationSchema={schema}
-              // onSubmit={saveDev}
               initialValues={{
-                firstName: "",
-                lastName: "",
-                email: "",
-                gender: "",
-                dob: "",
+                username: "",
+                password: "",
               }}
+              onSubmit={handleSubmit}
             >
               {({ handleChange, values, touched, errors }) => (
-                <Form
-                // noValidate
-                // validated={validated}
-                // ref={}
-                // onSubmit={}
-                // autoComplete="true"
-                >
+                <Form autoComplete="true">
                   <Row>
                     <Col xs={12} md={12}>
                       <Form.Group className="mb-3" controlId="username">
@@ -112,7 +110,7 @@ const Login = () => {
                           required={true}
                           name="password"
                           type="password"
-                          placeholder="Password."
+                          placeholder="Password"
                           value={values.password}
                           onChange={handleChange}
                           isInvalid={!!errors.password}
@@ -123,26 +121,21 @@ const Login = () => {
                       </Form.Group>
                     </Col>
                   </Row>
+
+                  <div className="flex gap-2 justify-center">
+                    <button type="submit" className={`rounded loginSpan`}>
+                      <div>
+                        <Link className="flex justify-evenly w-full p-2 ">
+                          <span className="text-black font-semibold text-[14px]">
+                            Log In
+                          </span>
+                        </Link>
+                      </div>
+                    </button>
+                  </div>
                 </Form>
               )}
             </Formik>
-          </div>
-
-          <div className="flex gap-2 justify-center">
-            <div
-              className={`rounded loginSpan`}
-              onClick={() => handleLogin("admin")}
-            >
-              <Link
-                // to="/Admin/Dashboard"
-                // to="/User/home"
-                className="flex justify-evenly w-full p-2 "
-              >
-                <span className="text-black font-semibold text-[14px]">
-                  Log In
-                </span>
-              </Link>
-            </div>
           </div>
         </div>
       </div>

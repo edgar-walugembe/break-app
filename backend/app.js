@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //home page
-app.use("/", authenticateToken, loginUser, indexRouter);
+app.post("/", authenticateToken, loginUser, indexRouter);
 
 // user routes
 app.use("/User/home", userRouter);
