@@ -15,8 +15,8 @@ const Login = () => {
   const { Formik } = formik;
 
   const schema = yup.object().shape({
-    name: yup.string().required(),
-    password: yup.string().required(),
+    name: yup.string().required("Username is required"),
+    password: yup.string().required("Password is required"),
   });
 
   const [values, setValues] = useState({
@@ -26,12 +26,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       const response = await axios.get("http://localhost:8000", values);
       console.log(response);
@@ -42,13 +37,14 @@ const Login = () => {
 
       navigate("/Admin/Dashboard");
     } catch (error) {
-      if (error.response && error.response.data) {
-        console.error("Error response data:", error.response.data);
-        setError(error.response.data.error);
-      } else {
-        console.error("Error:", error);
-        setError("An unexpected error occurred");
-      }
+      // if (error.response && error.response.data) {
+      //   console.error("Error response data:", error.response.data);
+      //   setError(error.response.data.error);
+      // } else {
+      //   console.error("Error:", error);
+      //   setError("An unexpected error occurred");
+      // }
+      setError(error.response?.data?.error || "An unexpected error occurred");
     }
   };
 
@@ -92,7 +88,7 @@ const Login = () => {
               }}
               onSubmit={handleSubmit}
             >
-              {({ handleChange, values, touched, errors }) => (
+              {({ handleChange, values, touched, errors, handleSubmit }) => (
                 <Form autoComplete="true" onSubmit={handleSubmit}>
                   <Row>
                     <Col xs={12} md={12}>
@@ -104,7 +100,7 @@ const Login = () => {
                           placeholder="Username"
                           value={values.name}
                           onChange={handleChange}
-                          isInvalid={!!errors.name}
+                          isInvalid={touched.name && !!errors.name}
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.name}
@@ -123,7 +119,7 @@ const Login = () => {
                           placeholder="Password"
                           value={values.password}
                           onChange={handleChange}
-                          isInvalid={!!errors.password}
+                          isInvalid={touched.password && !!errors.password}
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.password}
@@ -132,14 +128,12 @@ const Login = () => {
                     </Col>
                   </Row>
 
-                  {error && <p className="text-danger">{error}</p>}
+                  {error && (
+                    <p className="text-danger font-semibold">{error}</p>
+                  )}
 
                   <div className="flex gap-2 justify-center">
-                    <button
-                      type="submit"
-                      className={`rounded loginSpan`}
-                      onClick={handleSubmit}
-                    >
+                    <button type="submit" className={`rounded loginSpan`}>
                       <div className="flex justify-evenly w-full p-2">
                         <span className="text-black font-semibold text-[14px]">
                           Log In
