@@ -33,10 +33,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/", values);
+      const response = await axios.get("http://localhost:8000", values);
       console.log(response);
+
       const { token } = response.data;
+
       localStorage.setItem("token", token);
+
       navigate("/Admin/Dashboard");
     } catch (error) {
       if (error.response && error.response.data) {
@@ -132,13 +135,15 @@ const Login = () => {
                   {error && <p className="text-danger">{error}</p>}
 
                   <div className="flex gap-2 justify-center">
-                    <button type="submit" className={`rounded loginSpan`}>
-                      <div>
-                        <Link className="flex justify-evenly w-full p-2 ">
-                          <span className="text-black font-semibold text-[14px]">
-                            Log In
-                          </span>
-                        </Link>
+                    <button
+                      type="submit"
+                      className={`rounded loginSpan`}
+                      onClick={handleSubmit}
+                    >
+                      <div className="flex justify-evenly w-full p-2">
+                        <span className="text-black font-semibold text-[14px]">
+                          Log In
+                        </span>
                       </div>
                     </button>
                   </div>

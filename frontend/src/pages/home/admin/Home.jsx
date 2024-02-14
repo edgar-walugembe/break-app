@@ -10,7 +10,14 @@ const Home = () => {
   const [openCreatePdt, setOpenCreatePdt] = useState(false);
   const [openDeletePdt, setOpenDeletePdt] = useState(false);
   const [openEditPdt, setOpenEditPdt] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState({
+    name: "",
+    email: "",
+    company: "",
+    type: "",
+    status: "",
+    img: "",
+  });
 
   //user State
   const [openCreateUser, setOpenCreateUser] = useState(false);

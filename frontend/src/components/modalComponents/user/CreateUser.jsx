@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
+import axios from "axios";
 
 function CreateUser() {
   const { inputValue, setInputValue, openCreateUser, setOpenCreateUser } =
@@ -26,12 +27,16 @@ function CreateUser() {
   };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    setInputValue({
+      ...inputValue,
+      [event.target.id]: event.target.value,
+    });
   };
 
-  const handleSubmit = () => {
-    // Handle submission logic here
+  const handleSubmit = async () => {
     console.log("Submitted value:", inputValue);
+
+    const res = await axios.post("");
     handleCloseCreate();
   };
 
@@ -53,20 +58,20 @@ function CreateUser() {
               autoFocus
               margin="dense"
               id="name"
-              label="UserName"
+              label="Username"
               type="text"
               fullWidth
-              // value={inputValue}
+              value={inputValue}
               onChange={handleInputChange}
             />
             <TextField
               autoFocus
               margin="dense"
-              id="price"
-              label="User E-mail"
+              id="email"
+              label="E-mail"
               type="text"
               fullWidth
-              // value={inputValue}
+              value={inputValue}
               onChange={handleInputChange}
             />
           </div>
@@ -75,26 +80,37 @@ function CreateUser() {
             <TextField
               autoFocus
               margin="dense"
-              id="name"
-              label="UserCompany"
+              id="company"
+              label="Company"
               type="text"
               fullWidth
-              // value={inputValue}
+              value={inputValue}
               onChange={handleInputChange}
             />
             <TextField
               autoFocus
               margin="dense"
-              id="price"
-              label="User Role"
+              id="type"
+              label="User Type"
               type="text"
               fullWidth
-              // value={inputValue}
+              value={inputValue}
               onChange={handleInputChange}
             />
           </div>
 
-          <div>
+          <div className="flex gap-4">
+            <TextField
+              autoFocus
+              margin="dense"
+              id="status"
+              label="Status"
+              type="text"
+              fullWidth
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+
             <TextField
               autoFocus
               margin="dense"
@@ -102,7 +118,7 @@ function CreateUser() {
               label=""
               type="file"
               fullWidth
-              // value={inputValue}
+              value={inputValue}
               onChange={handleInputChange}
             />
           </div>
@@ -121,6 +137,7 @@ function CreateUser() {
             color="primary"
             variant="contained"
             style={{ background: "yellow", color: "black" }}
+            type="submit"
           >
             Save
           </Button>

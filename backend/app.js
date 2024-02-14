@@ -28,8 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-//home page
-app.post("/", authenticateToken, loginUser, indexRouter);
+//login page
+app.use("/", authenticateToken, loginUser, indexRouter);
 
 // user routes
 app.use("/User/home", userRouter);
