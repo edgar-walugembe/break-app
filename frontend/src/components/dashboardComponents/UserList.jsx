@@ -143,7 +143,7 @@ const headCells = [
     id: "timestamps",
     numeric: true,
     disablePadding: false,
-    label: "Time Registered",
+    label: "Time Added",
   },
   {
     id: "actions",
@@ -168,7 +168,7 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow className="bg-amber">
+      <TableRow className="bg-yellow">
         <TableCell padding="checkbox">
           <Checkbox
             color="primary"
@@ -370,7 +370,7 @@ export default function EnhancedTable() {
       <div className="flex flex-col">
         <div className="flex justify-end items-end p-0 gap-10">
           <div
-            className={`rounded button-amber mb-1 text-[14px] text-center py-2 col-12`}
+            className={`rounded button-yellow mb-1 text-[14px] text-center py-2 col-12`}
             onClick={handleClickCreate}
           >
             <Link className="">
@@ -437,7 +437,11 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.status}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
                         <TableCell align="center" onClick={handleClickEdit}>
-                          <Button color="warning" variant="contained">
+                          <Button
+                            style={{ background: "yellow", color: "black" }}
+                            variant="contained"
+                            size="xs"
+                          >
                             Edit
                           </Button>
                         </TableCell>

@@ -94,13 +94,10 @@ const Menu = () => {
         </div>
 
         <div
-          className={`rounded menuSpan ${isActive === 4 ? "active" : ""}`}
+          className={`rounded menuSpan ${isActive === 5 ? "active" : ""}`}
           onClick={() => toggleActive(4)}
         >
-          <Link
-            to="/Admin/Dashboard/finances/"
-            className="flex justify-evenly w-full p-2"
-          >
+          <Link to="/" className="flex justify-evenly w-full p-2">
             <IoIosExit className="w-[24px] h-[24px] text-white" />
             <span className="text-white">Log Out</span>
           </Link>
