@@ -32,12 +32,23 @@ import { ModalContext } from "../../contexts/ModalContext";
 
 import { CreateUser, DeleteUser, EditUser } from "../modalComponents";
 
-function createData(id, name, email, company, timestamps, actions) {
+function createData(
+  id,
+  name,
+  email,
+  company,
+  type,
+  status,
+  timestamps,
+  actions
+) {
   return {
     id,
     name,
     email,
     company,
+    type,
+    status,
     timestamps,
     actions,
   };
@@ -108,19 +119,31 @@ const headCells = [
     id: "email",
     numeric: true,
     disablePadding: false,
-    label: "User E-mail",
+    label: "Email",
   },
   {
     id: "company",
     numeric: true,
     disablePadding: false,
-    label: "User Company",
+    label: "Company",
+  },
+  {
+    id: "type",
+    numeric: true,
+    disablePadding: false,
+    label: "Type",
+  },
+  {
+    id: "status",
+    numeric: true,
+    disablePadding: false,
+    label: "Status",
   },
   {
     id: "timestamps",
     numeric: true,
     disablePadding: false,
-    label: "Time Of Entry",
+    label: "Time Registered",
   },
   {
     id: "actions",
@@ -261,7 +284,7 @@ EnhancedTableToolbar.propTypes = {
 
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
+  const [orderBy, setOrderBy] = React.useState("company");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -410,6 +433,8 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.email}</TableCell>
                         <TableCell align="center">{row.company}</TableCell>
+                        <TableCell align="center">{row.type}</TableCell>
+                        <TableCell align="center">{row.status}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
                         <TableCell align="center" onClick={handleClickEdit}>
                           <Button color="warning" variant="contained">
@@ -422,7 +447,7 @@ export default function EnhancedTable() {
                   {emptyRows > 0 && (
                     <TableRow
                       style={{
-                        height: (dense ? 20 : 30) * emptyRows,
+                        height: (dense ? 5 : 5) * emptyRows,
                       }}
                     >
                       <TableCell colSpan={6} />
