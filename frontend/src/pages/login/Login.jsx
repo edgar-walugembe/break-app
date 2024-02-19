@@ -32,12 +32,8 @@ const Login = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post("http://localhost:8000", values);
+      const response = await axios.get("http://localhost:8000", values);
       console.log(response);
-
-      // const { token } = response.data;
-
-      // localStorage.setItem("token", token);
 
       navigate("/Admin/Dashboard");
     } catch (error) {
