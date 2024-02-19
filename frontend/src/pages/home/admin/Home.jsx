@@ -25,6 +25,7 @@ const Home = () => {
   const [openEditUser, setOpenEditUser] = useState(false);
   const userRef = useRef(null);
   const [editUser, setEditUser] = useState(false);
+  const [validated, setValidated] = useState(false);
 
   return (
     <section className="home h-full">
@@ -48,6 +49,8 @@ const Home = () => {
             userRef,
             editUser,
             setEditUser,
+            validated,
+            setValidated,
           }}
         >
           <Menu />

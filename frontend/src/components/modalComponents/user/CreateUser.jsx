@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -8,7 +8,13 @@ import {
   TextField,
 } from "@mui/material";
 
-import Button from "@mui/material/Button";
+import {
+  Button,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+} from "@mui/material";
 
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
@@ -32,7 +38,23 @@ function CreateUser() {
     userRef,
     editUser,
     setEditUser,
+    validated,
+    setValidated,
   } = useContext(ModalContext);
+
+  const [company, setCompany] = useState("");
+  const [type, setType] = useState("");
+  const [status, setStatus] = useState("");
+
+  const handleCompany = (event) => {
+    setCompany(event.target.value);
+  };
+  const handleType = (event) => {
+    setType(event.target.value);
+  };
+  const handleStatus = (event) => {
+    setStatus(event.target.value);
+  };
 
   const handleClickCreate = () => {
     setOpenCreateUser(true);
@@ -59,7 +81,7 @@ function CreateUser() {
     const form = userRef.current;
 
     if (form && form.checkValidity() === true) {
-      const newDev = {
+      const newUser = {
         name: form.name.value,
         email: form.email.value,
         company: form.company.value,
@@ -71,25 +93,24 @@ function CreateUser() {
       let res;
 
       if (editUser && editUser.id) {
-        const updatedDev = { ...editUser, ...newDev };
-        res = await axios.patch(`${editUser}?id=${editUser.id}`, updatedDev);
+        const updatedUser = { ...editUser, ...newUser };
+        res = await axios.patch(`${editUser}?id=${editUser.id}`, updatedUser);
       } else {
-        res = await axios.post(createUser, newDev);
+        res = await axios.post(createUser, newUser);
       }
       form.reset();
       setValidated(false);
 
       try {
         if (res.status === 202 || res.status === 201) {
-          updateEditUser(newDev);
-          // closeCreateDevDialog();
+          updateEditUser(newUser);
           setEditUser(null);
         } else {
           setValidated(true);
-          console.error("Failed to add/edit developer:", res.data.message);
+          console.error("Failed to add/edit user:", res.data.message);
         }
       } catch (error) {
-        console.error("Error adding Dev to express_db:", error.message);
+        console.error("Error adding user to database", error.message);
         console.error("Error details:", error);
         throw error;
       }
@@ -100,7 +121,7 @@ function CreateUser() {
 
   return (
     <div>
-      <Dialog open={openCreateUser} style={{ zIndex: 9999 }}>
+      <Dialog open={openCreateUser} style={{ zIndex: 0 }}>
         <DialogTitle className="flex justify-between">
           <span>Add New User</span>
           <div
@@ -119,9 +140,10 @@ function CreateUser() {
               label="Username"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.name}
               onChange={handleInputChange}
             />
+
             <TextField
               autoFocus
               margin="dense"
@@ -129,45 +151,90 @@ function CreateUser() {
               label="E-mail"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.email}
               onChange={handleInputChange}
             />
           </div>
 
           <div className="flex gap-4">
-            <TextField
+            {/* <TextField
               autoFocus
               margin="dense"
               id="company"
               label="Company"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.company}
               onChange={handleInputChange}
-            />
-            <TextField
+            /> */}
+
+            <FormControl fullWidth margin="dense">
+              <InputLabel id="company-label">Company</InputLabel>
+              <Select
+                labelId="company-label"
+                id="company"
+                value={company}
+                label="Company"
+                onChange={handleCompany}
+              >
+                <MenuItem value={"Odyssey"}>Odyssey</MenuItem>
+                <MenuItem value={"Upti"}>Upti</MenuItem>
+              </Select>
+            </FormControl>
+
+            <FormControl fullWidth margin="dense">
+              <InputLabel id="userType-label">User Type</InputLabel>
+              <Select
+                labelId="userType-label"
+                id="type"
+                value={type}
+                label="User Type"
+                onChange={handleType}
+              >
+                <MenuItem value={"SuperAdmin"}>SuperAdmin</MenuItem>
+                <MenuItem value={"Admin"}>Admin</MenuItem>
+                <MenuItem value={"User"}>User</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* <TextField
               autoFocus
               margin="dense"
               id="type"
               label="User Type"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.type}
               onChange={handleInputChange}
-            />
+            /> */}
           </div>
 
           <div className="flex gap-4">
-            <TextField
+            {/* <TextField
               autoFocus
               margin="dense"
               id="status"
               label="Status"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.status}
               onChange={handleInputChange}
-            />
+            /> */}
+
+            <FormControl fullWidth margin="dense">
+              <InputLabel id="status-label">Status</InputLabel>
+              <Select
+                labelId="status-label"
+                id="status"
+                value={status}
+                label="Status"
+                onChange={handleStatus}
+              >
+                <MenuItem value={"Active"}>Active</MenuItem>
+                <MenuItem value={"Inactive"}>Inactive</MenuItem>
+                <MenuItem value={"Suspended"}>Suspended</MenuItem>
+              </Select>
+            </FormControl>
 
             <TextField
               autoFocus
@@ -176,7 +243,6 @@ function CreateUser() {
               label=""
               type="file"
               fullWidth
-              value={inputValue}
               onChange={handleInputChange}
             />
           </div>

@@ -59,7 +59,7 @@ function EditUser() {
               label="Username"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.name}
               onChange={handleInputChange}
             />
             <TextField
@@ -69,7 +69,7 @@ function EditUser() {
               label="E-mail"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.email}
               onChange={handleInputChange}
             />
           </div>
@@ -82,7 +82,7 @@ function EditUser() {
               label="Company"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.company}
               onChange={handleInputChange}
             />
 
@@ -93,7 +93,7 @@ function EditUser() {
               label="User Type"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.type}
               onChange={handleInputChange}
             />
           </div>
@@ -106,7 +106,7 @@ function EditUser() {
               label="Status"
               type="text"
               fullWidth
-              value={inputValue}
+              value={inputValue.status}
               onChange={handleInputChange}
             />
 
@@ -117,7 +117,6 @@ function EditUser() {
               label=""
               type="file"
               fullWidth
-              value={inputValue}
               onChange={handleInputChange}
             />
           </div>
