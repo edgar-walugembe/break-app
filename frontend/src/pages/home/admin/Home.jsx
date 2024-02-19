@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Menu, Navbar } from "../../../components/dashboardComponents";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { Outlet } from "react-router-dom";
@@ -23,6 +23,8 @@ const Home = () => {
   const [openCreateUser, setOpenCreateUser] = useState(false);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
+  const userRef = useRef(null);
+  const [editUser, setEditUser] = useState(false);
 
   return (
     <section className="home h-full">
@@ -43,6 +45,9 @@ const Home = () => {
             setOpenCreateUser,
             setOpenDeleteUser,
             setOpenEditUser,
+            userRef,
+            editUser,
+            setEditUser,
           }}
         >
           <Menu />

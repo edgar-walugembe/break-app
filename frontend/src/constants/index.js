@@ -71,3 +71,12 @@ export const cards = [
     price: 500,
   },
 ];
+
+export const baseUrl = "http://localhost:8000";
+export const UserUrl = "http://localhost:8000/Admin/Dashboard/users";
+export const getUser = `${UserUrl}/all`;
+export const createUser = `${UserUrl}/createUser`;
+export const editUser = `${UserUrl}/editUser`;
+export const deleteUser = `${UserUrl}/deleteUser`;
+export const ProductUrl = "http://localhost:8000/Admin/Dashboard/products";
+export const OrderUrl = "http://localhost:8000/Admin/Dashboard/orders";

@@ -26,14 +26,18 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  // const handleChange = (e) => {
+  //   setValues({ ...values, [e.target.name]: e.target.value });
+  // };
+
+  const handleSubmit = async (values) => {
     try {
-      const response = await axios.get("http://localhost:8000", values);
+      const response = await axios.post("http://localhost:8000", values);
       console.log(response);
 
-      const { token } = response.data;
+      // const { token } = response.data;
 
-      localStorage.setItem("token", token);
+      // localStorage.setItem("token", token);
 
       navigate("/Admin/Dashboard");
     } catch (error) {

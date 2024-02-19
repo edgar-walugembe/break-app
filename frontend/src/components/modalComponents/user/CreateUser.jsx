@@ -14,9 +14,25 @@ import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
 import axios from "axios";
 
+import {
+  baseUrl,
+  UserUrl,
+  createUser,
+  getUser,
+  deleteUser,
+  editUser,
+} from "../../../constants";
+
 function CreateUser() {
-  const { inputValue, setInputValue, openCreateUser, setOpenCreateUser } =
-    useContext(ModalContext);
+  const {
+    inputValue,
+    setInputValue,
+    openCreateUser,
+    setOpenCreateUser,
+    userRef,
+    editUser,
+    setEditUser,
+  } = useContext(ModalContext);
 
   const handleClickCreate = () => {
     setOpenCreateUser(true);
@@ -33,11 +49,53 @@ function CreateUser() {
     });
   };
 
-  const handleSubmit = async () => {
-    console.log("Submitted value:", inputValue);
+  const handleSubmit = (event) => {};
 
-    const res = await axios.post("");
-    handleCloseCreate();
+  const updateEditUser = (newValues) => {
+    setEditUser((prevEditUser) => ({ ...prevEditUser, ...newValues }));
+  };
+
+  const saveUser = async () => {
+    const form = userRef.current;
+
+    if (form && form.checkValidity() === true) {
+      const newDev = {
+        name: form.name.value,
+        email: form.email.value,
+        company: form.company.value,
+        type: form.type.value,
+        status: form.status.value,
+        img: form.img.value,
+      };
+
+      let res;
+
+      if (editUser && editUser.id) {
+        const updatedDev = { ...editUser, ...newDev };
+        res = await axios.patch(`${editUser}?id=${editUser.id}`, updatedDev);
+      } else {
+        res = await axios.post(createUser, newDev);
+      }
+      form.reset();
+      setValidated(false);
+
+      try {
+        if (res.status === 202 || res.status === 201) {
+          updateEditUser(newDev);
+          // closeCreateDevDialog();
+          setEditUser(null);
+        } else {
+          setValidated(true);
+          console.error("Failed to add/edit developer:", res.data.message);
+        }
+      } catch (error) {
+        console.error("Error adding Dev to express_db:", error.message);
+        console.error("Error details:", error);
+        throw error;
+      }
+    } else {
+      setValidated(true);
+    }
   };
 
   return (

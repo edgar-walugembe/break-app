@@ -18,7 +18,7 @@ router.get("/", function (req, res) {
 });
 
 /* createUser Route. */
-router.post("/createUser", hashPassword, createUser, authenticateToken);
+router.post("/createUser", hashPassword, authenticateToken, createUser);
 
 /* deleteUser Route. */
 router.delete("/deleteUser", deleteUser);

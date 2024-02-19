@@ -1,7 +1,7 @@
 const { User } = require("../database/models");
+require("dotenv").config();
 const multer = require("multer");
 const path = require("path");
-require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -41,15 +41,15 @@ async function authenticateToken(req, res, next) {
   try {
     const user = await User.findOne({ where: { name } });
 
-    // if (!user) {
-    //   return res.status(404).json({ error: "Invalid username or password" });
-    // }
+    if (!user) {
+      return res.status(404).json({ error: "Invalid username or password" });
+    }
 
-    // const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    // if (!isPasswordValid) {
-    //   return res.status(401).json({ error: "Incorrect password" });
-    // }
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "Invalid username or password" });
+    }
 
     const userRole = user.userType;
 

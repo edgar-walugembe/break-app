@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //login page
-app.use("/", indexRouter);
+app.post("/", authenticateToken, loginUser, indexRouter);
 
 // user routes
 app.use("/User/home", userRouter);
