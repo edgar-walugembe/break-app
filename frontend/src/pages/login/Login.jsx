@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import * as formik from "formik";
@@ -9,6 +9,7 @@ import axios from "axios";
 
 //image imports
 import { logo_spin } from "../../assets";
+import { restart } from "nodemon";
 
 const Login = () => {
   //form Handling
@@ -19,32 +20,45 @@ const Login = () => {
     password: yup.string().required("Password is required"),
   });
 
-  const [values, setValues] = useState({
-    name: "",
-    password: "",
-  });
+  //form states
+  const formRef = useRef("null");
+  const [validated, setValidated] = useState(false);
+
+  //call states
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // const handleChange = (e) => {
-  //   setValues({ ...values, [e.target.name]: e.target.value });
-  // };
-
   const handleSubmit = async (values) => {
-    try {
-      const response = await axios.get("http://localhost:8000", values);
-      console.log(response);
+    const form = formRef.current;
 
-      navigate("/Admin/Dashboard");
-    } catch (error) {
-      // if (error.response && error.response.data) {
-      //   console.error("Error response data:", error.response.data);
-      //   setError(error.response.data.error);
-      // } else {
-      //   console.error("Error:", error);
-      //   setError("An unexpected error occurred");
-      // }
-      setError(error.response?.data?.error || "An unexpected error occurred");
+    if (form && form.checkValidity() === true) {
+      // const newUser = {
+      //   name: form.name.value,
+      //   email: form.email.value,
+      //   company: form.company.value,
+      //   type: form.type.value,
+      //   status: form.status.value,
+      //   img: form.img.value,
+      // };
+
+      try {
+        const res = await axios.post("http://localhost:8000", values);
+        console.log(res);
+
+        navigate("/Admin/Dashboard");
+      } catch (error) {
+        // if (error.response && error.response.data) {
+        //   console.error("Error response data:", error.response.data);
+        //   setError(error.response.data.error);
+        // } else {
+        //   console.error("Error:", error);
+        //   setError("An unexpected error occurred");
+        // }
+        setError(error.res?.data?.error || "An unexpected error occurred");
+      }
+      form.reset();
+    } else {
+      setValidated(true);
     }
   };
 
@@ -89,7 +103,12 @@ const Login = () => {
               onSubmit={handleSubmit}
             >
               {({ handleChange, values, touched, errors, handleSubmit }) => (
-                <Form autoComplete="true" onSubmit={handleSubmit}>
+                <Form
+                  noValidate
+                  onSubmit={handleSubmit}
+                  validated={validated}
+                  ref={formRef}
+                >
                   <Row>
                     <Col xs={12} md={12}>
                       <Form.Group className="mb-3" controlId="name">

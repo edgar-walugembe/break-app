@@ -436,11 +436,12 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.type}</TableCell>
                         <TableCell align="center">{row.status}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
-                        <TableCell align="center" onClick={handleClickEdit}>
+                        <TableCell align="center">
                           <Button
                             style={{ background: "yellow", color: "black" }}
                             variant="contained"
                             size="xs"
+                            onClick={handleClickEdit}
                           >
                             Edit
                           </Button>

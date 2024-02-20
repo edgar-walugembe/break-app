@@ -439,7 +439,7 @@ EnhancedTableToolbar.propTypes = {
 
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("price");
+  const [orderBy, setOrderBy] = React.useState(""); //add price as a property
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -559,8 +559,8 @@ export default function EnhancedTable() {
                     const centeredImageStyle = {
                       display: "block",
                       margin: "auto",
-                      width: "30px",
-                      height: "30px",
+                      width: "40px",
+                      height: "40px",
                       borderRadius: "50%",
                     };
 
@@ -605,11 +605,12 @@ export default function EnhancedTable() {
                         <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.price}</TableCell>
                         <TableCell align="center">{row.timestamps}</TableCell>
-                        <TableCell align="center" onClick={handleClickEdit}>
+                        <TableCell align="center">
                           <Button
                             style={{ background: "yellow", color: "black" }}
                             variant="contained"
                             size="xs"
+                            onClick={handleClickEdit}
                           >
                             Edit
                           </Button>
