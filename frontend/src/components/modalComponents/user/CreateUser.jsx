@@ -76,12 +76,14 @@ const CreateUser = () => {
         name: form.name.value,
         email: form.email.value,
         company: form.company.value,
-        type: form.type.value,
+        userType: form.type.value,
         status: form.status.value,
         img: form.img.value,
       };
 
       let res;
+      console.log("Form values:", values);
+      console.log("new form values:", newUser);
 
       if (editUser && editUser.id) {
         const updatedUser = { ...editUser, ...newUser };
@@ -91,6 +93,9 @@ const CreateUser = () => {
       }
       form.reset();
       setValidated(false);
+
+      console.log("Form values:", values);
+      console.log("new form values:", newUser);
 
       try {
         if (res.status === 202 || res.status === 201) {
@@ -119,7 +124,7 @@ const CreateUser = () => {
             name: "",
             email: "",
             company: "",
-            type: "",
+            userType: "",
             status: "",
             img: "",
           }}
@@ -216,19 +221,19 @@ const CreateUser = () => {
                     <InputLabel id="type-label">User Type</InputLabel>
                     <Select
                       labelId="type-label"
-                      id="type"
-                      name="type"
-                      value={values.type}
+                      id="userType"
+                      name="userType"
+                      value={values.userType}
                       label="User Type"
                       onChange={handleChange}
-                      error={touched.type && !!errors.type}
+                      error={touched.userType && !!errors.userType}
                     >
                       <MenuItem value={"SuperAdmin"}>SuperAdmin</MenuItem>
                       <MenuItem value={"Admin"}>Admin</MenuItem>
                       <MenuItem value={"User"}>User</MenuItem>
                     </Select>
                     <ErrorMessage
-                      name="type"
+                      name="userType"
                       component="p"
                       className="text-red-600"
                     />
@@ -270,11 +275,11 @@ const CreateUser = () => {
                     />
 
                     {/* error={touched.img && !!errors.img} */}
-                    {/* <ErrorMessage
+                    <ErrorMessage
                       name="img"
                       component="p"
                       className="text-red-600"
-                    /> */}
+                    />
                   </FormControl>
                 </div>
               </DialogContent>

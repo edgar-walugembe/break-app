@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: "Active",
         validate: {
           isIn: {
-            args: [["Active", "Inactive", , "Suspended"]],
+            args: [["Active", "Inactive", "Suspended"]],
             msg: "Invalid Status",
           },
         },
