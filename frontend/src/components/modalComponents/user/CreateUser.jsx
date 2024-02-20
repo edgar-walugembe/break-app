@@ -12,6 +12,7 @@ import {
   MenuItem,
   Select,
   Button,
+  Input,
 } from "@mui/material";
 
 import { ModalContext } from "../../../contexts/ModalContext";
@@ -45,12 +46,12 @@ const CreateUser = () => {
     setOpenCreateUser(false);
   };
 
-  const handleInputChange = (event) => {
-    setInputValue({
-      ...inputValue,
-      [event.target.id]: event.target.value,
-    });
-  };
+  // const handleInputChange = (event) => {
+  //   setInputValue({
+  //     ...inputValue,
+  //     [event.target.id]: event.target.value,
+  //   });
+  // };
 
   const updateEditUser = (newValues) => {
     setEditUser((prevEditUser) => ({ ...prevEditUser, ...newValues }));
@@ -64,7 +65,7 @@ const CreateUser = () => {
     company: Yup.string().required("Company is required"),
     type: Yup.string().required("User Type is required"),
     status: Yup.string().required("User Status is required"),
-    img: Yup.string().required("User is required"),
+    // img: Yup.string().required("User is required"),
   });
 
   const saveUser = async (values) => {
@@ -257,16 +258,24 @@ const CreateUser = () => {
                     />
                   </FormControl>
 
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="img"
-                    name="img"
-                    label=""
-                    type="file"
-                    fullWidth
-                    onChange={handleInputChange}
-                  />
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="img"
+                      name="img"
+                      type="file"
+                      fullWidth
+                      onChange={handleChange}
+                    />
+
+                    {/* error={touched.img && !!errors.img} */}
+                    {/* <ErrorMessage
+                      name="img"
+                      component="p"
+                      className="text-red-600"
+                    /> */}
+                  </FormControl>
                 </div>
               </DialogContent>
 
