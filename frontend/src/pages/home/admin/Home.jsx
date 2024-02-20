@@ -23,7 +23,6 @@ const Home = () => {
   const [openCreateUser, setOpenCreateUser] = useState(false);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
-  const userRef = useRef(null);
   const [editUser, setEditUser] = useState(false);
   const [validated, setValidated] = useState(false);
 
@@ -46,7 +45,6 @@ const Home = () => {
             setOpenCreateUser,
             setOpenDeleteUser,
             setOpenEditUser,
-            userRef,
             editUser,
             setEditUser,
             validated,

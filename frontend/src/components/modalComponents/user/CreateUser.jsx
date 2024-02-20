@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 
 import {
   Dialog,
@@ -35,7 +35,6 @@ const CreateUser = () => {
     setInputValue,
     openCreateUser,
     setOpenCreateUser,
-    userRef,
     editUser,
     setEditUser,
     validated,
@@ -56,6 +55,8 @@ const CreateUser = () => {
   const updateEditUser = (newValues) => {
     setEditUser((prevEditUser) => ({ ...prevEditUser, ...newValues }));
   };
+
+  const userRef = useRef("null");
 
   const schema = Yup.object().shape({
     name: Yup.string().required("Username is required"),
@@ -127,13 +128,12 @@ const CreateUser = () => {
             setSubmitting(false);
           }}
         >
-          {({ handleChange, values, touched, errors, handleSubmit }) => (
+          {({ values, handleChange, handleSubmit, errors, touched }) => (
             <Form
               noValidate
-              validated={validated}
+              validated={validated.toString()}
               ref={userRef}
-              onSubmit={saveUser}
-              autoComplete="true"
+              autoComplete="off"
             >
               <DialogTitle className="flex justify-between">
                 <span>Add New User</span>
@@ -146,70 +146,91 @@ const CreateUser = () => {
               </DialogTitle>
               <DialogContent>
                 <div className="flex gap-4">
-                  <TextField
-                    required={true}
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Username"
-                    type="text"
-                    fullWidth
-                    value={inputValue.name}
-                    onChange={handleInputChange}
-                    isInvalid={touched.name && !!errors.name}
-                  />
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      required
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      name="name"
+                      label="Username"
+                      type="text"
+                      fullWidth
+                      value={values.name}
+                      onChange={handleChange}
+                      error={touched.name && !!errors.name}
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="p"
+                      className="text-red-600"
+                    />
+                  </FormControl>
 
-                  <TextField
-                    required={true}
-                    autoFocus
-                    margin="dense"
-                    id="email"
-                    label="E-mail"
-                    type="text"
-                    fullWidth
-                    value={inputValue.email}
-                    onChange={handleInputChange}
-                    isInvalid={touched.email && !!errors.email}
-                  />
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      required
+                      autoFocus
+                      margin="dense"
+                      id="email"
+                      name="email"
+                      label="E-mail"
+                      type="email"
+                      fullWidth
+                      value={values.email}
+                      onChange={handleChange}
+                      error={touched.email && !!errors.email}
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="p"
+                      className="text-red-600"
+                    />
+                  </FormControl>
                 </div>
 
                 <div className="flex gap-4">
-                  <FormControl
-                    autoFocus
-                    fullWidth
-                    margin="dense"
-                    required={true}
-                    isInvalid={touched.company && !!errors.company}
-                  >
+                  <FormControl autoFocus fullWidth margin="dense">
                     <InputLabel id="company-label">Company</InputLabel>
                     <Select
                       labelId="company-label"
                       id="company"
-                      value={company}
+                      name="company"
+                      value={values.company}
                       label="Company"
-                      onChange={handleCompany}
+                      onChange={handleChange}
+                      error={touched.company && !!errors.company}
                     >
                       <MenuItem value={"Odyssey"}>Odyssey</MenuItem>
                       <MenuItem value={"Upti"}>Upti</MenuItem>
                     </Select>
-                    <Form.Control.Feedback type="invalid">
-                      {errors.company}
-                    </Form.Control.Feedback>
+                    <ErrorMessage
+                      name="company"
+                      component="p"
+                      className="text-red-600"
+                    />
                   </FormControl>
 
                   <FormControl autoFocus fullWidth margin="dense">
-                    <InputLabel id="userType-label">User Type</InputLabel>
+                    <InputLabel id="type-label">User Type</InputLabel>
                     <Select
-                      labelId="userType-label"
+                      labelId="type-label"
                       id="type"
-                      value={type}
+                      name="type"
+                      value={values.type}
                       label="User Type"
-                      onChange={handleType}
+                      onChange={handleChange}
+                      error={touched.type && !!errors.type}
                     >
                       <MenuItem value={"SuperAdmin"}>SuperAdmin</MenuItem>
                       <MenuItem value={"Admin"}>Admin</MenuItem>
                       <MenuItem value={"User"}>User</MenuItem>
                     </Select>
+                    <ErrorMessage
+                      name="type"
+                      component="p"
+                      className="text-red-600"
+                    />
                   </FormControl>
                 </div>
 
@@ -219,20 +240,28 @@ const CreateUser = () => {
                     <Select
                       labelId="status-label"
                       id="status"
-                      value={status}
+                      name="status"
+                      value={values.status}
                       label="Status"
-                      onChange={handleStatus}
+                      onChange={handleChange}
+                      error={touched.status && !!errors.status}
                     >
                       <MenuItem value={"Active"}>Active</MenuItem>
                       <MenuItem value={"Inactive"}>Inactive</MenuItem>
                       <MenuItem value={"Suspended"}>Suspended</MenuItem>
                     </Select>
+                    <ErrorMessage
+                      name="status"
+                      component="p"
+                      className="text-red-600"
+                    />
                   </FormControl>
 
                   <TextField
                     autoFocus
                     margin="dense"
                     id="img"
+                    name="img"
                     label=""
                     type="file"
                     fullWidth
