@@ -9,7 +9,6 @@ import axios from "axios";
 
 //image imports
 import { logo_spin } from "../../assets";
-import { restart } from "nodemon";
 
 const Login = () => {
   //form Handling
@@ -32,17 +31,13 @@ const Login = () => {
     const form = formRef.current;
 
     if (form && form.checkValidity() === true) {
-      // const newUser = {
-      //   name: form.name.value,
-      //   email: form.email.value,
-      //   company: form.company.value,
-      //   type: form.type.value,
-      //   status: form.status.value,
-      //   img: form.img.value,
-      // };
+      const user = {
+        name: form.name.value,
+        password: form.password.value,
+      };
 
       try {
-        const res = await axios.post("http://localhost:8000", values);
+        const res = await axios.post("http://localhost:8000", user);
         console.log(res);
 
         navigate("/Admin/Dashboard");
