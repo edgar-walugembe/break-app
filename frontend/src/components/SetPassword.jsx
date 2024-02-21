@@ -4,9 +4,11 @@ import * as formik from "formik";
 import * as yup from "yup";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from "../constants";
 
 //image imports
 import { logo_spin } from "../assets";
+import axios from "axios";
 
 const SetPassword = () => {
   const { Formik } = formik;
@@ -24,6 +26,37 @@ const SetPassword = () => {
   //call states
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    const form = formRef.current;
+
+    if (form && form.checkValidity() === true) {
+      const user = {
+        name: form.name.value,
+        password: form.password.value,
+      };
+
+      //FIXME: this is supposed to route through password
+      try {
+        const res = await axios.post(baseUrl, user);
+        console.log(res);
+
+        navigate("/");
+      } catch (error) {
+        if (error.response && error.response.data) {
+          console.error("Error response data:", error.response.data);
+          setError(error.response.data.error);
+        } else {
+          console.error("Error:", error);
+          setError("An unexpected error occurred");
+        }
+        // setError(error.response?.data?.error || "An unexpected error occurred");
+      }
+      form.reset();
+    } else {
+      setValidated(true);
+    }
+  };
 
   return (
     <div
@@ -47,7 +80,7 @@ const SetPassword = () => {
 
           <Formik
             validationSchema={schema}
-            // onSubmit={saveDev}
+            onSubmit={handleSubmit}
             initialValues={{
               firstName: "",
               lastName: "",
@@ -61,7 +94,6 @@ const SetPassword = () => {
                 noValidate
                 validated={validated}
                 ref={formRef}
-                // onSubmit={}
                 autoComplete="true"
               >
                 <Row>
