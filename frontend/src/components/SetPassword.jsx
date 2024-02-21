@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useRef, useState } from "react";
 import * as formik from "formik";
 import * as yup from "yup";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //image imports
 import { logo_spin } from "../assets";
@@ -16,6 +16,14 @@ const SetPassword = () => {
     email: yup.string().email().required(),
     password: yup.string().required(),
   });
+
+  //form states
+  const formRef = useRef("null");
+  const [validated, setValidated] = useState(false);
+
+  //call states
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div
@@ -50,11 +58,11 @@ const SetPassword = () => {
           >
             {({ handleChange, values, touched, errors }) => (
               <Form
-              // noValidate
-              // validated={validated}
-              // ref={}
-              // onSubmit={}
-              // autoComplete="true"
+                noValidate
+                validated={validated}
+                ref={formRef}
+                // onSubmit={}
+                autoComplete="true"
               >
                 <Row>
                   <Col xs={12} md={12}>
@@ -66,7 +74,7 @@ const SetPassword = () => {
                         placeholder="Username"
                         value={values.username}
                         onChange={handleChange}
-                        isInvalid={!!errors.username}
+                        isInvalid={touched.name && !!errors.name}
                       />
                       <Form.Control.Feedback type="invalid">
                         {errors.username}
@@ -85,7 +93,7 @@ const SetPassword = () => {
                         placeholder="Enter Password."
                         value={values.password}
                         onChange={handleChange}
-                        isInvalid={!!errors.password}
+                        isInvalid={touched.password && !!errors.password}
                       />
                       <Form.Control.Feedback type="invalid">
                         {errors.password}
@@ -104,7 +112,7 @@ const SetPassword = () => {
                         placeholder="Confirm Password."
                         value={values.password}
                         onChange={handleChange}
-                        isInvalid={!!errors.password}
+                        isInvalid={touched.password && !!errors.password}
                       />
                       <Form.Control.Feedback type="invalid">
                         {errors.password}
@@ -112,17 +120,23 @@ const SetPassword = () => {
                     </Form.Group>
                   </Col>
                 </Row>
+
+                {error && <p className="text-danger font-semibold">{error}</p>}
+
+                <div className="flex gap-2 justify-center mt-2">
+                  <div
+                    className={`rounded loginSpan self-end text-[14px] col-12`}
+                  >
+                    <Link to="/" className="flex justify-evenly w-full">
+                      <span className="text-black font-semibold">
+                        Save Password
+                      </span>
+                    </Link>
+                  </div>
+                </div>
               </Form>
             )}
           </Formik>
-
-          <div className="flex gap-2 justify-center mt-2">
-            <div className={`rounded loginSpan self-end text-[14px] col-12`}>
-              <Link to="/" className="flex justify-evenly w-full">
-                <span className="text-black font-semibold">Save Password</span>
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </div>
