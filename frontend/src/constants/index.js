@@ -73,15 +73,22 @@ export const cards = [
 ];
 
 export const baseUrl = "http://localhost:8000";
-export const passwordUrl = "http://localhost:8000/password";
 // TODO: add custom endpoints on password url
+//password urls
+export const passwordUrl = "http://localhost:8000/password";
 export const setPasswordUrl = `${passwordUrl}/setPassword`;
 export const resetPasswordUrl = `${passwordUrl}/resetPassword`;
 export const changePasswordUrl = `${passwordUrl}/changePassword`;
+
+//user urls
 export const UserUrl = "http://localhost:8000/Admin/Dashboard/users";
 export const getUserUrl = `${UserUrl}/all`;
 export const createUserUrl = `${UserUrl}/createUser`;
 export const editUserUrl = `${UserUrl}/editUser`;
 export const deleteUserUrl = `${UserUrl}/deleteUser`;
+
+//product urls
 export const ProductUrl = "http://localhost:8000/Admin/Dashboard/products";
+
+//order urls
 export const OrderUrl = "http://localhost:8000/Admin/Dashboard/orders";

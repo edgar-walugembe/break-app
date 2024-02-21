@@ -4,7 +4,7 @@ import * as formik from "formik";
 import * as yup from "yup";
 import { Form, Col, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { baseUrl } from "../constants";
+import { setPasswordUrl } from "../constants";
 
 //image imports
 import { logo_spin } from "../assets";
@@ -15,7 +15,8 @@ const SetPassword = () => {
 
   const schema = yup.object().shape({
     name: yup.string().required("Username is required"),
-    password: yup.string().required("Password is required"),
+    firstPassword: yup.string().required("firstPassword is required"),
+    secondPassword: yup.string().required("secondPassword is required"),
   });
 
   //form states
@@ -26,30 +27,37 @@ const SetPassword = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
+    const { username, firstPassword, secondPassword } = values;
+
     const form = formRef.current;
 
     if (form && form.checkValidity() === true) {
+      if (firstPassword !== secondPassword) {
+        setError("Passwords do not match");
+        return;
+      }
+
       const user = {
-        name: form.name.value,
-        password: form.password.value,
+        username: username,
+        password: firstPassword,
       };
 
       //FIXME: this is supposed to route through password
       try {
-        const res = await axios.post(baseUrl, user);
+        const res = await axios.post(setPasswordUrl, user);
         console.log(res);
 
         navigate("/");
       } catch (error) {
-        if (error.response && error.response.data) {
-          console.error("Error response data:", error.response.data);
-          setError(error.response.data.error);
-        } else {
-          console.error("Error:", error);
-          setError("An unexpected error occurred");
-        }
-        // setError(error.response?.data?.error || "An unexpected error occurred");
+        // if (error.response && error.response.data) {
+        //   console.error("Error response data:", error.response.data);
+        //   setError(error.response.data.error);
+        // } else {
+        //   console.error("Error:", error);
+        //   setError("An unexpected error occurred");
+        // }
+        setError(error.response?.data?.error || "An unexpected error occurred");
       }
       form.reset();
     } else {
@@ -82,7 +90,8 @@ const SetPassword = () => {
             onSubmit={handleSubmit}
             initialValues={{
               name: "",
-              password: "",
+              firstPassword: "",
+              secondPassword: "",
             }}
           >
             {({ handleChange, values, touched, errors }) => (
@@ -94,10 +103,10 @@ const SetPassword = () => {
               >
                 <Row>
                   <Col xs={12} md={12}>
-                    <Form.Group className="mb-1" controlId="username">
+                    <Form.Group className="mb-1" controlId="name">
                       <Form.Control
                         required={true}
-                        name="username"
+                        name="name"
                         type="text"
                         placeholder="Username"
                         value={values.name}
@@ -119,12 +128,14 @@ const SetPassword = () => {
                         name="firstPassword"
                         type="password"
                         placeholder="Enter Password."
-                        value={values.password}
+                        value={values.firstPassword}
                         onChange={handleChange}
-                        isInvalid={touched.password && !!errors.password}
+                        isInvalid={
+                          touched.firstPassword && !!errors.firstPassword
+                        }
                       />
                       <Form.Control.Feedback type="invalid">
-                        {errors.password}
+                        {errors.firstPassword}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Col>
@@ -138,12 +149,14 @@ const SetPassword = () => {
                         name="secondPassword"
                         type="password"
                         placeholder="Confirm Password."
-                        value={values.password}
+                        value={values.secondPassword}
                         onChange={handleChange}
-                        isInvalid={touched.password && !!errors.password}
+                        isInvalid={
+                          touched.secondPassword && !!errors.secondPassword
+                        }
                       />
                       <Form.Control.Feedback type="invalid">
-                        {errors.password}
+                        {errors.secondPassword}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Col>
