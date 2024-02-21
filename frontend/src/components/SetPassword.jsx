@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import * as formik from "formik";
 import * as yup from "yup";
 import { Form, Col, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setPasswordUrl } from "../constants";
 
 //image imports
@@ -165,15 +165,13 @@ const SetPassword = () => {
                 {error && <p className="text-danger font-semibold">{error}</p>}
 
                 <div className="flex gap-2 justify-center mt-2">
-                  <div
-                    className={`rounded loginSpan self-end text-[14px] col-12`}
-                  >
-                    <Link to="/" className="flex justify-evenly w-full">
-                      <span className="text-black font-semibold">
+                  <button type="submit" className={`rounded loginSpan`}>
+                    <div className="flex justify-evenly w-full p-2">
+                      <span className="text-black font-semibold text-[14px]">
                         Save Password
                       </span>
-                    </Link>
-                  </div>
+                    </div>
+                  </button>
                 </div>
               </Form>
             )}
