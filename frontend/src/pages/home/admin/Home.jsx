@@ -7,6 +7,7 @@ import "./home.css";
 
 const Home = () => {
   //product State
+  const [product, setProduct] = useState([]);
   const [openCreatePdt, setOpenCreatePdt] = useState(false);
   const [openDeletePdt, setOpenDeletePdt] = useState(false);
   const [openEditPdt, setOpenEditPdt] = useState(false);
@@ -20,6 +21,7 @@ const Home = () => {
   });
 
   //user State
+  const [user, setUser] = useState([]);
   const [openCreateUser, setOpenCreateUser] = useState(false);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
@@ -33,12 +35,16 @@ const Home = () => {
           value={{
             inputValue,
             setInputValue,
+            product,
+            setProduct,
             openCreatePdt,
             openDeletePdt,
             openEditPdt,
             setOpenCreatePdt,
             setOpenDeletePdt,
             setOpenEditPdt,
+            user,
+            setUser,
             openCreateUser,
             openDeleteUser,
             openEditUser,

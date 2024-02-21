@@ -17,16 +17,8 @@ function DeleteUser() {
   const { inputValue, setInputValue, openDeleteUser, setOpenDeleteUser } =
     useContext(ModalContext);
 
-  const handleClickDelete = () => {
-    setOpenDeleteUser(true);
-  };
-
   const handleCloseDelete = () => {
     setOpenDeleteUser(false);
-  };
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
   };
 
   const handleSubmit = () => {

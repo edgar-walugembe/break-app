@@ -24,16 +24,14 @@ import axios from "axios";
 import {
   baseUrl,
   UserUrl,
-  createUser,
-  getUser,
-  deleteUser,
-  editUser,
+  createUserUrl,
+  getUserUrl,
+  deleteUserUrl,
+  editUserUrl,
 } from "../../../constants";
 
 const CreateUser = () => {
   const {
-    inputValue,
-    setInputValue,
     openCreateUser,
     setOpenCreateUser,
     editUser,
@@ -46,13 +44,6 @@ const CreateUser = () => {
     setOpenCreateUser(false);
   };
 
-  // const handleInputChange = (event) => {
-  //   setInputValue({
-  //     ...inputValue,
-  //     [event.target.id]: event.target.value,
-  //   });
-  // };
-
   const updateEditUser = (newValues) => {
     setEditUser((prevEditUser) => ({ ...prevEditUser, ...newValues }));
   };
@@ -63,7 +54,7 @@ const CreateUser = () => {
     name: Yup.string().required("Username is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     company: Yup.string().required("Company is required"),
-    type: Yup.string().required("User Type is required"),
+    userType: Yup.string().required("User Type is required"),
     status: Yup.string().required("User Status is required"),
     // img: Yup.string().required("User is required"),
   });
@@ -76,7 +67,7 @@ const CreateUser = () => {
         name: form.name.value,
         email: form.email.value,
         company: form.company.value,
-        userType: form.type.value,
+        userType: form.userType.value,
         status: form.status.value,
         img: form.img.value,
       };
@@ -87,9 +78,12 @@ const CreateUser = () => {
 
       if (editUser && editUser.id) {
         const updatedUser = { ...editUser, ...newUser };
-        res = await axios.patch(`${editUser}?id=${editUser.id}`, updatedUser);
+        res = await axios.patch(
+          `${editUserUrl}?id=${editUser.id}`,
+          updatedUser
+        );
       } else {
-        res = await axios.post(createUser, newUser);
+        res = await axios.post(createUserUrl, newUser);
       }
       form.reset();
       setValidated(false);
@@ -114,6 +108,7 @@ const CreateUser = () => {
       setValidated(true);
     }
     console.log(values);
+    handleCloseCreate();
   };
 
   return (
@@ -228,6 +223,7 @@ const CreateUser = () => {
                       onChange={handleChange}
                       error={touched.userType && !!errors.userType}
                     >
+                      {/* <MenuItem value="">Select User Type</MenuItem> */}
                       <MenuItem value={"SuperAdmin"}>SuperAdmin</MenuItem>
                       <MenuItem value={"Admin"}>Admin</MenuItem>
                       <MenuItem value={"User"}>User</MenuItem>
@@ -275,11 +271,11 @@ const CreateUser = () => {
                     />
 
                     {/* error={touched.img && !!errors.img} */}
-                    <ErrorMessage
+                    {/* <ErrorMessage
                       name="img"
                       component="p"
                       className="text-red-600"
-                    />
+                    /> */}
                   </FormControl>
                 </div>
               </DialogContent>
