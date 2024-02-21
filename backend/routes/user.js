@@ -29,10 +29,11 @@ router.patch("/editUser", editUser);
 /* fetchAllUser Route. */
 router.get("/all", fetchAllUsers);
 
-/* loginUser Route. */
-router.get("/login", authenticateToken, loginUser);
+//FIXME: THIS IS COMMENTED BUT USEFUL
+// /* loginUser Route. */
+// router.get("/login", authenticateToken, loginUser);
 
-/* setPassword Route. */
-router.post("/setPassword", hashPassword, authenticateToken, setUserPassword);
+// /* setPassword Route. */
+// router.post("/setPassword", hashPassword, authenticateToken, setUserPassword);
 
 module.exports = router;

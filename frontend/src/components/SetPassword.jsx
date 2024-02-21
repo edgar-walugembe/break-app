@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 import * as formik from "formik";
 import * as yup from "yup";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { baseUrl } from "../constants";
 
@@ -14,9 +14,8 @@ const SetPassword = () => {
   const { Formik } = formik;
 
   const schema = yup.object().shape({
-    username: yup.string().required(),
-    email: yup.string().email().required(),
-    password: yup.string().required(),
+    name: yup.string().required("Username is required"),
+    password: yup.string().required("Password is required"),
   });
 
   //form states
@@ -82,11 +81,8 @@ const SetPassword = () => {
             validationSchema={schema}
             onSubmit={handleSubmit}
             initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              gender: "",
-              dob: "",
+              name: "",
+              password: "",
             }}
           >
             {({ handleChange, values, touched, errors }) => (
@@ -104,12 +100,12 @@ const SetPassword = () => {
                         name="username"
                         type="text"
                         placeholder="Username"
-                        value={values.username}
+                        value={values.name}
                         onChange={handleChange}
                         isInvalid={touched.name && !!errors.name}
                       />
                       <Form.Control.Feedback type="invalid">
-                        {errors.username}
+                        {errors.name}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Col>
