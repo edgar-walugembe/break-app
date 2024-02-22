@@ -4,6 +4,7 @@ import { Menu, Navbar } from "../../../components/dashboardComponents";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { Outlet } from "react-router-dom";
 import "./home.css";
+import Sidebar from "../../../components/sidebar";
 
 const Home = () => {
   //product State
@@ -58,6 +59,7 @@ const Home = () => {
           }}
         >
           <Menu />
+          {/* <Sidebar /> */}
           <div className="w-full ml-[250px]">
             <Navbar />
 
