@@ -47,12 +47,26 @@ async function authenticateToken(req, res, next) {
         return res.status(500).json({ error: "Invalid user role" });
     }
 
+    switch (userRole) {
+      case "User":
+        jwtSecret = JWT_SECRET_USER;
+        redirectUrl = "/User/home";
+        break;
+      case "Admin":
+      case "SuperAdmin":
+        jwtSecret = userRole === "Admin" ? JWT_SECRET_ADMIN : JWT_SECRET_SUPER;
+        redirectUrl = "/Admin/Dashboard";
+        break;
+      default:
+        return res.status(500).json({ error: "Invalid user role" });
+    }
+
     const jwtToken = jwt.sign(
-      { name: user.name, password: user.password },
+      { name: user.name, password: user.password, userRole: user.userType },
       jwtSecret
     );
 
-    res.json({ message: "Welcome Back User!", token: jwtToken });
+    res.json({ message: "Welcome Back User!", token: jwtToken, redirectUrl });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

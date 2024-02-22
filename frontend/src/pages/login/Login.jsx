@@ -41,16 +41,18 @@ const Login = () => {
         const res = await axios.post(baseUrl, user);
         console.log(res);
 
-        navigate("/Admin/Dashboard");
+        const { token, redirectUrl } = res.data;
+
+        navigate(redirectUrl);
       } catch (error) {
-        if (error.response && error.response.data) {
-          console.error("Error response data:", error.response.data);
-          setError(error.response.data.error);
-        } else {
-          console.error("Error:", error);
-          setError("An unexpected error occurred");
-        }
-        // setError(error.response?.data?.error || "An unexpected error occurred");
+        // if (error.response && error.response.data) {
+        //   console.error("Error response data:", error.response.data);
+        //   setError(error.response.data.error);
+        // } else {
+        //   console.error("Error:", error);
+        //   setError("An unexpected error occurred");
+        // }
+        setError(error.response?.data?.error || "An unexpected error occurred");
       }
       form.reset();
     } else {
