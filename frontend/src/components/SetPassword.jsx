@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as formik from "formik";
 import * as yup from "yup";
 import { Form, Col, Row } from "react-bootstrap";
@@ -27,6 +27,8 @@ const SetPassword = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  console.log("Current path:", location.pathname);
+  const [title, setTitle] = useState("");
 
   const handleSubmit = async (values) => {
     const { name, firstPassword, secondPassword } = values;
@@ -59,10 +61,16 @@ const SetPassword = () => {
     }
   };
 
-  const title =
-    location.pathname === "/reset_password"
-      ? "Welcome 😊😊! Reset Password"
-      : "Welcome 😊😊! Set A Password";
+  useEffect(() => {
+    console.log("useEffect triggered");
+    setTitle(
+      location.pathname === "/password/reset_password/:id"
+        ? "Hello 😊😊! Reset Password"
+        : "Welcome 😊😊! Set A Password"
+    );
+  }, [location.pathname]);
+
+  console.log("Title:", title);
 
   return (
     <div
