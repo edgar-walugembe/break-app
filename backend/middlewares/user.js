@@ -40,7 +40,6 @@ async function hashPassword(req, res, next) {
 
     req.hashedPassword = hashedPassword;
     res.json({ message: "password saved successfully" });
-    next();
   } catch (error) {
     console.error(error);
     return res.status(500).send({ error: "Internal server error" });
