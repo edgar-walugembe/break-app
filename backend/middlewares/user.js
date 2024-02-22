@@ -16,18 +16,30 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// auth a user
-
+// hash password
 async function hashPassword(req, res, next) {
+  const { name, password } = req.body;
+
   try {
-    if (!req.body.password) {
+    const user = await User.findOne({ where: { name } });
+
+    if (!user) {
+      return res.status(404).json({ error: "Invalid username or password" });
+    }
+
+    if (!password) {
       return res.status(400).send({ message: "Password is required" });
     }
 
-    const hashedPassword = await bcrypt.hash(req.body.password, 11);
+    const hashedPassword = await bcrypt.hash(password, 11);
 
-    req.body.password = hashedPassword;
+    await user.update({ password: hashedPassword });
 
+    console.log("Updated user:", user);
+    console.log("Hashed password:", hashedPassword);
+
+    req.hashedPassword = hashedPassword;
+    res.json({ message: "password saved successfully" });
     next();
   } catch (error) {
     console.error(error);
@@ -35,6 +47,7 @@ async function hashPassword(req, res, next) {
   }
 }
 
+// auth a user
 async function authenticateToken(req, res, next) {
   const { name, password } = req.body;
 

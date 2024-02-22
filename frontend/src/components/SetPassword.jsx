@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import * as formik from "formik";
 import * as yup from "yup";
 import { Form, Col, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { setPasswordUrl } from "../constants";
 
 //image imports
@@ -26,9 +26,10 @@ const SetPassword = () => {
   //call states
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (values) => {
-    const { username, firstPassword, secondPassword } = values;
+    const { name, firstPassword, secondPassword } = values;
 
     const form = formRef.current;
 
@@ -39,7 +40,7 @@ const SetPassword = () => {
       }
 
       const user = {
-        username: username,
+        name: name,
         password: firstPassword,
       };
 
@@ -50,13 +51,6 @@ const SetPassword = () => {
 
         navigate("/");
       } catch (error) {
-        // if (error.response && error.response.data) {
-        //   console.error("Error response data:", error.response.data);
-        //   setError(error.response.data.error);
-        // } else {
-        //   console.error("Error:", error);
-        //   setError("An unexpected error occurred");
-        // }
         setError(error.response?.data?.error || "An unexpected error occurred");
       }
       form.reset();
@@ -65,12 +59,15 @@ const SetPassword = () => {
     }
   };
 
+  const title =
+    location.pathname === "/reset-password"
+      ? "Welcome 😊😊! Reset Password"
+      : "Welcome 😊😊! Set A Password";
+
   return (
     <div
       className={`login p-5 flex flex-col justify-evenly text-[12px] text-white`}
     >
-      <div></div>
-
       <div className="content flex justify-evenly">
         <div className={`img items-center flex justify-center`}>
           <img
@@ -82,7 +79,7 @@ const SetPassword = () => {
 
         <div className="form p-2">
           <h3 className="text-center font-extrabold text-[35px] mb-2">
-            Welcome 😊😊! Set A Password
+            {title}
           </h3>
 
           <Formik
@@ -94,12 +91,13 @@ const SetPassword = () => {
               secondPassword: "",
             }}
           >
-            {({ handleChange, values, touched, errors }) => (
+            {({ handleChange, values, touched, errors, handleSubmit }) => (
               <Form
                 noValidate
                 validated={validated}
                 ref={formRef}
                 autoComplete="true"
+                onSubmit={handleSubmit}
               >
                 <Row>
                   <Col xs={12} md={12}>

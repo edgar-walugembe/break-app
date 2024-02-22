@@ -1,15 +1,25 @@
 const express = require("express");
 const router = express.Router();
 
-const { setUserPassword } = require("../controllers/user-controller");
+const { setUserPassword } = require("../controllers/password-controller");
 
 const { hashPassword, authenticateToken } = require("../middlewares/user");
 
+/*password Route */
+router.get("/", function (req, res) {
+  res.json({ message: "password route accessed" });
+});
+
 /* setPassword Route. */
-router.post("/setPassword", hashPassword, authenticateToken, setUserPassword);
+router.post("/set_password", hashPassword);
 
 /* resetPassword Route. */
-router.post("/resetPassword", hashPassword, authenticateToken, setUserPassword);
+router.post(
+  "/reset_password",
+  hashPassword,
+  authenticateToken,
+  setUserPassword
+);
 
 /* changePassword Route. */
 router.post(
@@ -18,3 +28,5 @@ router.post(
   authenticateToken,
   setUserPassword
 );
+
+module.exports = router;

@@ -7,7 +7,6 @@ const {
   editUser,
   fetchAllUsers,
   loginUser,
-  setUserPassword,
 } = require("../controllers/user-controller");
 
 const { hashPassword, authenticateToken } = require("../middlewares/user");

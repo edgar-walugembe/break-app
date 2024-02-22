@@ -9,6 +9,7 @@ const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const orderRouter = require("./routes/order");
+const passwordRouter = require("./routes/password");
 
 const { authenticateToken } = require("./authUser");
 
@@ -29,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //login page
-app.post("/", authenticateToken, loginUser, indexRouter);
+app.post("/", authenticateToken, loginUser);
 
 // user routes
 app.use("/User/home", userRouter);
@@ -45,7 +46,7 @@ app.use("/User/home/products", productRouter);
 app.use("/User/home/orders", orderRouter);
 
 //password routes
-app.use("/password", indexRouter);
+app.use("/Password", passwordRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

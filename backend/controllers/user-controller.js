@@ -70,16 +70,6 @@ async function editUser(req, res, next) {
   }
 }
 
-// set user password
-async function setUserPassword(req, res, next) {
-  try {
-    const hash = await bcrypt.hash(req.body.password, 11);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send({ error });
-  }
-}
-
 // login user
 async function loginUser(req, res, next) {
   const { name, password } = req.body;
@@ -111,5 +101,4 @@ module.exports = {
   editUser,
   fetchAllUsers,
   loginUser,
-  setUserPassword,
 };
