@@ -60,7 +60,7 @@ const SetPassword = () => {
   };
 
   const title =
-    location.pathname === "/reset-password"
+    location.pathname === "/reset_password"
       ? "Welcome 😊😊! Reset Password"
       : "Welcome 😊😊! Set A Password";
 

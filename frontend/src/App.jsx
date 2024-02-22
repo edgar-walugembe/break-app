@@ -62,6 +62,10 @@ const App = () => {
             },
             {
               path: "/password/reset_password/:id",
+              element: <SetPassword />,
+            },
+            {
+              path: "/password/change_password/:id",
               element: <ForgotPassword />,
             },
           ],
