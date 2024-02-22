@@ -66,7 +66,7 @@ const SetPassword = () => {
     setTitle(
       location.pathname === "/password/reset_password/:id"
         ? "Hello 😊😊! Reset Password"
-        : "Welcome 😊😊! Set your Password"
+        : "Welcome! Set your Password"
     );
   }, [location.pathname]);
 
@@ -76,7 +76,10 @@ const SetPassword = () => {
     <div
       className={`login p-5 flex flex-col justify-evenly text-[12px] text-white`}
     >
-      <h3 className="text-center font-extrabold text-[35px] mb-2">{title}</h3>
+      {/* <div className="mb-2">
+        <h3 className="text-center font-extrabold text-[35px]">{title}</h3>
+      </div> */}
+
       <div className="content flex justify-evenly">
         <div className={`img items-center flex justify-center`}>
           <img
@@ -87,6 +90,7 @@ const SetPassword = () => {
         </div>
 
         <div className="form p-2">
+          <h3 className="text-center font-extrabold text-[35px]">{title}</h3>
           <Formik
             validationSchema={schema}
             onSubmit={handleSubmit}
