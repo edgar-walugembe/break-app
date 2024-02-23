@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //material imports
@@ -31,6 +31,8 @@ import { Button } from "@mui/material";
 import { ModalContext } from "../../contexts/ModalContext";
 
 import { CreateUser, DeleteUser, EditUser } from "../modalComponents";
+import axios from "axios";
+import { getUserUrl } from "../../constants";
 
 function createData(
   id,
@@ -285,6 +287,22 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(getUserUrl);
+
+      console.log(res.data.users);
+      setData(res.data.users);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -393,18 +411,18 @@ export default function EnhancedTable() {
                   rowCount={rows.length}
                 />
                 <TableBody>
-                  {visibleRows.map((row, index) => {
-                    const isItemSelected = isSelected(row.id);
-                    const labelId = `enhanced-table-checkbox-${index}`;
+                  {data.map((row) => {
+                    const isItemSelected = isSelected(row.userId);
+                    const labelId = `enhanced-table-checkbox-${row.userId}`;
 
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.id)}
+                        onClick={(event) => handleClick(event, row.userId)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row.id}
+                        key={row.userId}
                         selected={isItemSelected}
                         sx={{ cursor: "pointer" }}
                       >
@@ -417,21 +435,13 @@ export default function EnhancedTable() {
                             }}
                           />
                         </TableCell>
-                        <TableCell
-                          component="th"
-                          id={labelId}
-                          scope="row"
-                          padding="none"
-                          align="center"
-                        >
-                          {row.id}
-                        </TableCell>
+                        <TableCell align="center">{row.userId}</TableCell>
                         <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.email}</TableCell>
                         <TableCell align="center">{row.company}</TableCell>
-                        <TableCell align="center">{row.type}</TableCell>
+                        <TableCell align="center">{row.userType}</TableCell>
                         <TableCell align="center">{row.status}</TableCell>
-                        <TableCell align="center">{row.timestamps}</TableCell>
+                        <TableCell align="center">{row.updatedAt}</TableCell>
                         <TableCell align="center">
                           <Button
                             style={{ background: "yellow", color: "black" }}
@@ -445,15 +455,6 @@ export default function EnhancedTable() {
                       </TableRow>
                     );
                   })}
-                  {emptyRows > 0 && (
-                    <TableRow
-                      style={{
-                        height: (dense ? 5 : 5) * emptyRows,
-                      }}
-                    >
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
                 </TableBody>
               </Table>
             </TableContainer>
