@@ -31,21 +31,11 @@ import {
 } from "../../../constants";
 
 const CreateUser = () => {
-  const {
-    openCreateUser,
-    setOpenCreateUser,
-    editUser,
-    setEditUser,
-    validated,
-    setValidated,
-  } = useContext(ModalContext);
+  const { openCreateUser, setOpenCreateUser, validated, setValidated } =
+    useContext(ModalContext);
 
   const handleCloseCreate = () => {
     setOpenCreateUser(false);
-  };
-
-  const updateEditUser = (newValues) => {
-    setEditUser((prevEditUser) => ({ ...prevEditUser, ...newValues }));
   };
 
   const userRef = useRef("null");
@@ -72,32 +62,18 @@ const CreateUser = () => {
         img: form.img.value,
       };
 
-      let res;
       console.log("Form values:", values);
       console.log("new form values:", newUser);
 
-      if (editUser && editUser.id) {
-        const updatedUser = { ...editUser, ...newUser };
-        res = await axios.patch(
-          `${editUserUrl}?id=${editUser.id}`,
-          updatedUser
-        );
-      } else {
-        res = await axios.post(createUserUrl, newUser);
-      }
-      form.reset();
-      setValidated(false);
-
-      console.log("Form values:", values);
-      console.log("new form values:", newUser);
+      const res = await axios.post(createUserUrl, newUser);
 
       try {
-        if (res.status === 202 || res.status === 201) {
-          updateEditUser(newUser);
-          setEditUser(null);
+        if (res.status === 201) {
+          form.reset();
+          setValidated(false);
         } else {
           setValidated(true);
-          console.error("Failed to add/edit user:", res.data.message);
+          console.error("Failed to add user:", res.data.message);
         }
       } catch (error) {
         console.error("Error adding user to database", error.message);

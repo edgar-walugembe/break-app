@@ -26,7 +26,7 @@ const Home = () => {
   const [openCreateUser, setOpenCreateUser] = useState(false);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
-  const [editUser, setEditUser] = useState(false);
+  // const [editUser, setEditUser] = useState(true);
   const [validated, setValidated] = useState(false);
 
   return (
@@ -52,14 +52,13 @@ const Home = () => {
             setOpenCreateUser,
             setOpenDeleteUser,
             setOpenEditUser,
-            editUser,
-            setEditUser,
+            // editUser,
+            // setEditUser,
             validated,
             setValidated,
           }}
         >
           <Menu />
-          {/* <Sidebar /> */}
           <div className="w-full ml-[250px]">
             <Navbar />
 

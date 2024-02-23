@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import {
   Dialog,
@@ -39,6 +39,28 @@ function EditUser() {
     validated,
     setValidated,
   } = useContext(ModalContext);
+
+  const [initialValues, setInitialValues] = useState({
+    name: "",
+    email: "",
+    company: "",
+    userType: "",
+    status: "",
+    img: "",
+  });
+
+  useEffect(() => {
+    if (editUser) {
+      setInitialValues({
+        name: editUser.name || "",
+        email: editUser.email || "",
+        company: editUser.company || "",
+        userType: editUser.userType || "",
+        status: editUser.status || "",
+        img: editUser.img || "",
+      });
+    }
+  }, [editUser]);
 
   const handleCloseEdit = () => {
     setOpenEditUser(false);
