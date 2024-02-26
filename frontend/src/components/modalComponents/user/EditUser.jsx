@@ -166,7 +166,10 @@ function EditUser({ selectedUserData, fetchData }) {
                       type="text"
                       fullWidth
                       value={editName}
-                      onChange={(e) => setEditName(e.target.value)}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setEditName(e.target.value);
+                      }}
                       error={touched.name && !!errors.name}
                     />
                     <ErrorMessage
@@ -187,7 +190,10 @@ function EditUser({ selectedUserData, fetchData }) {
                       type="email"
                       fullWidth
                       value={editEmail}
-                      onChange={(e) => setEditEmail(e.target.value)}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setEditEmail(e.target.value);
+                      }}
                       error={touched.email && !!errors.email}
                     />
                     <ErrorMessage
@@ -207,7 +213,10 @@ function EditUser({ selectedUserData, fetchData }) {
                       name="company"
                       value={editCompany}
                       label="Company"
-                      onChange={(e) => setEditCompany(e.target.value)}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setEditCompany(e.target.value);
+                      }}
                       error={touched.company && !!errors.company}
                     >
                       <MenuItem value={"Odyssey"}>Odyssey</MenuItem>
@@ -228,7 +237,10 @@ function EditUser({ selectedUserData, fetchData }) {
                       name="userType"
                       value={editUserType}
                       label="User Type"
-                      onChange={(e) => setEditUserType(e.target.value)}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setEditUserType(e.target.value);
+                      }}
                       error={touched.userType && !!errors.userType}
                     >
                       {/* <MenuItem value="">Select User Type</MenuItem> */}
@@ -253,7 +265,10 @@ function EditUser({ selectedUserData, fetchData }) {
                       name="status"
                       value={editStatus}
                       label="Status"
-                      onChange={(e) => setEditStatus(e.target.value)}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setEditStatus(e.target.value);
+                      }}
                       error={touched.status && !!errors.status}
                     >
                       <MenuItem value={"Active"}>Active</MenuItem>
@@ -275,7 +290,10 @@ function EditUser({ selectedUserData, fetchData }) {
                       name="img"
                       type="file"
                       fullWidth
-                      onChange={(e) => setEditImg(e.target.value)}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setEditImg(e.target.value);
+                      }}
                     />
 
                     {/* error={touched.img && !!errors.img} */}
