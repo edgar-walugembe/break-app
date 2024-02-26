@@ -1,3 +1,4 @@
+// /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useRef, useState } from "react";
 
@@ -21,17 +22,10 @@ import * as Yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
 import axios from "axios";
 
-import {
-  baseUrl,
-  UserUrl,
-  createUserUrl,
-  getUserUrl,
-  deleteUserUrl,
-  editUserUrl,
-} from "../../../constants";
+import { createUserUrl, editUserUrl } from "../../../constants";
 import PropTypes from "prop-types";
 
-function EditUser({ selectedUserData }) {
+function EditUser({ selectedUserData, fetchData }) {
   const {
     openEditUser,
     setOpenEditUser,
@@ -51,10 +45,11 @@ function EditUser({ selectedUserData }) {
 
   EditUser.propTypes = {
     selectedUserData: PropTypes.object,
+    fetchData: PropTypes.func,
   };
 
   useEffect(() => {
-    console.log("Selected User Data:", selectedUserData);
+    // console.log("Selected User Data:", selectedUserData);
     if (selectedUserData) {
       setEditName(selectedUserData.name || "");
       setEditEmail(selectedUserData.email || "");
@@ -88,63 +83,44 @@ function EditUser({ selectedUserData }) {
     const form = userRef.current;
 
     if (form && form.checkValidity() === true) {
-      const newUser = {
-        name: form.name.value,
-        email: form.email.value,
-        company: form.company.value,
-        userType: form.userType.value,
-        status: form.status.value,
-        img: form.img.value,
-      };
-
       let res;
-      // console.log("Form values:", values);
-      // console.log("new form values:", newUser);
 
-      if (editUser && editUser.id) {
-        const updatedUser = { ...editUser, ...newUser };
+      if (editUser && editUser.userId) {
+        const updatedUser = { ...editUser, ...values };
         res = await axios.patch(
-          `${editUserUrl}?id=${editUser.id}`,
+          `${editUserUrl}?id=${editUser.userId}`,
           updatedUser
         );
       } else {
-        res = await axios.post(createUserUrl, newUser);
+        res = await axios.post(createUserUrl, values);
       }
+
       form.reset();
       setValidated(false);
 
-      // console.log("Form values:", values);
-      // console.log("new form values:", newUser);
-
       try {
         if (res.status === 202 || res.status === 201) {
-          updateEditUser(newUser);
+          if (editUser && editUser.userId) {
+            updateEditUser(values);
+          } else {
+            setEditUser(values);
+          }
           setEditUser(null);
         } else {
           setValidated(true);
-          console.error("Failed to add/edit user:", res.data.message);
+          console.error("Failed to edit user:", res.data.message);
         }
       } catch (error) {
-        // console.error("Error adding user to database", error.message);
-        // console.error("Error details:", error);
-        // throw error;
-        if (error.response) {
-          console.error(
-            "Error adding user to database",
-            error.response.status,
-            error.response.data
-          );
-        } else if (error.request) {
-          console.error("No response received:", error.request);
-        } else {
-          console.error("Error setting up the request:", error.message);
-        }
+        console.error("Error adding user to database", error.message);
+        console.error("Error details:", error);
+        throw error;
       }
     } else {
       setValidated(true);
     }
-    console.log(values);
+
     console.log("Submitted value:", values);
+    fetchData();
     handleCloseEdit();
   };
 
@@ -153,12 +129,12 @@ function EditUser({ selectedUserData }) {
       <Dialog open={openEditUser} style={{ zIndex: 0 }}>
         <Formik
           initialValues={{
-            name: editName,
-            email: editEmail,
-            company: editCompany,
-            userType: editUserType,
-            status: editStatus,
-            img: editImg,
+            name: selectedUserData?.name || "",
+            email: selectedUserData?.email || "",
+            company: selectedUserData?.company || "",
+            userType: selectedUserData?.userType || "",
+            status: selectedUserData?.status || "",
+            img: selectedUserData?.img || "",
           }}
           validationSchema={schema}
           onSubmit={(values, { setSubmitting }) => {

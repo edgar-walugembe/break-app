@@ -21,16 +21,9 @@ import * as Yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
 import axios from "axios";
 
-import {
-  baseUrl,
-  UserUrl,
-  createUserUrl,
-  getUserUrl,
-  deleteUserUrl,
-  editUserUrl,
-} from "../../../constants";
+import { createUserUrl } from "../../../constants";
 
-const CreateUser = () => {
+const CreateUser = (fetchData) => {
   const { openCreateUser, setOpenCreateUser, validated, setValidated } =
     useContext(ModalContext);
 
@@ -84,6 +77,7 @@ const CreateUser = () => {
       setValidated(true);
     }
     console.log(values);
+    fetchData();
     handleCloseCreate();
   };
 

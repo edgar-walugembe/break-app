@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -12,18 +12,60 @@ import Button from "@mui/material/Button";
 
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
+import axios from "axios";
+import {
+  baseUrl,
+  UserUrl,
+  createUserUrl,
+  getUserUrl,
+  deleteUserUrl,
+  editUserUrl,
+} from "../../../constants";
 
-function DeleteUser() {
-  const { inputValue, setInputValue, openDeleteUser, setOpenDeleteUser } =
+function DeleteUser(fetchData) {
+  const { openDeleteUser, setOpenDeleteUser, user, setUser } =
     useContext(ModalContext);
+
+  const [deleteUser, setDeleteUser] = useState(null);
 
   const handleCloseDelete = () => {
     setOpenDeleteUser(false);
   };
 
-  const handleSubmit = () => {
-    // Handle submission logic here
-    console.log("Submitted value:", inputValue);
+  const handleSubmit = async () => {
+    if (deleteUser) {
+      console.log("attempting to delete developer:", deleteUser.name);
+
+      const res = await axios.delete(
+        `${deleteUserUrl}?id=${deleteUser.userId}`
+      );
+
+      try {
+        if (res.status === 202) {
+          setUser((prevUser) =>
+            prevUser.filter((user) => user.userId !== deleteUser.userId)
+          );
+        } else {
+          console.error(
+            "Failed to delete user from express_db:",
+            res.data.message
+          );
+        }
+      } catch (error) {
+        if (error.response) {
+          console.error(
+            "Error deleting user from express_db:",
+            error.response.status,
+            error.response.data
+          );
+        } else if (error.request) {
+          console.error("No response received:", error.request);
+        } else {
+          console.error("Error setting up the request:", error.message);
+        }
+      }
+    }
+    fetchData();
     handleCloseDelete();
   };
 

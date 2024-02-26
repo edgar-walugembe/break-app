@@ -57,7 +57,7 @@ const Home = () => {
     try {
       const res = await axios.get(getUserUrl);
 
-      console.log(res.data.users);
+      // console.log(res.data.users);
       setData(res.data.users);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -119,7 +119,7 @@ const Home = () => {
             <Navbar />
 
             <div className="outlet surface-ground">
-              <Outlet />
+              <Outlet fetchData={fetchData} />
             </div>
           </div>
         </ModalContext.Provider>

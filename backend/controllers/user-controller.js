@@ -28,9 +28,9 @@ async function fetchAllUsers(req, res) {
 // delete a user
 async function deleteUser(req, res, next) {
   try {
-    const userId = req.query.id;
+    const userId = req.query.userId;
 
-    const user = await User.findOne({ where: { id: userId } });
+    const user = await User.findOne({ where: { userId: userId } });
     if (user) {
       await user.destroy();
       return res.status(202).send(`user id: ${userId} deleted successfully`);
@@ -46,15 +46,15 @@ async function deleteUser(req, res, next) {
 // edit a user
 async function editUser(req, res, next) {
   try {
-    const userId = parseInt(req.query.id);
+    const userId = parseInt(req.query.userId);
 
     const editedData = req.body;
 
     const [editedRows] = await User.update(editedData, {
-      where: { id: userId },
+      where: { userId: userId },
     });
 
-    const editedUser = await User.findOne({ where: { id: userId } });
+    const editedUser = await User.findOne({ where: { userId: userId } });
 
     if (editedRows === 0) {
       return res.status(304).send(`user id: ${userId} not changed`);
