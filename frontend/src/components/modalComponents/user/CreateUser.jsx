@@ -22,13 +22,18 @@ import { Formik, Form, ErrorMessage } from "formik";
 import axios from "axios";
 
 import { createUserUrl } from "../../../constants";
+import PropTypes from "prop-types";
 
-const CreateUser = (fetchData) => {
+const CreateUser = ({ fetchData }) => {
   const { openCreateUser, setOpenCreateUser, validated, setValidated } =
     useContext(ModalContext);
 
   const handleCloseCreate = () => {
     setOpenCreateUser(false);
+  };
+
+  CreateUser.propTypes = {
+    fetchData: PropTypes.func,
   };
 
   const userRef = useRef("null");

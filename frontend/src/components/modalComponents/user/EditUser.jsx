@@ -22,7 +22,7 @@ import * as Yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
 import axios from "axios";
 
-import { getUserUrl, editUserUrl } from "../../../constants";
+import { editUserUrl } from "../../../constants";
 import PropTypes from "prop-types";
 
 function EditUser({ selectedUserData, fetchData }) {
