@@ -13,16 +13,10 @@ import Button from "@mui/material/Button";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
 import axios from "axios";
-import {
-  baseUrl,
-  UserUrl,
-  createUserUrl,
-  getUserUrl,
-  deleteUserUrl,
-  editUserUrl,
-} from "../../../constants";
+import { deleteUserUrl } from "../../../constants";
+import PropTypes from "prop-types";
 
-function DeleteUser(fetchData) {
+function DeleteUser({ selectedUserData, fetchData }) {
   const { openDeleteUser, setOpenDeleteUser, user, setUser } =
     useContext(ModalContext);
 
@@ -32,39 +26,41 @@ function DeleteUser(fetchData) {
     setOpenDeleteUser(false);
   };
 
-  const handleSubmit = async () => {
-    if (deleteUser) {
-      console.log("attempting to delete developer:", deleteUser.name);
+  DeleteUser.propTypes = {
+    selectedUserData: PropTypes.object,
+    fetchData: PropTypes.func,
+  };
 
-      const res = await axios.delete(
-        `${deleteUserUrl}?id=${deleteUser.userId}`
-      );
+  const handleSubmit = async (userId) => {
+    console.log("attempting to delete developer:", selectedUserData);
 
-      try {
-        if (res.status === 202) {
-          setUser((prevUser) =>
-            prevUser.filter((user) => user.userId !== deleteUser.userId)
-          );
-        } else {
-          console.error(
-            "Failed to delete user from express_db:",
-            res.data.message
-          );
-        }
-      } catch (error) {
-        if (error.response) {
-          console.error(
-            "Error deleting user from express_db:",
-            error.response.status,
-            error.response.data
-          );
-        } else if (error.request) {
-          console.error("No response received:", error.request);
-        } else {
-          console.error("Error setting up the request:", error.message);
-        }
+    const res = await axios.delete(`${deleteUserUrl}?userId=${userId}`);
+
+    try {
+      if (res.status === 202) {
+        setUser((prevUser) =>
+          prevUser.filter((user) => user.userId !== userId)
+        );
+      } else {
+        console.error(
+          "Failed to delete user from express_db:",
+          res.data.message
+        );
+      }
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          "Error deleting user from express_db:",
+          error.response.status,
+          error.response.data
+        );
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error setting up the request:", error.message);
       }
     }
+
     fetchData();
     handleCloseDelete();
   };
@@ -96,7 +92,7 @@ function DeleteUser(fetchData) {
             Cancel
           </Button>
           <Button
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(selectedUserData.userId)}
             color="primary"
             variant="contained"
             style={{ background: "yellow", color: "black" }}

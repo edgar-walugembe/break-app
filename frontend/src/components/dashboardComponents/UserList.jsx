@@ -481,7 +481,7 @@ export default function EnhancedTable({ onSelectUser }) {
         </Box>
 
         <CreateUser fetchData={fetchData} />
-        <DeleteUser fetchData={fetchData} />
+        <DeleteUser fetchData={fetchData} selectedUserData={selectedUserData} />
         <EditUser selectedUserData={selectedUserData} fetchData={fetchData} />
       </div>
     </div>
