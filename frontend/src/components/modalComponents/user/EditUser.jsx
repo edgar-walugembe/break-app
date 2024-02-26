@@ -29,8 +29,9 @@ import {
   deleteUserUrl,
   editUserUrl,
 } from "../../../constants";
+import PropTypes from "prop-types";
 
-function EditUser() {
+function EditUser({ selectedUserData }) {
   const {
     openEditUser,
     setOpenEditUser,
@@ -40,27 +41,29 @@ function EditUser() {
     setValidated,
   } = useContext(ModalContext);
 
-  const [initialValues, setInitialValues] = useState({
-    name: "",
-    email: "",
-    company: "",
-    userType: "",
-    status: "",
-    img: "",
-  });
+  //handling form data
+  const [editName, setEditName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [editCompany, setEditCompany] = useState("");
+  const [editUserType, setEditUserType] = useState("");
+  const [editStatus, setEditStatus] = useState("");
+  const [editImg, setEditImg] = useState("");
+
+  EditUser.propTypes = {
+    selectedUserData: PropTypes.object,
+  };
 
   useEffect(() => {
-    if (editUser) {
-      setInitialValues({
-        name: editUser.name || "",
-        email: editUser.email || "",
-        company: editUser.company || "",
-        userType: editUser.userType || "",
-        status: editUser.status || "",
-        img: editUser.img || "",
-      });
+    console.log("Selected User Data:", selectedUserData);
+    if (selectedUserData) {
+      setEditName(selectedUserData.name || "");
+      setEditEmail(selectedUserData.email || "");
+      setEditCompany(selectedUserData.company || "");
+      setEditUserType(selectedUserData.userType || "");
+      setEditStatus(selectedUserData.status || "");
+      setEditImg(selectedUserData.img || "");
     }
-  }, [editUser]);
+  }, [selectedUserData]);
 
   const handleCloseEdit = () => {
     setOpenEditUser(false);
@@ -150,12 +153,12 @@ function EditUser() {
       <Dialog open={openEditUser} style={{ zIndex: 0 }}>
         <Formik
           initialValues={{
-            name: "",
-            email: "",
-            company: "",
-            userType: "",
-            status: "",
-            img: "",
+            name: editName,
+            email: editEmail,
+            company: editCompany,
+            userType: editUserType,
+            status: editStatus,
+            img: editImg,
           }}
           validationSchema={schema}
           onSubmit={(values, { setSubmitting }) => {
@@ -192,8 +195,8 @@ function EditUser() {
                       label="Username"
                       type="text"
                       fullWidth
-                      value={values.name}
-                      onChange={handleChange}
+                      value={editName}
+                      onChange={(e) => setEditName(e.target.value)}
                       error={touched.name && !!errors.name}
                     />
                     <ErrorMessage
@@ -213,8 +216,8 @@ function EditUser() {
                       label="E-mail"
                       type="email"
                       fullWidth
-                      value={values.email}
-                      onChange={handleChange}
+                      value={editEmail}
+                      onChange={(e) => setEditEmail(e.target.value)}
                       error={touched.email && !!errors.email}
                     />
                     <ErrorMessage
@@ -232,9 +235,9 @@ function EditUser() {
                       labelId="company-label"
                       id="company"
                       name="company"
-                      value={values.company}
+                      value={editCompany}
                       label="Company"
-                      onChange={handleChange}
+                      onChange={(e) => setEditCompany(e.target.value)}
                       error={touched.company && !!errors.company}
                     >
                       <MenuItem value={"Odyssey"}>Odyssey</MenuItem>
@@ -253,9 +256,9 @@ function EditUser() {
                       labelId="type-label"
                       id="userType"
                       name="userType"
-                      value={values.userType}
+                      value={editUserType}
                       label="User Type"
-                      onChange={handleChange}
+                      onChange={(e) => setEditUserType(e.target.value)}
                       error={touched.userType && !!errors.userType}
                     >
                       {/* <MenuItem value="">Select User Type</MenuItem> */}
@@ -278,9 +281,9 @@ function EditUser() {
                       labelId="status-label"
                       id="status"
                       name="status"
-                      value={values.status}
+                      value={editStatus}
                       label="Status"
-                      onChange={handleChange}
+                      onChange={(e) => setEditStatus(e.target.value)}
                       error={touched.status && !!errors.status}
                     >
                       <MenuItem value={"Active"}>Active</MenuItem>
@@ -302,7 +305,7 @@ function EditUser() {
                       name="img"
                       type="file"
                       fullWidth
-                      onChange={handleChange}
+                      onChange={(e) => setEditImg(e.target.value)}
                     />
 
                     {/* error={touched.img && !!errors.img} */}

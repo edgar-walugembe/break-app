@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 //material imports
@@ -280,7 +281,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable() {
+export default function EnhancedTable({ onSelectUser }) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("company");
   const [selected, setSelected] = React.useState([]);
@@ -380,14 +381,20 @@ export default function EnhancedTable() {
   //context
   const { setOpenCreateUser, setOpenEditUser } = useContext(ModalContext);
 
+  const [selectedUserData, setSelectedUserData] = useState(null);
+  const handleRowClick = (userData) => {
+    setSelectedUserData(userData);
+  };
+
   const handleClickCreate = () => {
     console.log("dialog opened");
     setOpenCreateUser(true);
   };
 
-  const handleClickEdit = () => {
+  const handleClickEdit = (userData) => {
     console.log("edit User opened");
     setOpenEditUser(true);
+    setSelectedUserData(userData);
   };
 
   return (
@@ -429,7 +436,8 @@ export default function EnhancedTable() {
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.userId)}
+                        // onClick={(event) => handleClick(event, row.userId)}
+                        onClick={() => handleRowClick(row)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -489,7 +497,7 @@ export default function EnhancedTable() {
 
         <CreateUser />
         <DeleteUser />
-        <EditUser />
+        <EditUser selectedUserData={selectedUserData} />
       </div>
     </div>
   );

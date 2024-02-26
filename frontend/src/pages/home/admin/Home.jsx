@@ -38,7 +38,14 @@ const Home = () => {
   const [openCreateUser, setOpenCreateUser] = useState(false);
   const [openDeleteUser, setOpenDeleteUser] = useState(false);
   const [openEditUser, setOpenEditUser] = useState(false);
-  // const [editUser, setEditUser] = useState(true);
+  const [editUser, setEditUser] = useState({
+    name: "",
+    email: "",
+    company: "",
+    userType: "",
+    status: "",
+    img: "",
+  });
   const [validated, setValidated] = useState(false);
   const [data, setData] = useState([]);
 
@@ -84,6 +91,8 @@ const Home = () => {
             setData,
             validated,
             setValidated,
+            editUser,
+            setEditUser,
           }}
         >
           {/* <Sidebar>
