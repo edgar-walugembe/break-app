@@ -22,7 +22,7 @@ import * as Yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
 import axios from "axios";
 
-import { createUserUrl, editUserUrl } from "../../../constants";
+import { getUserUrl, editUserUrl } from "../../../constants";
 import PropTypes from "prop-types";
 
 function EditUser({ selectedUserData, fetchData }) {
@@ -79,28 +79,22 @@ function EditUser({ selectedUserData, fetchData }) {
     // img: Yup.string().required("User is required"),
   });
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, userId) => {
     const form = userRef.current;
 
     if (form && form.checkValidity() === true) {
-      let res;
-
-      if (editUser && editUser.userId) {
-        const updatedUser = { ...editUser, ...values };
-        res = await axios.patch(
-          `${editUserUrl}?id=${editUser.userId}`,
-          updatedUser
-        );
-      } else {
-        res = await axios.post(createUserUrl, values);
-      }
+      const updatedUser = { ...editUser, ...values };
+      const res = await axios.patch(
+        `${editUserUrl}?userId=${userId}`,
+        updatedUser
+      );
 
       form.reset();
       setValidated(false);
 
       try {
-        if (res.status === 202 || res.status === 201) {
-          if (editUser && editUser.userId) {
+        if (res.status === 202) {
+          if (editUser && userId) {
             updateEditUser(values);
           } else {
             setEditUser(values);
@@ -120,8 +114,8 @@ function EditUser({ selectedUserData, fetchData }) {
     }
 
     console.log("Submitted value:", values);
-    fetchData();
     handleCloseEdit();
+    fetchData();
   };
 
   return (
@@ -138,7 +132,7 @@ function EditUser({ selectedUserData, fetchData }) {
           }}
           validationSchema={schema}
           onSubmit={(values, { setSubmitting }) => {
-            handleSubmit(values);
+            handleSubmit(values, selectedUserData.userId);
             setSubmitting(false);
           }}
         >

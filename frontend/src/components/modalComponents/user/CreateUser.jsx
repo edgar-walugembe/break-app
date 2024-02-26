@@ -77,8 +77,8 @@ const CreateUser = (fetchData) => {
       setValidated(true);
     }
     console.log(values);
-    fetchData();
     handleCloseCreate();
+    fetchData();
   };
 
   return (

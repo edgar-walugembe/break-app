@@ -28,18 +28,24 @@ async function fetchAllUsers(req, res) {
 // delete a user
 async function deleteUser(req, res, next) {
   try {
-    const userId = req.query.userId;
+    const userId = parseInt(req.query.userId);
 
-    const user = await User.findOne({ where: { userId: userId } });
-    if (user) {
-      await user.destroy();
-      return res.status(202).send(`user id: ${userId} deleted successfully`);
+    const deletedRows = await User.destroy({ where: { userId: userId } });
+
+    if (deletedRows > 0) {
+      return res
+        .status(202)
+        .send({ message: `User with id ${userId} deleted successfully` });
     } else {
-      return res.status(404).send(`user id: ${userId} not found`);
+      return res
+        .status(404)
+        .send({ error: `User with id ${userId} not found` });
     }
   } catch (err) {
     console.error(err);
-    return res.status(500).send({ err });
+    return res
+      .status(500)
+      .send({ error: "An error occurred while processing the request" });
   }
 }
 
