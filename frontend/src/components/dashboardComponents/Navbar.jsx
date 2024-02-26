@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { React, useState } from "react";
+import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 
 //icons imports
@@ -13,6 +13,8 @@ import Notification from "./Notification";
 
 import { menu, close } from "../../assets";
 
+import { ModalContext } from "../../contexts/ModalContext";
+
 const Navbar = () => {
   const date = new Date();
   const formattedDate = date.toLocaleDateString("en-US", {
@@ -24,6 +26,7 @@ const Navbar = () => {
 
   const name = "eedga";
 
+  const { data, setData } = useContext(ModalContext);
   return (
     <div className="surface-ground px-2 py-2 md:px-4 lg:px-6">
       <div className="grid">
@@ -91,7 +94,9 @@ const Navbar = () => {
           <div className="flex justify-between mb-3">
             <div>
               <span className="block text-primary font-medium mb-3">Users</span>
-              <div className="text-black font-medium text-xl">120</div>
+              <div className="text-black font-medium text-xl">
+                {data.length}
+              </div>
             </div>
             <div
               className="flex items-center justify-center bg-cyan rounded"

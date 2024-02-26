@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState } from "react";
+import { logo, odyssey_logo } from "../assets";
 
 const SidebarContext = createContext();
 
@@ -8,11 +10,12 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className="h-screen">
+    <aside className="h-screen fixed">
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
+        <div className="pb-2 flex justify-between items-center">
           <img
-            src="https://img.logoipsum.com/243.svg"
+            // src="https://img.logoipsum.com/243.svg"
+            src={logo}
             className={`overflow-hidden transition-all ${
               expanded ? "w-32" : "w-0"
             }`}
@@ -30,7 +33,7 @@ export default function Sidebar({ children }) {
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
 
-        <div className="border-t flex p-3">
+        <div className="border-t flex">
           <img
             src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
             alt=""
@@ -80,7 +83,7 @@ export function SidebarItem({ icon, text, active, alert }) {
       </span>
       {alert && (
         <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
+          className={`absolute right-2 w-[8px] h-[8px] rounded-[50%] bg-indigo-400 ${
             expanded ? "" : "top-2"
           }`}
         />

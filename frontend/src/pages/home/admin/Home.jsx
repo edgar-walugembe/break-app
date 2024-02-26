@@ -1,10 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Menu, Navbar } from "../../../components/dashboardComponents";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { Outlet } from "react-router-dom";
 import "./home.css";
-import Sidebar from "../../../components/sidebar";
+import Sidebar, { SidebarItem } from "../../../components/sidebar";
+import axios from "axios";
+import { getUserUrl } from "../../../constants";
+import {
+  BarChart,
+  Boxes,
+  LayoutDashboard,
+  LifeBuoy,
+  Package,
+  Receipt,
+  Settings,
+  UserCircle,
+} from "lucide-react";
 
 const Home = () => {
   //product State
@@ -28,6 +40,22 @@ const Home = () => {
   const [openEditUser, setOpenEditUser] = useState(false);
   // const [editUser, setEditUser] = useState(true);
   const [validated, setValidated] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(getUserUrl);
+
+      console.log(res.data.users);
+      setData(res.data.users);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   return (
     <section className="home h-full">
@@ -52,17 +80,36 @@ const Home = () => {
             setOpenCreateUser,
             setOpenDeleteUser,
             setOpenEditUser,
-            // editUser,
-            // setEditUser,
+            data,
+            setData,
             validated,
             setValidated,
           }}
         >
+          {/* <Sidebar>
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
+              text="Dashboard"
+              alert
+            />
+            <SidebarItem
+              icon={<BarChart size={20} />}
+              text="Statistics"
+              active
+            />
+            <SidebarItem icon={<UserCircle size={20} />} text="Users" />
+            <SidebarItem icon={<Boxes size={20} />} text="Inventory" />
+            <SidebarItem icon={<Package size={20} />} text="Orders" alert />
+            <SidebarItem icon={<Receipt size={20} />} text="Billings" />
+            <hr className="my-3" />
+            <SidebarItem icon={<Settings size={20} />} text="Settings" />
+            <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
+          </Sidebar> */}
           <Menu />
-          <div className="w-full ml-[250px]">
+          <div className={`w-full ml-[250px]`}>
             <Navbar />
 
-            <div className="outlet">
+            <div className="outlet surface-ground">
               <Outlet />
             </div>
           </div>
