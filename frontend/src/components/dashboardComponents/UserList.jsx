@@ -267,7 +267,7 @@ EnhancedTableToolbar.propTypes = {
 
 export default function EnhancedTable({ onSelectUser }) {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("company");
+  const [orderBy, setOrderBy] = React.useState(""); // add userId as a property
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);

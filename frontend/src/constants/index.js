@@ -88,7 +88,11 @@ export const editUserUrl = `${UserUrl}/editUser`;
 export const deleteUserUrl = `${UserUrl}/deleteUser`;
 
 //product urls
-export const ProductUrl = "http://localhost:8000/Admin/Dashboard/products";
+export const PdtUrl = "http://localhost:8000/Admin/Dashboard/products";
+export const getPdtUrl = `${PdtUrl}/all`;
+export const createPdtUrl = `${PdtUrl}/createPdt`;
+export const editPdtUrl = `${PdtUrl}/editPdt`;
+export const deletePdtUrl = `${PdtUrl}/deletePdt`;
 
 //order urls
 export const OrderUrl = "http://localhost:8000/Admin/Dashboard/orders";

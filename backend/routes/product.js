@@ -10,16 +10,21 @@ const {
 
 const {} = require("../middlewares/product");
 
+/*pdtRole Route */
+router.get("/", function (req, res) {
+  res.json({ message: "products route accessed" });
+});
+
 /* createProduct Route. */
-router.post("/createProduct", createProduct);
+router.post("/createPdt", createProduct);
 
 /* deleteProduct Route. */
-router.delete("/deleteProduct", deleteProduct);
+router.delete("/deletePdt", deleteProduct);
 
 /* editProduct Route. */
-router.patch("/editProduct", editProduct);
+router.patch("/editPdt", editProduct);
 
 /* fetchAllProduct Route. */
-router.get("/", fetchAllProducts);
+router.get("/all", fetchAllProducts);
 
 module.exports = router;
