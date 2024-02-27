@@ -511,7 +511,7 @@ export default function EnhancedTable() {
   const { setOpenCreatePdt, setOpenEditPdt } = useContext(ModalContext);
 
   const handleClickOpen = () => {
-    console.log("dialog opened");
+    console.log("create Pdt opened");
     setOpenCreatePdt(true);
   };
 
@@ -528,9 +528,7 @@ export default function EnhancedTable() {
             className={`rounded button-yellow pdt mb-1 text-[14px] text-center py-2 col-12`}
             onClick={handleClickOpen}
           >
-            <Link className="">
-              <span className="text-black w-full">Add New Product</span>
-            </Link>
+            <span className="text-black w-full">Add New Product</span>
           </div>
         </div>
 

@@ -411,14 +411,13 @@ export default function EnhancedTable({ onSelectUser }) {
                   rowCount={data.length}
                 />
                 <TableBody>
-                  {data.map((row) => {
+                  {visibleRows.map((row) => {
                     const isItemSelected = isSelected(row.userId);
                     const labelId = `enhanced-table-checkbox-${row.userId}`;
 
                     return (
                       <TableRow
                         hover
-                        // onClick={(event) => handleClick(event, row.userId)}
                         onClick={(event) => {
                           handleClick(event, row.userId);
                           handleRowClick(row);
@@ -439,7 +438,15 @@ export default function EnhancedTable({ onSelectUser }) {
                             }}
                           />
                         </TableCell>
-                        <TableCell align="center">{row.userId}</TableCell>
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="none"
+                          align="center"
+                        >
+                          {row.userId}
+                        </TableCell>
                         <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.email}</TableCell>
                         <TableCell align="center">{row.company}</TableCell>
@@ -461,6 +468,15 @@ export default function EnhancedTable({ onSelectUser }) {
                       </TableRow>
                     );
                   })}
+                  {emptyRows > 0 && (
+                    <TableRow
+                      style={{
+                        height: (dense ? 20 : 30) * emptyRows,
+                      }}
+                    >
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>
