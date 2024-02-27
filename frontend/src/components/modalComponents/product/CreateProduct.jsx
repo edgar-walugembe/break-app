@@ -1,38 +1,86 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import {
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
   TextField,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Button,
+  Input,
 } from "@mui/material";
-
-import Button from "@mui/material/Button";
 
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
+import * as Yup from "yup";
+import { Formik, Form, ErrorMessage } from "formik";
+import axios from "axios";
+
+import { createPdtUrl_admin } from "../../../constants";
+import PropTypes from "prop-types";
 
 function CreateProduct() {
-  const { inputValue, setInputValue, openCreatePdt, setOpenCreatePdt } =
+  const { validated, setValidated, openCreatePdt, setOpenCreatePdt } =
     useContext(ModalContext);
-
-  const handleClickOpen = () => {
-    setOpenCreatePdt(true);
-  };
 
   const handleClose = () => {
     setOpenCreatePdt(false);
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  //TODO: make and import a fetchData func in productList component.
+  // CreateProduct.propTypes = {
+  //   fetchData: PropTypes.func,
+  // };
 
-  const handleSubmit = () => {
-    // Handle submission logic here
-    console.log("Submitted value:", inputValue);
+  const pdtRef = useRef("null");
+
+  const schema = Yup.object().shape({
+    name: Yup.string().required("pdtName is required"),
+    price: Yup.integer().required("pdtPrice is required"),
+    img: Yup.string().required("pdtImage is required"),
+  });
+
+  const handleSubmit = async (values) => {
+    const form = pdtRef.current;
+
+    if (form && form.checkValidity() === true) {
+      const newPdt = {
+        name: form.name.value,
+        email: form.email.value,
+        company: form.company.value,
+        userType: form.userType.value,
+        status: form.status.value,
+        img: form.img.value,
+      };
+
+      console.log("Form values:", values);
+      console.log("new form values:", newPdt);
+
+      const res = await axios.post(createPdtUrl_admin, newPdt);
+
+      try {
+        if (res.status === 201) {
+          form.reset();
+          setValidated(false);
+        } else {
+          setValidated(true);
+          console.error("Failed to add user:", res.data.message);
+        }
+      } catch (error) {
+        console.error("Error adding user to database", error.message);
+        console.error("Error details:", error);
+        throw error;
+      }
+    } else {
+      setValidated(true);
+    }
+
     handleClose();
+    // fetchData();
   };
 
   return (
