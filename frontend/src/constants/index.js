@@ -72,8 +72,9 @@ export const cards = [
   },
 ];
 
+//login url
 export const baseUrl = "http://localhost:8000";
-// TODO: add custom endpoints on password url
+
 //password urls
 export const passwordUrl = "http://localhost:8000/Password";
 export const setPasswordUrl = `${passwordUrl}/set_password`;
@@ -88,16 +89,15 @@ export const editUserUrl = `${UserUrl}/editUser`;
 export const deleteUserUrl = `${UserUrl}/deleteUser`;
 
 //product urls
+/*admin*/
 export const PdtUrl_admin = "http://localhost:8000/Admin/Dashboard/products";
-export const PdtUrl_user = "http://localhost:8000/User/home/products";
 export const getPdtUrl_admin = `${PdtUrl_admin}/all`;
 export const createPdtUrl_admin = `${PdtUrl_admin}/createPdt`;
 export const editPdtUrl_admin = `${PdtUrl_admin}/editPdt`;
 export const deletePdtUrl_admin = `${PdtUrl_admin}/deletePdt`;
+/*user*/
+export const PdtUrl_user = "http://localhost:8000/User/home/products";
 export const getPdtUrl_user = `${PdtUrl_user}/all`;
-export const createPdtUrl_user = `${PdtUrl_user}/createPdt`;
-export const editPdtUrl_user = `${PdtUrl_user}/editPdt`;
-export const deletePdtUrl_user = `${PdtUrl_user}/deletePdt`;
 
 //order urls
 export const OrderUrl = "http://localhost:8000/Admin/Dashboard/orders";
