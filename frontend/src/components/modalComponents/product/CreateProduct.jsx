@@ -40,8 +40,9 @@ function CreateProduct() {
 
   const schema = Yup.object().shape({
     name: Yup.string().required("pdtName is required"),
-    price: Yup.integer().required("pdtPrice is required"),
+    unitPrice: Yup.number().integer().required("pdtPrice is required"),
     img: Yup.string().required("pdtImage is required"),
+    adminId: Yup.number().integer().required("adminId is required"),
   });
 
   const handleSubmit = async (values) => {
@@ -50,11 +51,9 @@ function CreateProduct() {
     if (form && form.checkValidity() === true) {
       const newPdt = {
         name: form.name.value,
-        email: form.email.value,
-        company: form.company.value,
-        userType: form.userType.value,
-        status: form.status.value,
+        unitPrice: form.unitPrice.value,
         img: form.img.value,
+        adminId: form.adminId.value,
       };
 
       console.log("Form values:", values);
@@ -85,71 +84,142 @@ function CreateProduct() {
 
   return (
     <div>
-      <Dialog open={openCreatePdt} style={{ zIndex: 9999 }}>
-        <DialogTitle className="flex justify-between">
-          <span>Add New Product</span>
-          <div
-            onClick={handleClose}
-            className="bg-black rounded-full p-2 w-[28px] h-[28px] items-center flex"
-          >
-            <img src={close} alt="close" className="w-[24px] h-[24px]" />
-          </div>
-        </DialogTitle>
-        <DialogContent>
-          <div className="flex gap-4">
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Product Name"
-              type="text"
-              fullWidth
-              // value={inputValue}
-              onChange={handleInputChange}
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="price"
-              label="Unit Price"
-              type="text"
-              fullWidth
-              // value={inputValue}
-              onChange={handleInputChange}
-            />
-          </div>
+      <Dialog open={openCreatePdt} style={{ zIndex: 0 }}>
+        <Formik
+          initialValues={{
+            name: "",
+            unitPrice: "",
+            img: "",
+            adminId: "",
+          }}
+          validationSchema={schema}
+          onSubmit={(values, { setSubmitting }) => {
+            handleSubmit(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ values, handleChange, errors, touched }) => (
+            <Form
+              noValidate
+              validated={validated.toString()}
+              ref={pdtRef}
+              autoComplete="off"
+            >
+              <DialogTitle className="flex justify-between">
+                <span>Add New Product</span>
+                <div
+                  onClick={handleClose}
+                  className="bg-black rounded-full p-2 w-[28px] h-[28px] items-center flex"
+                >
+                  <img src={close} alt="close" className="w-[24px] h-[24px]" />
+                </div>
+              </DialogTitle>
+              <DialogContent>
+                <div className="flex gap-4">
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      name="name"
+                      label="Product Name"
+                      type="text"
+                      fullWidth
+                      value={values.name}
+                      onChange={handleChange}
+                      error={touched.name && !!errors.name}
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="p"
+                      className="text-red-600"
+                    />
+                  </FormControl>
 
-          <div>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="img"
-              label=""
-              type="file"
-              fullWidth
-              // value={inputValue}
-              onChange={handleInputChange}
-            />
-          </div>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={handleClose}
-            color="primary"
-            variant="contained"
-            style={{ background: "cyan", color: "black" }}
-          >
-            Cancel
-          </Button>
-          <Button
-            onClick={handleSubmit}
-            color="primary"
-            variant="contained"
-            style={{ background: "yellow", color: "black" }}
-          >
-            Save
-          </Button>
-        </DialogActions>
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="unitPrice"
+                      name="unitPrice"
+                      label="Unit Price"
+                      type="text"
+                      fullWidth
+                      value={values.unitPrice}
+                      onChange={handleChange}
+                      error={touched.unitPrice && !!errors.unitPrice}
+                    />
+                    <ErrorMessage
+                      name="price"
+                      component="p"
+                      className="text-red-600"
+                    />
+                  </FormControl>
+                </div>
+
+                <div className="flex gap-4">
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="img"
+                      name="img"
+                      label=""
+                      type="file"
+                      fullWidth
+                      value={values.img}
+                      onChange={handleChange}
+                      error={touched.img && !!errors.img}
+                    />
+                    <ErrorMessage
+                      name="img"
+                      component="p"
+                      className="text-red-600"
+                    />
+                  </FormControl>
+
+                  <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="adminId"
+                      name="adminId"
+                      label="Admin Id"
+                      type="text"
+                      fullWidth
+                      value={values.adminId}
+                      onChange={handleChange}
+                      error={touched.adminId && !!errors.adminId}
+                    />
+                    <ErrorMessage
+                      name="adminId"
+                      component="p"
+                      className="text-red-600"
+                    />
+                  </FormControl>
+                </div>
+              </DialogContent>
+              <DialogActions>
+                <Button
+                  onClick={handleClose}
+                  color="primary"
+                  variant="contained"
+                  style={{ background: "cyan", color: "black" }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  style={{ background: "yellow", color: "black" }}
+                >
+                  Save
+                </Button>
+              </DialogActions>
+            </Form>
+          )}
+        </Formik>
       </Dialog>
     </div>
   );

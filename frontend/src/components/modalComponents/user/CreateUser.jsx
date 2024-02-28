@@ -104,7 +104,7 @@ const CreateUser = ({ fetchData }) => {
             setSubmitting(false);
           }}
         >
-          {({ values, handleChange, handleSubmit, errors, touched }) => (
+          {({ values, handleChange, errors, touched }) => (
             <Form
               noValidate
               validated={validated.toString()}

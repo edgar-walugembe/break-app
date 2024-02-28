@@ -6,9 +6,10 @@ const {
   deleteProduct,
   editProduct,
   fetchAllProducts,
+  uploadProductImage,
 } = require("../controllers/product-controller");
 
-const {} = require("../middlewares/product");
+const { upload } = require("../middlewares/product");
 
 /*pdtRole Route */
 router.get("/", function (req, res) {
@@ -16,7 +17,12 @@ router.get("/", function (req, res) {
 });
 
 /* createProduct Route. */
-router.post("/createPdt", createProduct);
+router.post(
+  "/createPdt",
+  upload.single("img"),
+  // uploadProductImage
+  createProduct
+);
 
 /* deleteProduct Route. */
 router.delete("/deletePdt", deleteProduct);
