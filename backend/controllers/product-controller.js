@@ -2,20 +2,19 @@ const { Product, Sequelize, sequelize } = require("../database/models");
 
 // create new product
 async function createProduct(req, res) {
-  await uploadProductImage(req, res);
-
   try {
+    await uploadProductImage(req, res);
+
     const product = await Product.create({
       ...req.body,
-      img: req.img.filename,
+      img: req.file ? req.file.filename : null,
     });
-    n;
-    return res.status(201).send({ product });
+
+    return res.status(201).json({ product });
   } catch (err) {
     console.error(err);
     return res.status(500).send({ err });
   }
-  next();
 }
 
 // get all products
@@ -78,13 +77,13 @@ async function editProduct(req, res, next) {
 
 async function uploadProductImage(req, res, next) {
   try {
-    if (!req.img) {
+    if (!req.file) {
       return res.status(404).json({ error: "No file provided" });
     }
-    const fileName = req.img.filename;
+    const fileName = req.file.filename;
     res
       .status(200)
-      .json({ message: `devFile ${fileName} uploaded successfully` });
+      .json({ message: `Product Image ${fileName} uploaded successfully` });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

@@ -49,17 +49,25 @@ function CreateProduct() {
     const form = pdtRef.current;
 
     if (form && form.checkValidity() === true) {
-      const newPdt = {
-        name: form.name.value,
-        unitPrice: form.unitPrice.value,
-        img: form.img.value,
-        adminId: form.adminId.value,
-      };
+      if (!form.img.files[0]) {
+        setValidated(true);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("unitPrice", values.unitPrice);
+      formData.append("img", form.img.files[0]); // Access the file via form.img.files[0]
+      formData.append("adminId", values.adminId);
 
       console.log("Form values:", values);
-      console.log("new form values:", newPdt);
+      console.log("new form values:", formData);
 
-      const res = await axios.post(createPdtUrl_admin, newPdt);
+      const res = await axios.post(createPdtUrl_admin, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       try {
         if (res.status === 201) {
