@@ -3,6 +3,10 @@ const { Product, Sequelize, sequelize } = require("../database/models");
 // create new product
 async function createProduct(req, res) {
   try {
+    const headers = {
+      "Content-Type": "multipart/form-data",
+    };
+
     await uploadProductImage(req, res);
 
     const product = await Product.create({
@@ -10,10 +14,10 @@ async function createProduct(req, res) {
       img: req.file ? req.file.filename : null,
     });
 
-    return res.status(201).json({ product });
+    return res.status(201).set(headers).json({ product });
   } catch (err) {
     console.error(err);
-    return res.status(500).send({ err });
+    return res.status(500).json({ err });
   }
 }
 
@@ -81,9 +85,9 @@ async function uploadProductImage(req, res, next) {
       return res.status(404).json({ error: "No file provided" });
     }
     const fileName = req.file.filename;
-    res
-      .status(200)
-      .json({ message: `Product Image ${fileName} uploaded successfully` });
+    // res
+    //   .status(200)
+    //   .json({ message: `Product Image ${fileName} uploaded successfully` });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
