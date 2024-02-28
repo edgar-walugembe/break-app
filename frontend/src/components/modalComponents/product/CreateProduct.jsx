@@ -63,9 +63,8 @@ function CreateProduct() {
       console.log("Form values:", values);
       console.log("new form values:", formData);
 
-      const res = await axios.post(createPdtUrl_admin, formData);
-
       try {
+        const res = await axios.post(createPdtUrl_admin, formData);
         if (res.status === 201) {
           form.reset();
           setValidated(false);
