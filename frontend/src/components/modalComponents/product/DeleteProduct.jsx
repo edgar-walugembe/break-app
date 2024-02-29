@@ -5,13 +5,15 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  TextField,
 } from "@mui/material";
 
 import Button from "@mui/material/Button";
 
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
+import axios from "axios";
+import { deleteUserUrl } from "../../../constants";
+import PropTypes from "prop-types";
 
 function DeleteProduct() {
   const { inputValue, setInputValue, openDeletePdt, setOpenDeletePdt } =

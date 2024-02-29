@@ -93,7 +93,6 @@ function CreateProduct() {
             name: "",
             unitPrice: "",
             img: "",
-            adminId: "",
           }}
           validationSchema={schema}
           onSubmit={(values, { setSubmitting }) => {
@@ -180,26 +179,6 @@ function CreateProduct() {
                       className="text-red-600"
                     />
                   </FormControl>
-
-                  <FormControl autoFocus fullWidth margin="dense">
-                    <TextField
-                      autoFocus
-                      margin="dense"
-                      id="adminId"
-                      name="adminId"
-                      label="Admin Id"
-                      type="text"
-                      fullWidth
-                      value={values.adminId}
-                      onChange={handleChange}
-                      error={touched.adminId && !!errors.adminId}
-                    />
-                    <ErrorMessage
-                      name="adminId"
-                      component="p"
-                      className="text-red-600"
-                    />
-                  </FormControl>
                 </div>
               </DialogContent>
               <DialogActions>
@@ -229,3 +208,26 @@ function CreateProduct() {
 }
 
 export default CreateProduct;
+
+{
+  /* <FormControl autoFocus fullWidth margin="dense">
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="adminId"
+                      name="adminId"
+                      label="Admin Id"
+                      type="text"
+                      fullWidth
+                      value={values.adminId}
+                      onChange={handleChange}
+                      error={touched.adminId && !!errors.adminId}
+                    />
+                    <ErrorMessage
+                      name="adminId"
+                      component="p"
+                      className="text-red-600"
+                    />
+</FormControl>
+*/
+}

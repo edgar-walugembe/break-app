@@ -124,8 +124,7 @@
 // export default ProductList;
 
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 
 //material imports
 import PropTypes from "prop-types";
@@ -152,94 +151,24 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
 
-//image imports
-import {
-  banana,
-  cakes,
-  cakes00,
-  cassava,
-  chapati,
-  chapati00,
-  eggs,
-  pani,
-  pani00,
-  rolex,
-  samosa,
-  samosa00,
-  sausage,
-} from "../../assets";
-
 //context imports
 import { ModalContext } from "../../contexts/ModalContext";
 
 import { CreateProduct, DeleteProduct, EditProduct } from "../modalComponents";
+import axios from "axios";
+import { getPdtUrl_admin } from "../../constants";
 
-function createData(id, img, name, price, timestamps) {
-  let imagePath;
-  switch (img) {
-    case "banana":
-      imagePath = banana;
-      break;
-    case "shortcake":
-      imagePath = cakes;
-      break;
-    case "cassava":
-      imagePath = cassava;
-      break;
-    case "chapati":
-      imagePath = chapati00;
-      break;
-    case "eggs":
-      imagePath = eggs;
-      break;
-    case "pancakes":
-      imagePath = pani;
-      break;
-    case "rolex":
-      imagePath = rolex;
-      break;
-    case "samosa":
-      imagePath = samosa;
-      break;
-    case "sausage":
-      imagePath = sausage;
-      break;
-    default:
-      imagePath = "";
-  }
+function createData(id, img, name, unitPrice, timestamps, actions, adminId) {
   return {
     id,
-    img: imagePath,
+    img,
     name,
-    price,
+    unitPrice,
     timestamps,
+    actions,
+    adminId,
   };
 }
-
-const date = new Date();
-const formattedDate = date.toLocaleDateString({
-  weekday: "numeric",
-  year: "numeric",
-  month: "numeric",
-  day: "numeric",
-  timestamps: "numeric",
-});
-
-const rows = [
-  createData(1, "banana", "Banana", 500, formattedDate),
-  createData(2, "shortcake", "Shortcake", 500, formattedDate),
-  createData(3, "cassava", "Cassava", 100, formattedDate),
-  createData(4, "chapati", "Chapati", 500, formattedDate),
-  createData(5, "eggs", "Eggs", 500, formattedDate),
-  createData(6, "pancakes", "Pancakes", 100, formattedDate),
-  createData(7, "rolex", "Rolex", [1000, 1500, 2000], formattedDate),
-  createData(8, "samosa", "Samosa", 200, formattedDate),
-  createData(9, "sausage", "Sausage", 500, formattedDate),
-  createData(10, "Lollipop", 392, 0.2, 98, 0.0),
-  createData(11, "Marshmallow", 318, 0, 81, 2.0),
-  createData(12, "Nougat", 360, 19.0, 9, 37.0),
-  createData(13, "Oreo", 437, 18.0, 63, 4.0),
-];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -289,10 +218,16 @@ const headCells = [
     label: "Product Name",
   },
   {
-    id: "price",
+    id: "unitPrice",
     numeric: true,
     disablePadding: false,
     label: "Price (shs.)",
+  },
+  {
+    id: "adminId",
+    numeric: true,
+    disablePadding: false,
+    label: "Admin ID",
   },
   {
     id: "timestamps",
@@ -444,6 +379,33 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [data, setData] = React.useState([]);
+
+  const formatTimestamp = (updatedAt) => {
+    const date = new Date(updatedAt);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(getPdtUrl_admin);
+
+      console.log(res.data.products);
+      setData(res.data.products);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -453,7 +415,7 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.id);
+      const newSelected = data.map((n) => n.id);
       setSelected(newSelected);
       return;
     }
@@ -496,28 +458,34 @@ export default function EnhancedTable() {
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
 
   const visibleRows = React.useMemo(
     () =>
-      stableSort(rows, getComparator(order, orderBy)).slice(
+      stableSort(data, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage
       ),
-    [order, orderBy, page, rowsPerPage]
+    [order, orderBy, page, rowsPerPage, data]
   );
 
   //context
   const { setOpenCreatePdt, setOpenEditPdt } = useContext(ModalContext);
+
+  const [selectedPdtData, setSelectedPdtData] = useState(null);
+  const handleRowClick = (pdtData) => {
+    setSelectedPdtData(pdtData);
+  };
 
   const handleClickOpen = () => {
     console.log("create Pdt opened");
     setOpenCreatePdt(true);
   };
 
-  const handleClickEdit = () => {
+  const handleClickEdit = (pdtData) => {
     console.log("edit Pdt opened");
     setOpenEditPdt(true);
+    setSelectedPdtData(pdtData);
   };
 
   return (
@@ -547,12 +515,12 @@ export default function EnhancedTable() {
                   orderBy={orderBy}
                   onSelectAllClick={handleSelectAllClick}
                   onRequestSort={handleRequestSort}
-                  rowCount={rows.length}
+                  rowCount={data.length}
                 />
                 <TableBody>
-                  {visibleRows.map((row, index) => {
-                    const isItemSelected = isSelected(row.id);
-                    const labelId = `enhanced-table-checkbox-${index}`;
+                  {visibleRows.map((row) => {
+                    const isItemSelected = isSelected(row.productId);
+                    const labelId = `enhanced-table-checkbox-${row.productId}`;
 
                     const centeredImageStyle = {
                       display: "block",
@@ -565,11 +533,14 @@ export default function EnhancedTable() {
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.id)}
+                        onClick={(event) => {
+                          handleClick(event, row.productId);
+                          handleRowClick(row);
+                        }}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row.id}
+                        key={row.productId}
                         selected={isItemSelected}
                         sx={{ cursor: "pointer" }}
                       >
@@ -589,7 +560,7 @@ export default function EnhancedTable() {
                           padding="none"
                           align="center"
                         >
-                          {row.id}
+                          {row.productId}
                         </TableCell>
                         <TableCell align="center">
                           {row.img && (
@@ -601,8 +572,11 @@ export default function EnhancedTable() {
                           )}
                         </TableCell>
                         <TableCell align="center">{row.name}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">{row.timestamps}</TableCell>
+                        <TableCell align="center">{row.unitPrice}</TableCell>
+                        <TableCell align="center">{row.adminId}</TableCell>
+                        <TableCell align="center">
+                          {formatTimestamp(row.updatedAt)}
+                        </TableCell>
                         <TableCell align="center">
                           <Button
                             style={{ background: "yellow", color: "black" }}
@@ -631,7 +605,7 @@ export default function EnhancedTable() {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={rows.length}
+              count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
@@ -644,9 +618,12 @@ export default function EnhancedTable() {
           />
         </Box>
 
-        <CreateProduct />
-        <DeleteProduct />
-        <EditProduct />
+        <CreateProduct fetchData={fetchData} />
+        <DeleteProduct
+          fetchData={fetchData}
+          selectedPdtData={selectedPdtData}
+        />
+        <EditProduct fetchData={fetchData} selectedPdtData={selectedPdtData} />
       </div>
     </div>
   );
