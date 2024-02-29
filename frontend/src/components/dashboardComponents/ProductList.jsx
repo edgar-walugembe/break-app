@@ -37,7 +37,7 @@ import { ModalContext } from "../../contexts/ModalContext";
 
 import { CreateProduct, DeleteProduct, EditProduct } from "../modalComponents";
 import axios from "axios";
-import { getPdtUrl_admin } from "../../constants";
+import { getPdtUrl_admin, baseUrl } from "../../constants";
 
 function createData(id, img, name, unitPrice, timestamps, actions, adminId) {
   return {
@@ -84,19 +84,19 @@ const headCells = [
     id: "id",
     numeric: false,
     disablePadding: true,
-    label: "ProductId",
+    label: "PdtId",
   },
   {
     id: "img",
     numeric: true,
     disablePadding: false,
-    label: "Product Image",
+    label: "Pdt Image",
   },
   {
     id: "name",
     numeric: true,
     disablePadding: false,
-    label: "Product Name",
+    label: "Pdt Name",
   },
   {
     id: "unitPrice",
@@ -114,7 +114,7 @@ const headCells = [
     id: "timestamps",
     numeric: true,
     disablePadding: false,
-    label: "Time Of Entry",
+    label: "Time Added",
   },
   {
     id: "actions",
@@ -281,8 +281,13 @@ export default function EnhancedTable() {
     try {
       const res = await axios.get(getPdtUrl_admin);
 
-      console.log(res.data.products);
-      setData(res.data.products);
+      // console.log(res.data.products);
+      // setData(res.data.products);
+      const productsWithDataAndImages = res.data.products.map((product) => ({
+        ...product,
+        img: product.img ? `${baseUrl}/images/${product.img}` : null, // Assuming the backend serves images at /api route
+      }));
+      setData(productsWithDataAndImages);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
