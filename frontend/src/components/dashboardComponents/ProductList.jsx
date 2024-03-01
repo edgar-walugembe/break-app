@@ -281,8 +281,6 @@ export default function EnhancedTable() {
     try {
       const res = await axios.get(getPdtUrl_admin);
 
-      // console.log(res.data.products);
-      // setData(res.data.products);
       const productsWithDataAndImages = res.data.products.map((product) => ({
         ...product,
         img: product.img ? `${baseUrl}/images/${product.img}` : null, // Assuming the backend serves images at /api route

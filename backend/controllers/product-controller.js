@@ -35,9 +35,9 @@ async function fetchAllProducts(req, res) {
 // delete a product
 async function deleteProduct(req, res, next) {
   try {
-    const productId = req.query.id;
+    const productId = req.query.productId;
 
-    const product = await Product.findOne({ where: { id: productId } });
+    const product = await Product.findOne({ where: { productId: productId } });
     if (product) {
       await product.destroy();
       return res

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -12,12 +12,14 @@ import Button from "@mui/material/Button";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
 import axios from "axios";
-import { deleteUserUrl } from "../../../constants";
+import { deletePdtUrl_admin } from "../../../constants";
 import PropTypes from "prop-types";
 
-function DeleteProduct() {
-  const { inputValue, setInputValue, openDeletePdt, setOpenDeletePdt } =
+function DeleteProduct({ selectedPdtData, fetchData }) {
+  const { openDeletePdt, setOpenDeletePdt, product, setProduct } =
     useContext(ModalContext);
+
+  const [deleteUser, setDeleteUser] = useState(null);
 
   const handleClickOpen = () => {
     setOpenDeletePdt(true);
@@ -27,13 +29,42 @@ function DeleteProduct() {
     setOpenDeletePdt(false);
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+  DeleteProduct.propTypes = {
+    selectedPdtData: PropTypes.object,
+    fetchData: PropTypes.func,
   };
 
-  const handleSubmit = () => {
-    // Handle submission logic here
-    console.log("Submitted value:", inputValue);
+  const handleSubmit = async (productId) => {
+    const res = await axios.delete(
+      `${deletePdtUrl_admin}?productId=${productId}`
+    );
+
+    try {
+      if (res.status === 202) {
+        setProduct((prevPdt) =>
+          prevPdt.filter((product) => product.productId !== productId)
+        );
+      } else {
+        console.error(
+          "Failed to delete user from express_db:",
+          res.data.message
+        );
+      }
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          "Error deleting user from express_db:",
+          error.response.status,
+          error.response.data
+        );
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+
+    fetchData();
     handleClose();
   };
 
@@ -64,7 +95,7 @@ function DeleteProduct() {
             Cancel
           </Button>
           <Button
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(selectedPdtData.productId)}
             color="primary"
             variant="contained"
             style={{ background: "yellow", color: "black" }}
