@@ -13,7 +13,6 @@ import {
   MenuItem,
   Select,
   Button,
-  Input,
 } from "@mui/material";
 
 import { ModalContext } from "../../../contexts/ModalContext";
@@ -35,7 +34,7 @@ function EditUser({ selectedUserData, fetchData }) {
     setValidated,
   } = useContext(ModalContext);
 
-  //handling form data
+  //handling userForm data
   const [editName, setEditName] = useState("");
   const [editEmail, setEditEmail] = useState("");
   const [editCompany, setEditCompany] = useState("");

@@ -55,15 +55,17 @@ async function deleteProduct(req, res, next) {
 // edit a product
 async function editProduct(req, res, next) {
   try {
-    const productId = parseInt(req.query.id);
+    const productId = parseInt(req.query.productId);
 
     const editedData = req.body;
 
     const [editedRows] = await Product.update(editedData, {
-      where: { id: productId },
+      where: { productId: productId },
     });
 
-    const editedProduct = await Product.findOne({ where: { id: productId } });
+    const editedProduct = await Product.findOne({
+      where: { productId: productId },
+    });
 
     if (editedRows === 0) {
       return res.status(304).send(`product id: ${productId} not changed`);
@@ -84,7 +86,8 @@ async function uploadProductImage(req, res, next) {
     if (!req.file) {
       return res.status(404).json({ error: "No file provided" });
     }
-    const fileName = req.file.filename;
+
+    // const fileName = req.file.filename;
     // res
     //   .status(200)
     //   .json({ message: `Product Image ${fileName} uploaded successfully` });

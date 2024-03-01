@@ -24,12 +24,10 @@ const Home = () => {
   const [openCreatePdt, setOpenCreatePdt] = useState(false);
   const [openDeletePdt, setOpenDeletePdt] = useState(false);
   const [openEditPdt, setOpenEditPdt] = useState(false);
-  const [inputValue, setInputValue] = useState({
+  const [editPdt, setEditPdt] = useState({
     name: "",
-    email: "",
-    company: "",
-    type: "",
-    status: "",
+    unitPrice: "",
+    adminId: "",
     img: "",
   });
 
@@ -69,8 +67,6 @@ const Home = () => {
       <div className="flex">
         <ModalContext.Provider
           value={{
-            inputValue,
-            setInputValue,
             product,
             setProduct,
             openCreatePdt,
@@ -93,6 +89,8 @@ const Home = () => {
             setValidated,
             editUser,
             setEditUser,
+            editPdt,
+            setEditPdt,
           }}
         >
           {/* <Sidebar>

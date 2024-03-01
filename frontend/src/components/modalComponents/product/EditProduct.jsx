@@ -1,37 +1,53 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
   TextField,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Button,
 } from "@mui/material";
-
-import Button from "@mui/material/Button";
 
 import { ModalContext } from "../../../contexts/ModalContext";
 import { close } from "../../../assets";
+import * as Yup from "yup";
+import { Formik, Form, ErrorMessage } from "formik";
+import axios from "axios";
 
-function EditProduct() {
-  const { inputValue, setInputValue, openEditPdt, setOpenEditPdt } =
-    useContext(ModalContext);
+import { editPdtUrl_admin } from "../../../constants";
+import PropTypes from "prop-types";
 
-  const handleClickOpen = () => {
-    setOpenEditPdt(true);
+function EditProduct({ selectedPdtData, fetchData }) {
+  const {
+    openEditPdt,
+    setOpenEditPdt,
+    editPdt,
+    setEditPdt,
+    validated,
+    setValidated,
+  } = useContext(ModalContext);
+
+  //handling productForm data
+  const [editName, setEditName] = useState("");
+  const [editUnitPrice, setEditUnitPrice] = useState("");
+  const [editAdminId, setEditAdminId] = useState("");
+  const [editImg, setEditImg] = useState("");
+
+  EditProduct.propTypes = {
+    selectedPdtData: PropTypes.object,
+    fetchData: PropTypes.func,
   };
 
   const handleClose = () => {
     setOpenEditPdt(false);
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
   const handleSubmit = () => {
-    // Handle submission logic here
-    console.log("Submitted value:", inputValue);
     handleClose();
   };
 
@@ -57,7 +73,7 @@ function EditProduct() {
               type="text"
               fullWidth
               // value={inputValue}
-              onChange={handleInputChange}
+              onChange={ha}
             />
             <TextField
               autoFocus
