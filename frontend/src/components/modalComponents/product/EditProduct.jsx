@@ -43,6 +43,31 @@ function EditProduct({ selectedPdtData, fetchData }) {
     fetchData: PropTypes.func,
   };
 
+  useEffect(() => {
+    console.log("Selected Product Data:", selectedPdtData);
+    if (selectedPdtData) {
+      setEditName(selectedPdtData.name || "");
+      setEditUnitPrice(selectedPdtData.unitPrice || "");
+      setEditAdminId(selectedPdtData.adminId || "");
+      setEditImg(selectedPdtData.img || "");
+    }
+  }, [selectedPdtData]);
+
+  const updateEditProduct = (newValues) => {
+    setEditPdt((prevEditPdt) => ({ ...prevEditPdt, ...newValues }));
+  };
+
+  const productRef = useRef("null");
+
+  const schema = Yup.object().shape({
+    name: Yup.string().required("Username is required"),
+    unitPrice: Yup.string().required("Unit is required"),
+    company: Yup.string().required("Company is required"),
+    userType: Yup.string().required("User Type is required"),
+    status: Yup.string().required("User Status is required"),
+    // img: Yup.string().required("User is required"),
+  });
+
   const handleClose = () => {
     setOpenEditPdt(false);
   };
